@@ -1,6 +1,4 @@
-//create the project
-create-react-app my-app --scripts-version=react-scripts-ts
-
-//deploy project
-npm run build
-firebase deploy --only hosting
+**Steps to run project**
+**1**: npm i
+**2**: npm run start-dev
+Open localhost:3000 to see the website
