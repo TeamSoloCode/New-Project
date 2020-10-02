@@ -1,6 +1,5 @@
 @import "../assets/bootstrap/css/bootstrap.css";
 .banner {
-  height: 1000px;
   background: url('../assets/images/banner/banner.jpg');
   background-repeat: no-repeat;
   height: 880px;

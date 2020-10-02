@@ -1,10 +1,17 @@
 import * as React from 'react';
-import HeaderBar from '../components/common-component/header-bar/header-bar';
-import "./main.css";
-export interface IMainProps {
-}
+import Footer from '../components/share-component/footer/footer';
+import RegisterComponent from '../components/common-component/register-component/register-component';
+import HeaderBar from '../components/share-component/header-bar/header-bar';
+
+import './main.css';
+import IntroduceTrainerComponent from '../components/common-component/intoduce-trainer-component/introduce-trainer-component';
+export interface IMainProps {}
 
 export default class Main extends React.Component<IMainProps> {
+  constructor(props: IMainProps) {
+    super(props);
+  }
+
 
 	public render() {
 		return (
@@ -24,10 +31,10 @@ export default class Main extends React.Component<IMainProps> {
 						</span>
 					</div>
 				</div>
+        <RegisterComponent></RegisterComponent>
+        <IntroduceTrainerComponent></IntroduceTrainerComponent>
+        <Footer></Footer>
 			</div>
 		);
 	}
 }
-
-
-

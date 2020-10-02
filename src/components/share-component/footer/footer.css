@@ -1,0 +1,77 @@
+.footer-area {
+	background: #002347;
+	height: 500px;
+	color: white;
+	padding: 150px 0px;
+}
+.footer {
+	position: block;
+	left: 0;
+	bottom: 0;
+	width: 100%;
+	color: white;
+}
+.footer-area ul li {
+	list-style: none;
+	margin-bottom: 25px;
+}
+
+.footer-area input {
+	height: 40px;
+	border: none;
+	width: 260px !important;
+	font-weight: 300;
+	background: #334f6c;
+	color: #ffffff;
+	border-radius: 0;
+	font-size: 14px;
+	padding: 10px;
+	padding-left: 20px;
+	margin-left: 0px;
+}
+.footer-area .ft-register-btn {
+	background: #fdc632;
+	background-size: 200% auto;
+	color: #002347;
+	border-radius: 0;
+	border-top-left-radius: 0px;
+	border-bottom-left-radius: 0px;
+	padding: 8px 20px;
+	margin-left: -60px;
+	font-size: 12px;
+	text-transform: uppercase;
+	font-family: 'Rubik', sans-serif;
+	font-weight: 600;
+	border: 0;
+	-webkit-transition: all 0.3s ease 0s;
+	-moz-transition: all 0.3s ease 0s;
+	-o-transition: all 0.3s ease 0s;
+	transition: all 0.3s ease 0s;
+}
+
+/* Extra small devices (phones, 600px and down) */
+@media only screen and (max-width: 600px) {
+	.footer-area {
+		height: auto;
+		padding: 25px 0px;
+	}
+	.footer-area input {
+		width: 100% !important;
+	}
+}
+
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media only screen and (min-width: 600px) {
+}
+
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (min-width: 768px) {
+}
+
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (min-width: 992px) {
+}
+
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+@media only screen and (min-width: 1200px) {
+}
