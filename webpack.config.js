@@ -81,7 +81,7 @@ module.exports = (configEnv = {}, { mode = 'production', $0 = '' }) => {
 			devServer: {
 				contentBase: path.join(__dirname, 'build'),
 				compress: false,
-				port: 3000,
+				port: 3001,
 				hot: true,
 				historyApiFallback: true
 			}
