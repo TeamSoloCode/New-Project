@@ -18,4 +18,5 @@ export declare interface WinfunEvent {
     detailLink: string
     show?: number
     sequence?: number
+    imageURI?: string
 }

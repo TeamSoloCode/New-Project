@@ -5,7 +5,7 @@ import InputGroup from "react-bootstrap/InputGroup";
 import FormControl from "react-bootstrap/FormControl";
 import Button from "react-bootstrap/Button";
 import Alert from "react-bootstrap/Alert";
-import { UPDATE_WINFUN_EVENT_API, FETCH_EVENT_BY_ID_API } from "../api/APIs";
+import { UPDATE_WINFUN_EVENT_API, FETCH_EVENT_BY_ID_API, UPLOAD_IMAGE, IMAGE_STORAGE_API } from "../api/APIs";
 import "react-datepicker/dist/react-datepicker.css";
 import { withRouter } from "react-router-dom";
 
@@ -70,11 +70,41 @@ export const UpdateEventForm = withRouter(
     const [detailLink, setDetailLink] = React.useState("");
     const [show, setShow] = React.useState(undefined);
     const [sequence, setSequence] = React.useState<number | undefined>(undefined);
+    const [imageURI, setImageURI] = React.useState("");
     const [showAlert, setShowAlert] = React.useState(false);
+    const imageRef = React.createRef<HTMLInputElement>();
 
     const onChangeEventName = React.useCallback((e) => {
       setEventName(e.target.value);
     }, []);
+
+    const onChangeImageURI = React.useCallback((e) => {
+      setImageURI(e.target.value);
+    }, []);
+
+    const onSubmitUploadImage = React.useCallback(
+      async (e) => {
+        e.preventDefault();
+        if (imageRef.current && imageRef.current.files) {
+          const file = imageRef.current.files[0];
+          if (!file) return;
+          const formData = new FormData();
+          formData.append("image", file);
+          const response = await fetch(UPLOAD_IMAGE, {
+            method: "POST", // or 'PUT'
+            // headers: {
+            //   'Content-Type': file.type,
+            // },
+            body: formData,
+          });
+          if (response) {
+            const {imageInfo} = await response.json();
+            setImageURI(imageInfo.filename);
+          }
+        }
+      },
+      [imageRef]
+    );
 
     const onChangeLocation = React.useCallback((e) => {
       setLocation(e.target.value);
@@ -172,6 +202,7 @@ export const UpdateEventForm = withRouter(
 
     React.useEffect(() => {
       try {
+        if(!state.event) return
         setCurrentEvent(state.event);
       } catch (err) {}
     }, [state.event]);
@@ -187,6 +218,7 @@ export const UpdateEventForm = withRouter(
         if (detailLink) event.detailLink = detailLink;
         if (sequence) event.sequence = sequence;
         if (show) event.show = show;
+        if (imageURI) event.imageURI = imageURI
         setCurrentEvent(event);
       }
     }, [
@@ -199,6 +231,7 @@ export const UpdateEventForm = withRouter(
       detailLink,
       show,
       sequence,
+      imageURI
     ]);
 
     React.useEffect(() => {
@@ -254,6 +287,31 @@ export const UpdateEventForm = withRouter(
               style={{ width: "90%" }}
               aria-describedby="basic-addon1"
             />
+          </InputGroup>
+
+          <InputGroup className="mb-3">
+            <InputGroup.Prepend style={{ width: "10%" }}>
+              <InputGroup.Text className="w-100" id="basic-addon1">
+                Event image
+              </InputGroup.Text>
+            </InputGroup.Prepend>
+            <FormControl
+              value={currentEvent?.imageURI}
+              onChange={onChangeImageURI}
+              style={{ width: "60%" }}
+              aria-describedby="basic-addon1"
+            />
+            {
+              currentEvent?.imageURI ? <img src={IMAGE_STORAGE_API + currentEvent?.imageURI} width={200} height={200}/> : null
+            }
+            <InputGroup.Append style={{ width: "30%" }}>
+              <form method="post" encType="multipart/form-data" onSubmit={onSubmitUploadImage}>
+                <input ref={imageRef} type="file" name="image" />
+                <button type="submit" name="upload">
+                  Save image
+                </button>
+              </form>
+            </InputGroup.Append>
           </InputGroup>
 
           <InputGroup className="mb-3">
