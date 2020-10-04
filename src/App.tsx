@@ -1,5 +1,6 @@
 import * as React from 'react';
 import './App.css';
+import Main from './pages/main';
 // import { Route } from 'react-router-dom';
 // import SelectedNowHomeComponent from 'src/pages/selected-now-home/SelectedNowHome';
 
@@ -16,7 +17,7 @@ class App extends React.Component<any> {
 	componentWillMount() {}
 
 	render() {
-		return <p>New Web</p>;
+		return <Main/>
 	}
 }
 
