@@ -15,7 +15,10 @@
 .single-trainer {
     margin-bottom: 30px;
 }
-.item-single-trainer:hover {
+.item-single-trainer {
+  background-color: white;
+}
+.single-trainer:hover {
  -webkit-box-shadow: 0px 0px 22px -8px rgba(0,0,0,0.75);
 -moz-box-shadow: 0px 0px 22px -8px rgba(0,0,0,0.75);
 box-shadow: 0px 0px 22px -8px rgba(0,0,0,0.75);
@@ -41,3 +44,23 @@ box-shadow: 0px 0px 22px -8px rgba(0,0,0,0.75);
   margin: 0 10px;
 }
 
+/* Extra small devices (phones, 600px and down) */
+@media only screen and (max-width: 600px) {
+.social-group{
+  margin: 0 75px;
+}
+}
+
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media only screen and (min-width: 600px) {
+
+}
+
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (min-width: 768px) {}
+
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (min-width: 992px) {}
+
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+@media only screen and (min-width: 1200px) {}
