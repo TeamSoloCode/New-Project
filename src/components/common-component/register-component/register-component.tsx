@@ -1,6 +1,6 @@
 import * as React from "react";
 import { Jumbotron, Container } from "react-bootstrap";
-import { LocalStorageKeys } from "../../../constants";
+import { LocalStorageKeys, COUNTDOWN_TIME_AS_HOURS } from "../../../constants";
 import { getDataFromLocalStorage } from "../../../utils";
 import RegisterFormComponent from "../register-form-component/register-form-component";
 import * as moment from "moment";
@@ -17,7 +17,7 @@ export default React.memo((props: IRegisterComponentProps) => {
   React.useEffect(() => {
     let intervalId: any = undefined;
     const loadPageTime = getDataFromLocalStorage(LocalStorageKeys.LOAD_PAGE_AT);
-    const endTime = moment(loadPageTime).add(3, "hours");
+    const endTime = moment(loadPageTime).add(COUNTDOWN_TIME_AS_HOURS, "hours");
     intervalId = setInterval(() => {
       const now = moment();
       const duration = moment.duration(now.diff(endTime));

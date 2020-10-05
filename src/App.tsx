@@ -3,7 +3,7 @@ import './App.css';
 import Main from './pages/main';
 import * as moment from 'moment'
 import { getDataFromLocalStorage, setDataToLocalStorage } from './utils';
-import { LocalStorageKeys } from './constants';
+import { LocalStorageKeys, COUNTDOWN_TIME_AS_HOURS } from './constants';
 // import { Route } from 'react-router-dom';
 // import SelectedNowHomeComponent from 'src/pages/selected-now-home/SelectedNowHome';
 
@@ -19,7 +19,7 @@ class App extends React.Component<any> {
 	componentDidMount() {
 		/** only set page loaded time of there is no loadPageAt in local storage or expired */
 		const loadedTime = getDataFromLocalStorage(LocalStorageKeys.LOAD_PAGE_AT)
-		const isExpired = moment(loadedTime).add(3, 'hours') <= moment()
+		const isExpired = moment(loadedTime).add(COUNTDOWN_TIME_AS_HOURS, 'hours') <= moment()
 		if(!loadedTime || isExpired) setDataToLocalStorage(LocalStorageKeys.LOAD_PAGE_AT, moment().format("MM-DD-YYYY HH:mm:ss"))
 	}
 
