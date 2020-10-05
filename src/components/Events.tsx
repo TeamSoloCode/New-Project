@@ -1,9 +1,9 @@
 import * as React from "react";
 import { WinfunEvent } from "src/ModelDeclare";
 import { withRouter } from "react-router-dom";
-import * as moment from 'moment'
+import * as moment from "moment";
 import MaterialTable from "material-table";
-import { FETCH_ALL_EVENT_API } from "../api/APIs";
+import { FETCH_ALL_EVENT_API, IMAGE_STORAGE_API } from "../api/APIs";
 
 interface State {
   events: WinfunEvent[];
@@ -82,24 +82,31 @@ export const Events = withRouter(
         ...event,
         createdDate: moment(event.createdDate).local().format("YYYY-MM-DD HH:mm"),
       }));
-      setEvents(events)
+      setEvents(events);
     }, [state.events]);
 
     return (
       <>
-        {console.log(events)}
         <MaterialTable
           title="Events"
           onRowClick={(_, rowData: WinfunEvent) => {
             props.history.push("/update_event/" + rowData.id);
           }}
           columns={[
-            { title: "Name", field: "eventName" },
-            { title: "Location", field: "location" },
-            { title: "Begin date", field: "beginDatetime" },
-            { title: "End date", field: "endDatetime" },
-            { title: "Detail link", field: "detailLink" },
-            { title: "Descriptions", field: "descriptions" },
+            { title: "Name", field: "eventName", cellStyle: {fontSize: 14} },
+            { title: "Location", field: "location", cellStyle: {fontSize: 14} },
+            { title: "Begin date", field: "beginDatetime", cellStyle: {fontSize: 14} },
+            { title: "End date", field: "endDatetime", cellStyle: {fontSize: 14} },
+            { title: "Detail link", field: "detailLink", cellStyle: {fontSize: 14} },
+            {
+              title: "Descriptions",
+              field: 'descriptions',
+              render: (rowData) => (
+                <p style={{  maxHeight: 50, overflow: 'auto', wordBreak: 'break-word' }}>
+                  {rowData.descriptions}
+                </p>
+              ),
+            },
             {
               title: "Show on client",
               field: "show",
@@ -107,7 +114,11 @@ export const Events = withRouter(
               align: "center",
             },
             { title: "Sequence", field: "sequence", type: "numeric" },
-            { title: "Created Date", field: "createdDate", type: 'datetime' },
+            {
+              title: "Image",
+              render: (rowData) => <img src={prepareImageSrc(rowData.imageURI)} width={64} height={64} />,
+            },
+            { title: "Created Date", field: "createdDate", type: "datetime" },
           ]}
           data={events}
         />
@@ -115,3 +126,11 @@ export const Events = withRouter(
     );
   })
 );
+
+const prepareImageSrc = (uri: string | undefined) => {
+  if(!uri) return undefined
+  if (uri.includes("https") || uri.includes("http")) {
+    return uri;
+  }
+  return IMAGE_STORAGE_API + uri;
+};

@@ -5,10 +5,10 @@ import InputGroup from "react-bootstrap/InputGroup";
 import FormControl from "react-bootstrap/FormControl";
 // import FormFile from "react-bootstrap/FormFile";
 import Button from "react-bootstrap/Button";
-import Alert from "react-bootstrap/Alert";
 import { ADD_WINFUN_EVENT_API } from "../api/APIs";
 import "react-datepicker/dist/react-datepicker.css";
 import { withRouter } from "react-router-dom";
+import { Toast } from "react-bootstrap";
 // import { Form } from "react-bootstrap";
 
 interface State {
@@ -162,13 +162,14 @@ export const InsertEventForm = withRouter(
 
     return (
       <>
-        <h1>Update Event</h1>
-        {showAlert ? (
-          <Alert variant={state.error ? "danger" : "success"} onClose={() => setShowAlert(false)} dismissible>
-            <Alert.Heading>Insert new event status</Alert.Heading>
-            <p>{state.message}</p>
-          </Alert>
-        ) : null}
+        <h1>Add New Event</h1>
+        <Toast className="ml-2" onClose={() => setShowAlert(false)} show={showAlert} delay={3000} autohide>
+          <Toast.Header>
+            <Button className="mr-1" variant="success" style={{ width: 16, height: 16, borderRadius: 8 }} />
+            <strong className="mr-auto">Message</strong>
+          </Toast.Header>
+          <Toast.Body>{state.message}</Toast.Body>
+        </Toast>
         <div className="m-4">
           <InputGroup className="mb-3">
             <InputGroup.Prepend style={{ width: "10%" }}>
@@ -297,8 +298,14 @@ export const InsertEventForm = withRouter(
             />
           </InputGroup>
         </div>
-
-        <div className="text-center">
+        <Toast className="ml-2" onClose={() => setShowAlert(false)} show={showAlert} delay={3000} autohide>
+          <Toast.Header>
+            <Button className="mr-1" variant="success" style={{ width: 16, height: 16, borderRadius: 8 }} />
+            <strong className="mr-auto">Message</strong>
+          </Toast.Header>
+          <Toast.Body>{state.message}</Toast.Body>
+        </Toast>
+        <div className="text-center mb-2">
           <Button variant="primary" onClick={onClickSubmit}>
             Submit
           </Button>

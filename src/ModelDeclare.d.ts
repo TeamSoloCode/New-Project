@@ -20,3 +20,15 @@ export declare interface WinfunEvent {
     sequence?: number
     imageURI?: string
 }
+
+export declare interface AnonymousComment {
+    id?: number;
+    email: string;
+    phoneNumber: string;
+    name: string;
+    contents: string;
+    sequence: number;
+    userImage?: string;
+    createdDate?: string;
+    show?: number
+  }

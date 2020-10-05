@@ -4,10 +4,10 @@ import { WinfunEvent } from "src/ModelDeclare";
 import InputGroup from "react-bootstrap/InputGroup";
 import FormControl from "react-bootstrap/FormControl";
 import Button from "react-bootstrap/Button";
-import Alert from "react-bootstrap/Alert";
 import { UPDATE_WINFUN_EVENT_API, FETCH_EVENT_BY_ID_API, UPLOAD_IMAGE, IMAGE_STORAGE_API } from "../api/APIs";
 import "react-datepicker/dist/react-datepicker.css";
 import { withRouter } from "react-router-dom";
+import { Toast } from "react-bootstrap";
 
 interface State {
   event: WinfunEvent | null;
@@ -59,16 +59,16 @@ function reducer(state: State = initialState, action: Action): State {
 export const UpdateEventForm = withRouter(
   React.memo((props: any) => {
     const [state, dispatch] = React.useReducer(reducer, initialState);
-    const [currentEvent, setCurrentEvent] = React.useState<WinfunEvent | null>(null);
+    const [oldEvent, setOldEvent] = React.useState<WinfunEvent | null>(null);
     const [startDate, setStartDate] = React.useState(new Date());
     const [endDate, setEndDate] = React.useState(new Date());
     const [startDateAsString, setStartDateAsString] = React.useState("");
-    const [endDateAsString, setEndAsString] = React.useState("");
+    const [endDateAsString, setEndDateAsString] = React.useState("");
     const [eventName, setEventName] = React.useState("");
     const [location, setLocation] = React.useState("");
     const [descriptions, setDescriptions] = React.useState("");
     const [detailLink, setDetailLink] = React.useState("");
-    const [show, setShow] = React.useState(undefined);
+    const [show, setShow] = React.useState<number | undefined>(undefined);
     const [sequence, setSequence] = React.useState<number | undefined>(undefined);
     const [imageURI, setImageURI] = React.useState("");
     const [showAlert, setShowAlert] = React.useState(false);
@@ -98,7 +98,7 @@ export const UpdateEventForm = withRouter(
             body: formData,
           });
           if (response) {
-            const {imageInfo} = await response.json();
+            const { imageInfo } = await response.json();
             setImageURI(imageInfo.filename);
           }
         }
@@ -131,15 +131,28 @@ export const UpdateEventForm = withRouter(
         dispatch({
           type: ActionEnum.UPDATE_EVENT,
         });
+
         const {
           match: { params },
         } = props;
+
+        const newEvent: WinfunEvent = {} as WinfunEvent;
+        if (eventName) newEvent.eventName = eventName;
+        if (location) newEvent.location = location;
+        if (startDateAsString) newEvent.beginDatetime = startDateAsString;
+        if (endDateAsString) newEvent.endDatetime = endDateAsString;
+        if (descriptions) newEvent.descriptions = descriptions;
+        if (detailLink) newEvent.detailLink = detailLink;
+        if (sequence) newEvent.sequence = sequence;
+        if (show) newEvent.show = show;
+        if (imageURI) newEvent.imageURI = imageURI;
+
         const response = await fetch(UPDATE_WINFUN_EVENT_API, {
           method: "PUT",
           headers: {
             "Content-Type": "application/json",
           },
-          body: JSON.stringify({ ...currentEvent, eventId: params.eventId }),
+          body: JSON.stringify({ ...newEvent, eventId: params.eventId }),
         });
 
         if (response) {
@@ -164,7 +177,18 @@ export const UpdateEventForm = withRouter(
       } finally {
         setShowAlert(true);
       }
-    }, [currentEvent]);
+    }, [
+      oldEvent,
+      eventName,
+      location,
+      startDateAsString,
+      endDateAsString,
+      descriptions,
+      detailLink,
+      show,
+      sequence,
+      imageURI,
+    ]);
 
     const loadData = async (eventId: number) => {
       try {
@@ -200,39 +224,44 @@ export const UpdateEventForm = withRouter(
       }
     };
 
+    const prepareImageSrc = (uri: string) => {
+      if (uri.includes("https") || uri.includes("http")) {
+        return uri;
+      }
+      return IMAGE_STORAGE_API + uri;
+    };
+
     React.useEffect(() => {
       try {
-        if(!state.event) return
-        setCurrentEvent(state.event);
+        if (!state.event) return;
+        setOldEvent(state.event);
       } catch (err) {}
     }, [state.event]);
 
     React.useEffect(() => {
       if (state.event) {
-        const event: WinfunEvent = { ...state.event };
-        if (eventName) event.eventName = eventName;
-        if (location) event.location = location;
-        if (startDateAsString) event.beginDatetime = startDateAsString;
-        if (endDateAsString) event.endDatetime = endDateAsString;
-        if (descriptions) event.descriptions = descriptions;
-        if (detailLink) event.detailLink = detailLink;
-        if (sequence) event.sequence = sequence;
-        if (show) event.show = show;
-        if (imageURI) event.imageURI = imageURI
-        setCurrentEvent(event);
+        const {
+          eventName,
+          imageURI,
+          beginDatetime,
+          endDatetime,
+          descriptions,
+          detailLink,
+          sequence,
+          location,
+          show,
+        }: WinfunEvent = { ...state.event };
+        if (eventName) setEventName(eventName);
+        if (imageURI) setImageURI(imageURI || "");
+        if (beginDatetime) setStartDateAsString(beginDatetime);
+        if (endDatetime) setEndDateAsString(endDatetime);
+        if (descriptions) setDescriptions(descriptions || "");
+        if (detailLink) setDetailLink(detailLink);
+        if (sequence) setSequence(sequence);
+        if (location) setLocation(location);
+        if (show) setShow(show);
       }
-    }, [
-      state.event,
-      eventName,
-      location,
-      startDateAsString,
-      endDateAsString,
-      descriptions,
-      detailLink,
-      show,
-      sequence,
-      imageURI
-    ]);
+    }, [state.event]);
 
     React.useEffect(() => {
       const {
@@ -253,7 +282,7 @@ export const UpdateEventForm = withRouter(
 
     // @ts-ignore
     const CustomEndTime = ({ value, onClick }) => {
-      setEndAsString(value);
+      setEndDateAsString(value);
       return (
         <InputGroup.Prepend onClick={onClick}>
           <InputGroup.Text className="w-100">Calendar</InputGroup.Text>
@@ -264,16 +293,13 @@ export const UpdateEventForm = withRouter(
     return (
       <>
         <h1>Update Event</h1>
-        {showAlert ? (
-          <Alert
-            style={{ height: 50 }}
-            variant={state.error ? "danger" : "success"}
-            onClose={() => setShowAlert(false)}
-            dismissible
-          >
-            <p>{state.message}</p>
-          </Alert>
-        ) : null}
+        <Toast className="ml-2" onClose={() => setShowAlert(false)} show={showAlert} delay={3000} autohide>
+          <Toast.Header>
+            <Button className="mr-1" variant="success" style={{ width: 16, height: 16, borderRadius: 8 }} />
+            <strong className="mr-auto">Message</strong>
+          </Toast.Header>
+          <Toast.Body>{state.message}</Toast.Body>
+        </Toast>
         <div className="m-4">
           <InputGroup className="mb-3">
             <InputGroup.Prepend style={{ width: "10%" }}>
@@ -282,7 +308,7 @@ export const UpdateEventForm = withRouter(
               </InputGroup.Text>
             </InputGroup.Prepend>
             <FormControl
-              value={currentEvent?.eventName}
+              value={eventName}
               onChange={onChangeEventName}
               style={{ width: "90%" }}
               aria-describedby="basic-addon1"
@@ -296,22 +322,25 @@ export const UpdateEventForm = withRouter(
               </InputGroup.Text>
             </InputGroup.Prepend>
             <FormControl
-              value={currentEvent?.imageURI}
+              value={imageURI}
               onChange={onChangeImageURI}
-              style={{ width: "60%" }}
+              style={{ width: "90%" }}
               aria-describedby="basic-addon1"
             />
-            {
-              currentEvent?.imageURI ? <img src={IMAGE_STORAGE_API + currentEvent?.imageURI} width={200} height={200}/> : null
-            }
-            <InputGroup.Append style={{ width: "30%" }}>
-              <form method="post" encType="multipart/form-data" onSubmit={onSubmitUploadImage}>
-                <input ref={imageRef} type="file" name="image" />
-                <button type="submit" name="upload">
-                  Save image
-                </button>
-              </form>
-            </InputGroup.Append>
+            <div className="w-100 text-right">
+              {imageURI ? <img className="mt-1 mb-1" src={prepareImageSrc(imageURI)} width={200} height={200} /> : null}
+            </div>
+            <form
+              className="w-100 text-right"
+              method="post"
+              encType="multipart/form-data"
+              onSubmit={onSubmitUploadImage}
+            >
+              <input ref={imageRef} type="file" name="image" />
+              <Button variant="outline-dark" type="submit" name="upload">
+                Save image
+              </Button>
+            </form>
           </InputGroup>
 
           <InputGroup className="mb-3">
@@ -321,7 +350,7 @@ export const UpdateEventForm = withRouter(
               </InputGroup.Text>
             </InputGroup.Prepend>
             <FormControl
-              value={currentEvent?.location}
+              value={location}
               onChange={onChangeLocation}
               style={{ width: "90%" }}
               aria-describedby="basic-addon1"
@@ -348,12 +377,12 @@ export const UpdateEventForm = withRouter(
             <InputGroup.Prepend style={{ width: "10%" }}>
               <InputGroup.Text className="w-100">Start Time</InputGroup.Text>
             </InputGroup.Prepend>
-            <FormControl value={currentEvent?.beginDatetime} aria-describedby="basic-addon2" />
+            <FormControl value={startDateAsString} aria-describedby="basic-addon2" />
             <InputGroup.Append>
               <DatePicker
                 className="h-100"
                 id="basic-addon2"
-                selected={currentEvent?.beginDatetime ? new Date(currentEvent?.beginDatetime) : startDate}
+                selected={startDateAsString ? new Date(startDateAsString) : startDate}
                 withPortal={true}
                 onChange={(date: any) => setStartDate(date)}
                 timeInputLabel="Time:"
@@ -369,12 +398,12 @@ export const UpdateEventForm = withRouter(
             <InputGroup.Prepend style={{ width: "10%" }}>
               <InputGroup.Text className="w-100">End Time</InputGroup.Text>
             </InputGroup.Prepend>
-            <FormControl value={currentEvent?.endDatetime} aria-describedby="basic-addon2" />
+            <FormControl value={endDateAsString} aria-describedby="basic-addon2" />
             <InputGroup.Append>
               <DatePicker
                 className="h-100"
                 id="basic-addon2"
-                selected={currentEvent?.endDatetime ? new Date(currentEvent?.endDatetime) : endDate}
+                selected={endDateAsString ? new Date(endDateAsString) : endDate}
                 withPortal={true}
                 onChange={(date: any) => setEndDate(date)}
                 timeInputLabel="Time:"
@@ -391,7 +420,7 @@ export const UpdateEventForm = withRouter(
               <InputGroup.Text className="w-100">Description</InputGroup.Text>
             </InputGroup.Prepend>
             <FormControl
-              value={currentEvent?.descriptions}
+              value={descriptions}
               onChange={onChangeDescription}
               style={{ width: "90%" }}
               as="textarea"
@@ -406,7 +435,7 @@ export const UpdateEventForm = withRouter(
               </InputGroup.Text>
             </InputGroup.Prepend>
             <FormControl
-              value={currentEvent?.show}
+              value={show}
               onChange={onChangeShowStatus}
               style={{ width: "90%" }}
               aria-describedby="basic-addon1"
@@ -420,15 +449,21 @@ export const UpdateEventForm = withRouter(
               </InputGroup.Text>
             </InputGroup.Prepend>
             <FormControl
-              value={currentEvent?.sequence}
+              value={sequence}
               onChange={onChangeSequence}
               style={{ width: "90%" }}
               aria-describedby="basic-addon1"
             />
           </InputGroup>
         </div>
-
-        <div className="text-center">
+        <Toast className="ml-2" onClose={() => setShowAlert(false)} show={showAlert} delay={3000} autohide>
+          <Toast.Header>
+            <Button className="mr-1" variant="success" style={{ width: 16, height: 16, borderRadius: 8 }} />
+            <strong className="mr-auto">Message</strong>
+          </Toast.Header>
+          <Toast.Body>{state.message}</Toast.Body>
+        </Toast>
+        <div className="text-center mb-2">
           <Button variant="primary" onClick={onClickSubmit}>
             Submit
           </Button>

@@ -6,3 +6,7 @@ export const ADD_WINFUN_EVENT_API = rootAPI + "add_event"
 export const UPDATE_WINFUN_EVENT_API = rootAPI + "update_event"
 export const UPLOAD_IMAGE = rootAPI + "upload_image"
 export const IMAGE_STORAGE_API = rootAPI + "image/"
+export const FETCH_ALL_ANO_COMMENTS = rootAPI + "fetch_all_ano_comments"
+export const UPDATE_ANONYMOUS_COMMENT_SHOW_STATUS = rootAPI + "update_ano_comment_show_stat"
+export const UPDATE_ANONYMOUS_COMMENT_SEQUENCE = rootAPI + "update_ano_comment_sequence"
+

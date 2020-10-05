@@ -1,10 +1,11 @@
 import * as React from "react";
-import { Switch, Route } from "react-router-dom";
+import { Switch, Route, Link } from "react-router-dom";
 import "./App.css";
 import { InsertEventForm } from "./components/InsertEventForm";
 import { UpdateEventForm } from "./components/UpdateEventForm";
 import { Events } from "./components/Events";
 import { Button, Form, FormControl, Nav, Navbar, NavDropdown } from "react-bootstrap";
+import { AnonymousComments } from "./components/AnoComments";
 
 class App extends React.Component<any> {
   constructor(props: any) {
@@ -22,14 +23,24 @@ class App extends React.Component<any> {
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="mr-auto">
-              <Nav.Link href="/events">Events</Nav.Link>
-              <Nav.Link href="/insert_event">Add Event</Nav.Link>
-              <NavDropdown title="Dropdown" id="basic-nav-dropdown">
-                <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
-                <NavDropdown.Item href="#action/3.2">Another action</NavDropdown.Item>
-                <NavDropdown.Item href="#action/3.3">Something</NavDropdown.Item>
+              <NavDropdown title="Event" id="basic-nav-dropdown">
+                <NavDropdown.Item>
+                  <Link to="/events">Events</Link>
+                </NavDropdown.Item>
                 <NavDropdown.Divider />
-                <NavDropdown.Item href="#action/3.4">Separated link</NavDropdown.Item>
+                <NavDropdown.Item>
+                  <Link to="/insert_event">Add Event</Link>
+                </NavDropdown.Item>
+              </NavDropdown>
+              <NavDropdown title="Register Now" id="basic-nav-dropdown">
+                <NavDropdown.Item>
+                  <Link to="/events">Registers</Link>
+                </NavDropdown.Item>
+              </NavDropdown>
+              <NavDropdown title="Comment" id="basic-nav-dropdown">
+                <NavDropdown.Item>
+                  <Link to="/ano_comments">Comments</Link>
+                </NavDropdown.Item>
               </NavDropdown>
             </Nav>
             <Form inline>
@@ -39,7 +50,10 @@ class App extends React.Component<any> {
           </Navbar.Collapse>
         </Navbar>
         <Switch>
-          <Route exact path="/insert_event">
+          <Route exact path="/">
+            <Events />
+          </Route>
+          <Route path="/insert_event">
             <InsertEventForm />
           </Route>
           <Route path="/update_event/:eventId">
@@ -47,6 +61,9 @@ class App extends React.Component<any> {
           </Route>
           <Route path="/events">
             <Events />
+          </Route>
+          <Route path="/ano_comments">
+            <AnonymousComments />
           </Route>
         </Switch>
       </>
