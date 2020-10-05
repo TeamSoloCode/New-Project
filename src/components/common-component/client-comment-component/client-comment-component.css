@@ -6,6 +6,7 @@
     display: none;
     width: 100%;
     z-index: 1;
+    padding: 0 140px;
 }
 .owl-carousel, .owl-carousel .owl-item {
     -webkit-tap-highlight-color: transparent;
@@ -18,6 +19,7 @@
     position: relative;
     overflow: hidden;
     -webkit-transform: translate3d(0,0,0);
+    width: 100% !important;
 }
 /* .owl-stage-outer {
   height: 190px;
@@ -59,9 +61,11 @@
     background-image: url(../../../assets/images/icons/arrow-left.png) !important;
 }
 .carousel-control-prev {
-    left: -30px !important;
+    left: -110px !important;
 }
-
+.carousel-control-next {
+    right: -110px !important;
+}
 /* Extra small devices (phones, 600px and down) */
 @media only screen and (max-width: 600px) {
 .carousel-inner {
@@ -73,6 +77,12 @@
 .carousel-control-prev {
     left: 0px !important;
 } 
+.owl-carousel {
+    display: none;
+    width: 100%;
+    z-index: 1;
+    padding: 0 0;
+}
 }
 
 /* Small devices (portrait tablets and large phones, 600px and up) */

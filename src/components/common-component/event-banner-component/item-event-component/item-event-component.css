@@ -46,12 +46,29 @@
     font-weight: 500;
 }
 
-
+.event_img {
+  height: 500px;
+}
 .event_img:hover {
   -webkit-transition: all .3s ease 0s;
   -ms-transform: scale(1.5); /* IE 9 */
   -webkit-transform: scale(1.5); /* Safari 3-8 */
   transform: scale(1.2); 
+}
+.event-name{
+  font-size: 15px !important;
+}
+
+.ti-time {
+  font-size:  13px;
+}
+.ellipse-custom {
+	overflow: hidden;
+	text-overflow: ellipsis;
+	display: -webkit-box;
+	-webkit-line-clamp: 2;
+	-webkit-box-orient: vertical;
+	line-height: 1.828571 !important;
 }
 /* Extra small devices (phones, 600px and down) */
 @media only screen and (max-width: 600px) {
@@ -63,6 +80,9 @@ height: 100% !important;
     width: 373px;
 }
 }
+
+
+
 
 /* Small devices (portrait tablets and large phones, 600px and up) */
 @media only screen and (min-width: 600px) {

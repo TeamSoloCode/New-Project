@@ -19,25 +19,22 @@ export default class ClientCommentComponent extends React.Component<IClientComme
 						</div>
 					</div>
 				</div>
-				<div className="container">
+				<div>
 					<div className="row">
 						<div className="testi_slider owl-carousel owl-loaded owl-drag">
 							<div className="owl-stage-outer">
 								<Carousel>
 									<Carousel.Item>
-										<div className="container">
-											<div className="row ">
-												<ItemClientCommentComponent></ItemClientCommentComponent>
-												<ItemClientCommentComponent></ItemClientCommentComponent>
-											</div>
+										<div className="row ">
+											<ItemClientCommentComponent></ItemClientCommentComponent>
+											<ItemClientCommentComponent></ItemClientCommentComponent>
+											<ItemClientCommentComponent></ItemClientCommentComponent>
 										</div>
 									</Carousel.Item>
 									<Carousel.Item>
-										<div className="container">
-											<div className="row ">
-												<ItemClientCommentComponent></ItemClientCommentComponent>
-												{/* <ItemClientCommentComponent></ItemClientCommentComponent> */}
-											</div>
+										<div className="row ">
+											<ItemClientCommentComponent></ItemClientCommentComponent>
+											<ItemClientCommentComponent></ItemClientCommentComponent>
 										</div>
 									</Carousel.Item>
 								</Carousel>
