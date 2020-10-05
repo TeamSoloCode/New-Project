@@ -3,7 +3,7 @@ import { AnonymousComment } from "src/ModelDeclare";
 import { withRouter } from "react-router-dom";
 import * as moment from "moment";
 import MaterialTable from "material-table";
-import { FETCH_ALL_ANO_COMMENTS, UPDATE_ANONYMOUS_COMMENT_SHOW_STATUS } from "../api/APIs";
+import { FETCH_ALL_ANO_COMMENTS, UPDATE_ANONYMOUS_COMMENT_SEQUENCE, UPDATE_ANONYMOUS_COMMENT_SHOW_STATUS } from "../api/APIs";
 import { Button, Toast } from "react-bootstrap";
 
 interface State {
@@ -130,6 +130,43 @@ export const AnonymousComments = withRouter(
       }
     }, []);
 
+    const updateCommentSequence = React.useCallback(async (commentId: number, sequence: number) => {
+      try {
+        dispatch({
+          type: ActionEnum.UPDATE_COMMENT_SEQUENCE,
+        });
+
+        const response = await fetch(UPDATE_ANONYMOUS_COMMENT_SEQUENCE, {
+          method: "PUT",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ commentId: commentId, sequence: sequence }),
+        });
+
+        if (response) {
+          const results = await response.json();
+          if (results.code != 0) {
+            dispatch({
+              type: ActionEnum.UPDATE_COMMENT_SEQUENCE_FAILED,
+              message: results.message.sqlMessage,
+            });
+
+            throw Error(results.message.sqlMessage);
+          }
+
+          dispatch({
+            type: ActionEnum.UPDATE_COMMENT_SEQUENCE_SUCCESSFULL,
+            message: "Update comment sequence successful !!",
+          });
+          loadData();
+        }
+      } catch (err) {
+      } finally {
+        setShowAlert(true)
+      }
+    }, []);
+
     React.useEffect(() => {
       loadData();
     }, []);
@@ -187,16 +224,10 @@ export const AnonymousComments = withRouter(
           ]}
           editable={{
             onRowUpdate: (newData, oldData) => {
-              console.log("abcd", newData)
-              return new Promise((resolve, reject) => {
-                // setTimeout(() => {
-                //   const dataUpdate = [...data];
-                //   const index = oldData.tableData.id;
-                //   dataUpdate[index] = newData;
-                //   setData([...dataUpdate]);
-    
-                //   resolve();
-                // }, 1000)
+              return new Promise( async (resolve, reject) => {
+                if(!newData.id) return resolve()
+                await updateCommentSequence(newData.id, newData.sequence)
+                resolve()
               })
             }
           }}
