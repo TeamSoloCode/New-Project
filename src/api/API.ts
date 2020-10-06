@@ -7,3 +7,4 @@ export const ADD_WINFUN_EVENT_API = rootAPI + 'add_event';
 export const UPDATE_WINFUN_EVENT_API = rootAPI + 'update_event';
 export const UPLOAD_IMAGE = rootAPI + 'upload_image';
 export const IMAGE_STORAGE_API = rootAPI + 'image/';
+export const REGISTER_NOW_API = rootAPI + "register_now"
