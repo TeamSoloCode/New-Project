@@ -117,7 +117,7 @@ export const ClientCommentComponent = withRouter(
 							</div>
 						</div>
 					</div>
-					<div className="container">
+					<div className="container container-custom">
 						<div className="row">
 							<div className="testi_slider owl-carousel owl-loaded owl-drag">
 								<div className="owl-stage-outer">
@@ -160,14 +160,19 @@ export const ClientCommentComponent = withRouter(
 								</button>
 							</div>
 
-              <div className="modal-body" style={{ height: '500px', 'overflow': 'auto'}}>
-								{comment.map((valueEvent, indexEvent) => (
-                  valueEvent.show == 1 ?<ItemClientCommentFullComponent
+							<div className="modal-body" style={{ height: '500px', overflow: 'auto' }}>
+								{comment.map((valueEvent, indexEvent) =>
+									valueEvent.show == 1 ? (
+										<ItemClientCommentFullComponent
 											userImage={valueEvent.userImage}
 											userName={valueEvent.name}
 											content={valueEvent.contents}
-											key={indexEvent} createDate={valueEvent.createdDate}></ItemClientCommentFullComponent> : <div></div>
-								))}
+											key={indexEvent}
+											createDate={valueEvent.createdDate}></ItemClientCommentFullComponent>
+									) : (
+										<div></div>
+									)
+								)}
 							</div>
 
 							<div className="modal-footer">

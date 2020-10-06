@@ -43,7 +43,7 @@ export default class ITemEventComponent extends React.Component<IITemEventCompon
 	public render() {
     const { location, beginDateTime, endDateTime, description,detailLink, evenName, imageUri } = this.props;
 		return (
-			<div className="col-lg-6 col-md-6 ">
+			<div className="col-lg-6 col-md ">
 				<div className="single_event position-relative">
 					<div className="event_thumb">
 						<img src={imageUri} alt="" className="event_img"></img>
@@ -80,7 +80,7 @@ export default class ITemEventComponent extends React.Component<IITemEventCompon
 								</p>
 							</div>
 						</div>
-						<p className="ellipse-custom" data-toggle="tooltip" title={description}>
+						<p className="ellipse-custom content" data-toggle="tooltip" title={description}>
 							{'Content: ' + description}
 						</p>
 
