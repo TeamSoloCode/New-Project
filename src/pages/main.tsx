@@ -22,8 +22,8 @@ export default class Main extends React.Component<IMainProps> {
 			<div>
 				<HeaderBar />
 				<div className="banner">
-					<div className="d-flex justify-content-center align-items-center h-100">
-						<span className="w-100 text-center">
+					<div className="d-flex justify-content-center align-items-center inner-banner">
+						<span className="w-100 text-center ">
 							<span>
 								<span className="content-banner">BEST ONLINE EDUCATION SERVICE IN THE WORLD</span> <br />
 								<h1 className="title-banner">ONE STEP AHEAD THIS SEASON</h1>
@@ -35,11 +35,11 @@ export default class Main extends React.Component<IMainProps> {
 						</span>
 					</div>
 				</div>
-        <RegisterComponent></RegisterComponent>
-        <IntroduceTrainerComponent></IntroduceTrainerComponent>
-        <EventBannerComponent/>
-        <ClientCommentComponent/>
-        <Footer></Footer>
+				<RegisterComponent></RegisterComponent>
+				<IntroduceTrainerComponent></IntroduceTrainerComponent>
+				<EventBannerComponent />
+				<ClientCommentComponent />
+				<Footer></Footer>
 			</div>
 		);
 	}

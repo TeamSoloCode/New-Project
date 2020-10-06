@@ -2,8 +2,8 @@
 .banner {
   background: url('../assets/images/banner/banner.jpg');
   background-repeat: no-repeat;
-  height: 100vh;
-  background-size: cover; 
+  /* height: 100vh; */
+  /* background-size: cover;  */
     background-position: center;
 }
 .title-banner {
@@ -99,7 +99,10 @@
     -o-transition: all 0.3s ease 0s;
     transition: all 0.3s ease 0s;
 }
-
+.inner-banner {
+  height: 100vh;
+  margin-bottom: -70px;
+}
 /* Extra small devices (phones, 600px and down) */
 @media only screen and (max-width: 600px) {
   .bg-header {
@@ -107,9 +110,13 @@
     color: #fdc632 !important;
   }
   .banner {
-
   height: 55vh;
+    background-size: cover; 
 
+}
+.inner-banner {
+  height: 100%;
+  margin-bottom: 0px;
 }
 .title-banner {
     font-size: 17px;
