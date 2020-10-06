@@ -117,7 +117,7 @@ export const ClientCommentComponent = withRouter(
 							</div>
 						</div>
 					</div>
-					<div>
+					<div className="container">
 						<div className="row">
 							<div className="testi_slider owl-carousel owl-loaded owl-drag">
 								<div className="owl-stage-outer">

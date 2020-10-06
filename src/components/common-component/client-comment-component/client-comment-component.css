@@ -48,11 +48,11 @@
 }
 .carousel-inner {
     position: relative;
-    width: 1278px;
+    /* width: 1278px; */
     overflow: hidden;
 }
 .owl-stage-outer {
-  width: 1270px !important;
+  /* width: 1270px !important; */
 }
 .carousel-control-next-icon {
     background-image: url(../../../assets/images/icons/arrow-right.png) !important;
@@ -104,6 +104,7 @@
 @media only screen and (min-width: 1200px) {
   .modal-content {
     width: 900px !important;
+    height: 90vh;
     margin: 0 -100px !important;
   }
 }

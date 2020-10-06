@@ -38,12 +38,13 @@ export default React.memo((props: IRegisterComponentProps) => {
 						<div className="col-lg-8">
 							<div>
 								<h2 className="text-white">Register</h2>
+								
 								<span className="text-white">
 									There is a moment in the life of any aspiring astronomer that it is time to buy that first telescope.
 									It’s exciting to think about setting up your own viewing station.
 								</span>
-              </div>
-              <br/>
+							</div>
+							<br />
 							<div className=" d-flex">
 								{/* <div className="register-info"><TimeCountDownComponent/></div> */}
 								<div className="date-col">{days} Days</div>

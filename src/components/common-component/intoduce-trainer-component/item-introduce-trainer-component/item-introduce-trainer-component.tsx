@@ -89,57 +89,57 @@ export default class ItemIntroduceTrainerComponent extends React.Component<
 		return (
 			<div className="col-lg-3 col-md-6 col-sm-12 single-trainer">
 				<div className="item-single-trainer">
-					<div className="thumb d-flex justify-content-sm-center">
-						<img src={imageSrc} className="img-fluid" />
-					</div>
-					<div className="meta-text text-sm-center">
-						<a href="/detail-user">
-							<h4>{name}</h4>
-						</a>
+					<a href="/detail-user" target="_blank" className="text-underline-none text-black">
+						<div className="thumb d-flex justify-content-sm-center">
+							<img src={imageSrc} className="img-fluid" />
+						</div>
+						<div className="meta-text text-sm-center">
+							<h4 className="text-underline-none">{name}</h4>
 
-						<p>{position}</p>
-						<div className="mb-4">
-							<p>{overview}</p>
+							<p className="text-underline-none">{position}</p>
+							<div className="mb-4">
+								<p className="text-underline-none">{overview}</p>
+							</div>
+							<div className="social-group">
+								<a href="https://www.facebook.com/" target="_blank">
+									<img
+										src={!changeIconFb ? facebookIcon : facebookBlueIcon}
+										id="fbSocial"
+										className="icon-social"
+										onMouseOver={this.changeColorSocial}
+										onMouseLeave={this.disChangeColorSocial}
+									/>
+								</a>
+								<a href="https://www.linkedin.com/login" target="_blank">
+									<img
+										src={!changeIconLinkedIn ? linkedinIcon : linkedinBlueIcon}
+										id="linkedInSocial"
+										className="icon-social"
+										onMouseOver={this.changeColorSocial}
+										onMouseLeave={this.disChangeColorSocial}
+									/>
+								</a>
+								<a href="https://twitter.com/?lang=vi" target="_blank">
+									<img
+										src={!changeIconTwitter ? twitterIcon : twitterBlueIcon}
+										id="twitterSocial"
+										className="icon-social"
+										onMouseOver={this.changeColorSocial}
+										onMouseLeave={this.disChangeColorSocial}
+									/>
+								</a>
+								<a href="https://www.pinterest.com/" target="_blank">
+									<img
+										src={!changeIconPinteres ? pinterestIcon : pinterestRedIcon}
+										id="pinteresSocial"
+										className="icon-social"
+										onMouseOver={this.changeColorSocial}
+										onMouseLeave={this.disChangeColorSocial}
+									/>
+								</a>
+							</div>
 						</div>
-						<div className="social-group">
-							<a>
-								<img
-									src={!changeIconFb ? facebookIcon : facebookBlueIcon}
-									id="fbSocial"
-									className="icon-social"
-									onMouseOver={this.changeColorSocial}
-									onMouseLeave={this.disChangeColorSocial}
-								/>
-							</a>
-							<a>
-								<img
-									src={!changeIconLinkedIn ? linkedinIcon : linkedinBlueIcon}
-									id="linkedInSocial"
-									className="icon-social"
-									onMouseOver={this.changeColorSocial}
-									onMouseLeave={this.disChangeColorSocial}
-								/>
-							</a>
-							<a>
-								<img
-									src={!changeIconTwitter ? twitterIcon : twitterBlueIcon}
-									id="twitterSocial"
-									className="icon-social"
-									onMouseOver={this.changeColorSocial}
-									onMouseLeave={this.disChangeColorSocial}
-								/>
-							</a>
-							<a>
-								<img
-									src={!changeIconPinteres ? pinterestIcon : pinterestRedIcon}
-									id="pinteresSocial"
-									className="icon-social"
-									onMouseOver={this.changeColorSocial}
-									onMouseLeave={this.disChangeColorSocial}
-								/>
-							</a>
-						</div>
-					</div>
+					</a>
 				</div>
 			</div>
 		);

@@ -58,30 +58,31 @@ export default class RegisterFormComponent extends React.Component<
   };
   public render() {
     return (
-      <div className="register_form">
-        <div className="mb-5">
-          <span>
-            <h3>Register</h3>
-          </span>
-        </div>
-        <Form>
-          <Form.Group>
-            <Form.Control type="email" placeholder="Enter email" onChange={this.handleChangeEmailInput} />
-          </Form.Group>
+			<div className="register_form">
+				<div className="mb-5">
+					<span>
+						<h3>Register</h3>
+						<p>It is high time for learning</p>
+					</span>
+				</div>
+				<Form>
+					<Form.Group>
+						<Form.Control type="email" placeholder="Enter email" onChange={this.handleChangeEmailInput} />
+					</Form.Group>
 
-          <Form.Group>
-            <Form.Control type="text" placeholder="Enter username" onChange={this.handleChangeUserNameInput} />
-          </Form.Group>
+					<Form.Group>
+						<Form.Control type="text" placeholder="Enter username" onChange={this.handleChangeUserNameInput} />
+					</Form.Group>
 
-          <Form.Group>
-            <Form.Control type="text" placeholder="Enter phone number" onChange={this.handleChangePhoneNumberInput} />
-          </Form.Group>
+					<Form.Group>
+						<Form.Control type="text" placeholder="Enter phone number" onChange={this.handleChangePhoneNumberInput} />
+					</Form.Group>
 
-          <Button variant="primary" onClick={this.handleSubmit} className="btn primary-btn">
-            Register
-          </Button>
-        </Form>
-      </div>
-    );
+					<Button variant="primary" onClick={this.handleSubmit} className="btn primary-btn">
+						Register
+					</Button>
+				</Form>
+			</div>
+		);
   }
 }
