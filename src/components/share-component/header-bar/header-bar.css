@@ -24,10 +24,22 @@ box-shadow: 0px 8px 25px -8px rgba(0,0,0,1);
   color:white !important;
 
 }
-}
+  .header_area {
 
+   background-color: #002347 !important;
+}
+.item-nav {
+  color: white !important;
+}
+.title {
+    color: white !important;
+    font-size: 30px !important;
+    font-weight: bold;
+}
+}
 /* Small devices (portrait tablets and large phones, 600px and up) */
 @media only screen and (min-width: 600px) {
+
 }
 
 /* Medium devices (landscape tablets, 768px and up) */

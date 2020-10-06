@@ -17,10 +17,10 @@ export default class HeaderBar extends React.Component<IHeaderBarProps, IHeaderB
 
   handleScroll = (e: any) => {
     let element = e.target;
-    if (element.scrollingElement.scrollTop > 110) {
+    if (element.scrollingElement.scrollTop > 50) {
       this.setState({ headerStyle: "header-custom header_area" });
     } else {
-      this.setState({ headerStyle: "" });
+      this.setState({ headerStyle: "header_area" });
     }
   };
   componentDidMount() {
@@ -36,8 +36,8 @@ export default class HeaderBar extends React.Component<IHeaderBarProps, IHeaderB
     return (
       <Navbar collapseOnSelect expand="lg" variant="dark" sticky="top" className={headerStyle}>
         <Container>
-          <Navbar.Brand href="#home" className="header-title">
-            Lân loz
+          <Navbar.Brand href="#home" className="title">
+            WINFUN
           </Navbar.Brand>
           <Navbar.Toggle aria-controls="responsive-navbar-nav" />
           <Navbar.Collapse id="responsive-navbar-nav">

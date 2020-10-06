@@ -1,25 +1,30 @@
 import * as React from 'react';
 import './item-client-comment-component.css';
-import t1 from '../../../../assets/images/banner/t1.jpg';
 export interface IItemClientCommentComponentProps {
+  userImage: string;
+  userName: string;
+  content: string
 }
 
 export default class ItemClientCommentComponent extends React.Component<IItemClientCommentComponentProps> {
+  constructor(props: IItemClientCommentComponentProps) {
+    super(props);
+  }
   public render() {
+    const { userImage,userName,content } = this.props;
     return (
 			<div className="col">
 				<div className="item">
-					<div className="testi_item  m-2">
+					<div className="testi_item mr-2">
 						<div className="row">
-							<div className="col-lg-4 col-md-6 ">
-								<img src={t1} alt=""></img>
+							<div className="col-4 col-lg-4 col-md-6 ">
+								<img src={userImage} alt="" className="avata-user"></img>
 							</div>
-							<div className="col-lg-8">
+							<div className="col col-lg-8">
 								<div className="testi_text">
-									<h4>Elite Martin</h4>
-									<p>
-										Him, made can't called over won't there on divide there male fish beast own his day third seed sixth
-										seas unto. Saw from
+									<h4>{userName}</h4>
+									<p className="ellipse-custom" data-toggle="tooltip" title={content}>
+										{content}
 									</p>
 								</div>
 							</div>

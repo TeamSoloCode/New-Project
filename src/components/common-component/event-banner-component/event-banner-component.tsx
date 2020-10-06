@@ -105,7 +105,6 @@ export const EventBannerComponent = withRouter(
 
 		return (
 			<>
-				{console.log('event:', events)}
 				<div className="jumbotron events_area">
 					<div className="container">
 						<div className="row justify-content-center">

@@ -77,12 +77,16 @@
 .carousel-control-prev {
     left: 0px !important;
 } 
+.carousel-control-next {
+    right: 0px !important;
+}
 .owl-carousel {
     display: none;
     width: 100%;
     z-index: 1;
     padding: 0 0;
 }
+
 }
 
 /* Small devices (portrait tablets and large phones, 600px and up) */
@@ -97,4 +101,9 @@
 @media only screen and (min-width: 992px) {}
 
 /* Extra large devices (large laptops and desktops, 1200px and up) */
-@media only screen and (min-width: 1200px) {}
+@media only screen and (min-width: 1200px) {
+  .modal-content {
+    width: 900px !important;
+    margin: 0 -100px !important;
+  }
+}

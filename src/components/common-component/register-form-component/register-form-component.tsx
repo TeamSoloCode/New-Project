@@ -44,7 +44,7 @@ export default class RegisterFormComponent extends React.Component<
 			<div className="register_form">
 				<div className="mb-5">
 					<span>
-						<h3>Đăng ký</h3>
+						<h3>Register</h3>
 					</span>
 				</div>
 				<Form>

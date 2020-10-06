@@ -6,8 +6,8 @@ import HeaderBar from '../components/share-component/header-bar/header-bar';
 import './main.css';
 import IntroduceTrainerComponent from '../components/common-component/intoduce-trainer-component/introduce-trainer-component';
 // import EventBannerComponent from '../components/common-component/event-banner-component/event-banner-component';
-import ClientCommentComponent from '../components/common-component/client-comment-component/client-comment-component';
 import { EventBannerComponent } from '../components/common-component/event-banner-component/event-banner-component';
+import { ClientCommentComponent } from '../components/common-component/client-comment-component/client-comment-component';
 // import { Events } from '../components/common-component/event-banner-component/testEvents';
 export interface IMainProps {}
 
@@ -38,7 +38,7 @@ export default class Main extends React.Component<IMainProps> {
         <RegisterComponent></RegisterComponent>
         <IntroduceTrainerComponent></IntroduceTrainerComponent>
         <EventBannerComponent/>
-        <ClientCommentComponent></ClientCommentComponent>
+        <ClientCommentComponent/>
         <Footer></Footer>
 			</div>
 		);
