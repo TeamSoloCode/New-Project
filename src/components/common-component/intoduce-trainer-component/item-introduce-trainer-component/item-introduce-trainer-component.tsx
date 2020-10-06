@@ -93,10 +93,13 @@ export default class ItemIntroduceTrainerComponent extends React.Component<
 						<img src={imageSrc} className="img-fluid" />
 					</div>
 					<div className="meta-text text-sm-center">
-            <h4>{name}</h4>
-            <p>{position}</p>
+						<a href="/detail-user">
+							<h4>{name}</h4>
+						</a>
+
+						<p>{position}</p>
 						<div className="mb-4">
-              <p>{overview}</p>
+							<p>{overview}</p>
 						</div>
 						<div className="social-group">
 							<a>

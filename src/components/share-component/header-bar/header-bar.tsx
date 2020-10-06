@@ -34,38 +34,38 @@ export default class HeaderBar extends React.Component<IHeaderBarProps, IHeaderB
   public render() {
     const { headerStyle } = this.state;
     return (
-      <Navbar collapseOnSelect expand="lg" variant="dark" sticky="top" className={headerStyle}>
-        <Container>
-          <Navbar.Brand href="#home" className="title">
-            WINFUN
-          </Navbar.Brand>
-          <Navbar.Toggle aria-controls="responsive-navbar-nav" />
-          <Navbar.Collapse id="responsive-navbar-nav">
-            <Nav className="mr-auto"></Nav>
-            <Nav>
-              <Nav.Link>
-                <div className="item-nav">Home</div>
-              </Nav.Link>
+			<Navbar collapseOnSelect expand="lg" variant="dark" sticky="top" className={headerStyle}>
+				<Container>
+					<Navbar.Brand href="/" className="title">
+						WINFUN
+					</Navbar.Brand>
+					<Navbar.Toggle aria-controls="responsive-navbar-nav" />
+					<Navbar.Collapse id="responsive-navbar-nav">
+						<Nav className="mr-auto"></Nav>
+						<Nav>
+							<Nav.Link>
+								<div className="item-nav">Home</div>
+							</Nav.Link>
 
-              <Nav.Link href="#features">
-                <div className="item-nav">About</div>
-              </Nav.Link>
+							<Nav.Link href="#features">
+								<div className="item-nav">About</div>
+							</Nav.Link>
 
-              <Nav.Link href="#pricing">
-                <div className="item-nav">Page</div>
-              </Nav.Link>
+							<Nav.Link href="#pricing">
+								<div className="item-nav">Page</div>
+							</Nav.Link>
 
-              <Nav.Link href="#pricing">
-                <div className="item-nav">Blog</div>
-              </Nav.Link>
+							<Nav.Link href="#pricing">
+								<div className="item-nav">Blog</div>
+							</Nav.Link>
 
-              <Nav.Link href="#pricing">
-                <div className="item-nav">Contact</div>
-              </Nav.Link>
-            </Nav>
-          </Navbar.Collapse>
-        </Container>
-      </Navbar>
-    );
+							<Nav.Link href="#pricing">
+								<div className="item-nav">Contact</div>
+							</Nav.Link>
+						</Nav>
+					</Navbar.Collapse>
+				</Container>
+			</Navbar>
+		);
   }
 }

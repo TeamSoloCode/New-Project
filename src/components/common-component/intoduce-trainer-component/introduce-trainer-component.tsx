@@ -19,7 +19,7 @@ export default class IntroduceTrainerComponent extends React.Component<IIntroduc
 
   public render() {
     return (
-			<div className="jumbotron bg-white">
+			<div className="pb-4 bg-white">
 				<div className="container">
 					<div className="row justify-content-center">
 						<div className="col-lg-5">

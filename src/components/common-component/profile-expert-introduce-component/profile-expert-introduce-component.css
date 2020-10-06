@@ -1,0 +1,52 @@
+.qodef-section-title .qodef-m-subtitle {
+    font-family: Caveat,cursive;
+    font-size: 26px;
+    font-weight: 400;
+    color: #f15b43;
+    margin-bottom: 4px;
+    letter-spacing: .025em;
+}
+.qodef-h2, h2 {
+    font-family: Merriweather,serif;
+    font-weight: 700;
+    letter-spacing: -.015em;
+    color: #364f75;
+    font-size: 34px;
+    line-height: 1.235em;
+    margin: 25px 0;
+    -ms-word-wrap: break-word;
+    word-wrap: break-word;
+}
+.qodef-section-title .qodef-m-text {
+    margin: 11px 0 0;
+}
+.last_toggle_el_margin, .wpb_button, .wpb_content_element, .wpb_row, ul.wpb_thumbnails-fluid>li {
+    margin-bottom: 0!important;
+}
+.bg{
+  height: 100vh;
+}
+.image-avata{
+  height: 100%;
+}
+/* Extra small devices (phones, 600px and down) */
+@media only screen and (max-width: 600px) {
+.image-avata{
+  height: 380px;
+  margin-top:325px;
+}
+}
+
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media only screen and (min-width: 600px) {
+
+}
+
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (min-width: 768px) {}
+
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (min-width: 992px) {}
+
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+@media only screen and (min-width: 1200px) {}

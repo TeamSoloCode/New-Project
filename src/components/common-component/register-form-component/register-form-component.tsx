@@ -1,6 +1,6 @@
 import * as React from "react";
 import { Form, Button } from "react-bootstrap";
-import { REGISTER_NOW_API } from "src/api/API";
+import { REGISTER_NOW_API } from "../../../api/API";
 import "./register-form-component.css";
 export interface IRegisterFormComponentProps {}
 export interface IRegisterFormComponentState {

@@ -3,7 +3,8 @@ import './item-client-comment-full-component.css';
 export interface IItemClientCommentFullComponentProps {
 	userImage: string;
 	userName: string;
-	content: string;
+  content: string;
+  createDate: string;
 }
 
 export default class ItemClientCommentFullComponent extends React.Component<IItemClientCommentFullComponentProps> {
@@ -11,7 +12,8 @@ export default class ItemClientCommentFullComponent extends React.Component<IIte
 		super(props);
 	}
 	public render() {
-		const { userImage, userName, content } = this.props;
+    const { userImage, userName, content, createDate } = this.props;
+    console.log(createDate);
 		return (
 			<div className="col">
 				<div className="item">
@@ -23,7 +25,10 @@ export default class ItemClientCommentFullComponent extends React.Component<IIte
 							<div className="col col-lg-8">
 								<div className="testi_text">
 									<h4>{userName}</h4>
-									<p className="content">{content}</p>
+                  <p className="content">{content}</p>
+                  <div>
+                    <span>{createDate}</span>
+                  </div>
 								</div>
 							</div>
 						</div>

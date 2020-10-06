@@ -106,7 +106,7 @@ export const ClientCommentComponent = withRouter(
 		return (
 			<>
 				{console.log('comment:', comment)}
-				<div className="jumbotron bg-white">
+				<div className="pb-4 pt-4 bg-white">
 					<div className="container">
 						<div className="row justify-content-center">
 							<div className="col-lg-5">
@@ -166,7 +166,7 @@ export const ClientCommentComponent = withRouter(
 											userImage={valueEvent.userImage}
 											userName={valueEvent.name}
 											content={valueEvent.contents}
-											key={indexEvent}></ItemClientCommentFullComponent> : <div></div>
+											key={indexEvent} createDate={valueEvent.createdDate}></ItemClientCommentFullComponent> : <div></div>
 								))}
 							</div>
 
