@@ -55,7 +55,8 @@ module.exports = (configEnv = {}, { mode = 'production', $0 = '' }) => {
 			]
 		},
 		optimization: {
-			minimizer: [new TerserJSPlugin()]
+			minimizer: [new TerserJSPlugin()],
+			minimize: mode == 'production'
 		},
 		plugins: [
 			new ExtractCssChunks({
