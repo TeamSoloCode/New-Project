@@ -13,7 +13,8 @@ export interface IITemEventComponentProps {
 
 export default class ITemEventComponent extends React.Component<IITemEventComponentProps> {
 	constructor(props: IITemEventComponentProps) {
-		super(props);
+    super(props);
+    this.redirectToDetailView = this.redirectToDetailView.bind(this);
 	}
 
 	getDate(date: string) {
@@ -35,9 +36,12 @@ export default class ITemEventComponent extends React.Component<IITemEventCompon
 		let dateObj = new Date(dateString);
 		let momentObj = moment(dateObj);
 		return momentObj.format('MMM');
-	}
+  }
+  redirectToDetailView(url: string) {
+    window.open(url, '_blank');
+  }
 	public render() {
-    const { location, beginDateTime, endDateTime, description, evenName, imageUri } = this.props;
+    const { location, beginDateTime, endDateTime, description,detailLink, evenName, imageUri } = this.props;
 		return (
 			<div className="col-lg-6 col-md-6 ">
 				<div className="single_event position-relative">
@@ -80,7 +84,7 @@ export default class ITemEventComponent extends React.Component<IITemEventCompon
 							{'Content: ' + description}
 						</p>
 
-						<a href="#" target="_blank" className="primary-btn rounded-0 mt-3">
+						<a  target="_blank"  className="primary-btn rounded-0 mt-3"  onClick={() => this.redirectToDetailView(detailLink)}>
 							View Details
 						</a>
 					</div>
