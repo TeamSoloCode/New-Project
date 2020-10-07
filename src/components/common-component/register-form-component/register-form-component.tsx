@@ -6,7 +6,7 @@ export interface IRegisterFormComponentProps {}
 export interface IRegisterFormComponentState {
   email: string;
   username: string;
-  phoneNumber: number;
+  phoneNumber: string;
 }
 
 export default class RegisterFormComponent extends React.Component<
@@ -18,23 +18,30 @@ export default class RegisterFormComponent extends React.Component<
     this.state = {
       email: "",
       username: "",
-      phoneNumber: 0,
+      phoneNumber: "",
     };
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleChangeEmailInput = this.handleChangeEmailInput.bind(this);
     this.handleChangeUserNameInput = this.handleChangeUserNameInput.bind(this);
     this.handleChangePhoneNumberInput = this.handleChangePhoneNumberInput.bind(this);
   }
+
   handleChangeEmailInput(e: React.FormEvent<HTMLInputElement>) {
     this.setState({ email: e.currentTarget.value });
   }
+
   handleChangePhoneNumberInput(e: React.FormEvent<HTMLInputElement>) {
-    this.setState({ phoneNumber: Number(e.currentTarget.value) });
+    this.setState({ phoneNumber: e.currentTarget.value });
   }
 
   handleChangeUserNameInput(e: React.FormEvent<HTMLInputElement>) {
     this.setState({ username: e.currentTarget.value });
   }
+
+  resetState = () => {
+    this.setState({ username: "", phoneNumber: "", email: "" });
+  }
+
   handleSubmit = async (e: React.FormEvent<HTMLInputElement>) => {
     e.preventDefault();
     try {
@@ -47,13 +54,17 @@ export default class RegisterFormComponent extends React.Component<
         body: JSON.stringify({ email, name: username, phoneNumber }),
       });
 
-      if (!response) throw new Error("Can't connect to database");
+      if (!response) throw "Can't connect to database";
       const data = await response.json();
-      if (data.code != 0) throw Error(data.message);
+      if (data.code != 0){
+        alert("Email, name, or phone number is existed !!")
+      }
 
+      this.resetState()
       // handle submit success
+      alert("Register successful!")
     } catch (err) {
-      // please handle error here
+      console.log(err)
     }
   };
   public render() {
@@ -67,15 +78,15 @@ export default class RegisterFormComponent extends React.Component<
 				</div>
 				<Form>
 					<Form.Group>
-						<Form.Control type="email" placeholder="Enter email" onChange={this.handleChangeEmailInput} />
+						<Form.Control type="email" value={this.state.email} placeholder="Your Name" onChange={this.handleChangeEmailInput} />
 					</Form.Group>
 
 					<Form.Group>
-						<Form.Control type="text" placeholder="Enter username" onChange={this.handleChangeUserNameInput} />
+						<Form.Control type="text" value={this.state.username} placeholder="Your Phone Number" onChange={this.handleChangeUserNameInput} />
 					</Form.Group>
 
 					<Form.Group>
-						<Form.Control type="text" placeholder="Enter phone number" onChange={this.handleChangePhoneNumberInput} />
+						<Form.Control type="text" value={this.state.phoneNumber} placeholder="Your Email Address" onChange={this.handleChangePhoneNumberInput} />
 					</Form.Group>
 
 					<Button variant="primary" onClick={this.handleSubmit} className="btn primary-btn">

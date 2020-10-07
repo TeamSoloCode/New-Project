@@ -88,6 +88,7 @@ export default class ITemEventComponent extends React.Component<IITemEventCompon
 
 						<a
 							target="_blank"
+							style={{color: 'black'}}
 							className="primary-btn rounded-0 mt-3"
 							onClick={() => this.redirectToDetailView(detailLink)}>
 							View Details
