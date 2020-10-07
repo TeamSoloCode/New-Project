@@ -103,6 +103,15 @@
   height: 100vh;
   margin-bottom: -70px;
 }
+.ellipse-custom {
+	overflow: hidden;
+	text-overflow: ellipsis;
+  display: -webkit-box;
+  line-break: anywhere;
+	-webkit-line-clamp: 4;
+	-webkit-box-orient: vertical;
+	line-height: 1.2 !important;
+}
 /* Extra small devices (phones, 600px and down) */
 @media only screen and (max-width: 600px) {
   .bg-header {

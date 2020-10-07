@@ -26,11 +26,13 @@ export default class ItemClientCommentFullComponent extends React.Component<IIte
 				<div className="item">
 					<div className="testi_item mr-2">
 						<div className="row">
-							<div className="col-5 col-lg-3 col-md-6 ">
-								<img src={userImage} alt="" className="avata-user"></img>
+							<div className="col-9 col-md-2 col-lg-1 ">
+								<div className="circle-avata d-flex justify-content-center align-items-center">
+									<img src={userImage} alt="" className="avata-user"></img>
+								</div>
 							</div>
-							<div className="col-lg-9">
-								<div className="testi_text mt-2">
+							<div className="col">
+								<div className="testi_text mt-2 ml-2">
 									<h4>{userName}</h4>
 									<div>
 										<span className="time-cmt">{this.formatDate(createDate)}</span>

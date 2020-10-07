@@ -47,7 +47,7 @@
 }
 
 .event_img {
-  height: 570px;
+  height: 470px;
 }
 .event_img:hover {
   -webkit-transition: all .3s ease 0s;
@@ -62,15 +62,7 @@
 .ti-time {
   font-size:  13px;
 }
-.ellipse-custom {
-	overflow: hidden;
-	text-overflow: ellipsis;
-  display: -webkit-box;
-  line-break: anywhere;
-	-webkit-line-clamp: 4;
-	-webkit-box-orient: vertical;
-	line-height: 1 !important;
-}
+
 /* Extra small devices (phones, 600px and down) */
 @media only screen and (max-width: 600px) {
 .single_event .event_details {
@@ -98,32 +90,50 @@ height: 100% !important;
     width: 100%;
 }
 .ti-time {
-  font-size:  17px;
+  font-size:  14px;
 }
 .event-name{
-  font-size: 18px !important;
+  font-size: 16px !important;
 }
-.content {
-  font-size: 18px;
+.content-ev {
+  font-size: 16px;
+}
+
+.event_img {
+  height: 400px;
+  width: 640px;
 }
 .single_event .event_details {
-    background: rgba(0,35,71,.5);
-    position: absolute;
+
+    top: 0;
+    right: 30px;
+    width: 400px;
+    height: 400px;
+    padding: 30px 25px;
+}
+}
+
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (min-width: 992px) {
+  .single_event .event_details {
+
     top: 0;
     right: 0;
     width: 400px;
     height: 400px;
     padding: 30px 25px;
-    color: #fff;
 }
 }
-
-/* Large devices (laptops/desktops, 992px and up) */
-@media only screen and (min-width: 992px) {}
 
 /* Extra large devices (large laptops and desktops, 1200px and up) */
 @media only screen and (min-width: 1200px) {
     .single_event {
     width: 500px;
+}
+.single_event .event_details {
+
+    width: 350px;
+    height: 350px;
+
 }
 }

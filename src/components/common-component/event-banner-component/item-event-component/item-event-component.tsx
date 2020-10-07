@@ -28,7 +28,7 @@ export default class ITemEventComponent extends React.Component<IITemEventCompon
     	let dateString = date;
 			let dateObj = new Date(dateString);
 			let momentObj = moment(dateObj);
-			return momentObj.format('DD MMMM YYYY');
+			return momentObj.format('DD MMMM YYYY HH:MM A');
   }
 
 	getMonth(date: string) {
@@ -43,7 +43,7 @@ export default class ITemEventComponent extends React.Component<IITemEventCompon
 	public render() {
     const { location, beginDateTime, endDateTime, description,detailLink, evenName, imageUri } = this.props;
 		return (
-			<div className="col-lg-6 col-md ">
+			<div className="col col-lg-6 col-md">
 				<div className="single_event position-relative">
 					<div className="event_thumb">
 						<img src={imageUri} alt="" className="event_img"></img>
@@ -67,7 +67,9 @@ export default class ITemEventComponent extends React.Component<IITemEventCompon
 
 							<div className="time-location ml-2">
 								<p>
-									<span className="ti-time mr-2">{beginDateTime ? 'To: ' + this.convertUTCDate(beginDateTime) : ''}</span>
+									<span className="ti-time mr-2">
+										{beginDateTime ? 'To: ' + this.convertUTCDate(beginDateTime) : ''}
+									</span>
 								</p>
 								<p>
 									<span className="ti-time mr-2">{endDateTime ? 'From: ' + this.convertUTCDate(endDateTime) : ''}</span>
@@ -80,11 +82,14 @@ export default class ITemEventComponent extends React.Component<IITemEventCompon
 								</p>
 							</div>
 						</div>
-						<p className="ellipse-custom content" data-toggle="tooltip" title={description}>
+						<p className="ellipse-custom content-ev" data-toggle="tooltip" title={description}>
 							{'Content: ' + description}
 						</p>
 
-						<a  target="_blank"  className="primary-btn rounded-0 mt-3"  onClick={() => this.redirectToDetailView(detailLink)}>
+						<a
+							target="_blank"
+							className="primary-btn rounded-0 mt-3"
+							onClick={() => this.redirectToDetailView(detailLink)}>
 							View Details
 						</a>
 					</div>

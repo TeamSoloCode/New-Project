@@ -1,65 +1,80 @@
-.shadow {
-  -webkit-box-shadow: 0px 0px 16px 0px rgba(0,0,0,0.75);
--moz-box-shadow: 0px 0px 16px 0px rgba(0,0,0,0.75);
-box-shadow: 0px 0px 16px 0px rgba(0,0,0,0.75);
-}
+  .shadow {
+    -webkit-box-shadow: 0px 0px 16px 0px rgba(0,0,0,0.75);
+  -moz-box-shadow: 0px 0px 16px 0px rgba(0,0,0,0.75);
+  box-shadow: 0px 0px 16px 0px rgba(0,0,0,0.75);
+  }
+  
 
-
-.ellipse-custom {
-	overflow: hidden;
-	text-overflow: ellipsis;
-	display: -webkit-box;
-  -webkit-line-clamp: 3;
-  line-break: anywhere;
-	-webkit-box-orient: vertical;
-	line-height: 0.828571 !important;
+  .avata-user1 {
+    width: 100px;
+  }
+  .testi_item-1 {
+      width: 100%;
+      padding: 50px 20px;
+      height: 250px;
+      margin-bottom: 200px;
+      margin-left: 10px;
+      margin: 0 10px 80px;
+      box-shadow: 0 15px 30px 0 rgba(221,221,221,.3);
+      -webkit-transition: all .3s ease 0s;
+      -moz-transition: all .3s ease 0s;
+      -o-transition: all .3s ease 0s;
+      transition: all .3s ease 0s;
+  }
+.user-title { 
+  font-size: 18px;
+  font-weight: bold;
 }
-.avata-user {
-  width: 100px;
+.line-clamp-3 {
+      -webkit-line-clamp: 3 !important;
 }
-.testi_item-1 {
-    width: 100%;
-    padding: 50px 20px;
-    height: 250px;
-    margin-bottom: 200px;
-    margin-left: 10px;
-    margin: 0 10px 80px;
-    box-shadow: 0 15px 30px 0 rgba(221,221,221,.3);
-    -webkit-transition: all .3s ease 0s;
-    -moz-transition: all .3s ease 0s;
-    -o-transition: all .3s ease 0s;
-    transition: all .3s ease 0s;
-}
-/* Extra small devices (phones, 600px and down) */
-@media only screen and (max-width: 600px) {
-
-.testi_item-1 {
-    padding: 20px 43px;
+  /* Extra small devices (phones, 600px and down) */
+  @media only screen and (max-width: 600px) {
+  
+  .testi_item-1 {
+      padding: 20px 52px;
+      height: 130px;
+      margin: 0 10px 40px;
+  }
+  }
+  
+  /* Small devices (portrait tablets and large phones, 600px and up) */
+  @media only screen and (min-width: 600px) {
+  .testi_item-1 {
+    height: 140px;
+    padding: 25px 20px;
+  }
+  }
+  
+  /* Medium devices (landscape tablets, 768px and up) */
+  @media only screen and (min-width: 768px) {
+  .testi_item-1 {
     height: 130px;
-    margin: 0 10px 55px;
-}
-}
+    padding: 25px 20px;
+  }
+  .ellipse-custom {
+  
+    -webkit-line-clamp: 2;
+  
+    
+  }
+   .avata-user1 {
+    width: 55px;
+  }
+  }
+  
+  /* Large devices (laptops/desktops, 992px and up) */
+  @media only screen and (min-width: 992px) {
+    .owl-carousel {
 
-/* Small devices (portrait tablets and large phones, 600px and up) */
-@media only screen and (min-width: 600px) {
-
+    padding: 0px 0px;
 }
-
-/* Medium devices (landscape tablets, 768px and up) */
-@media only screen and (min-width: 768px) {
 .testi_item-1 {
-  height: 175px;
-  padding: 25px 20px;
+    height: 130px;
+    padding: 25px 20px;
 }
-.ellipse-custom {
+  }
+  
+  /* Extra large devices (large laptops and desktops, 1200px and up) */
+  @media only screen and (min-width: 1200px) {}
 
-  -webkit-line-clamp: 2;
-
-}
-}
-
-/* Large devices (laptops/desktops, 992px and up) */
-@media only screen and (min-width: 992px) {}
-
-/* Extra large devices (large laptops and desktops, 1200px and up) */
-@media only screen and (min-width: 1200px) {}

@@ -6,8 +6,9 @@
     display: none;
     width: 100%;
     z-index: 1;
-    padding: 0 140px;
+    /* padding: 0 140px; */
 }
+
 
 .owl-carousel, .owl-carousel .owl-item {
     -webkit-tap-highlight-color: transparent;
@@ -62,6 +63,7 @@
     background-image: url(../../../assets/images/icons/arrow-left.png) !important;
 }
 
+
 /* Extra small devices (phones, 600px and down) */
 @media only screen and (max-width: 600px) {
 .carousel-inner {
@@ -70,12 +72,7 @@
 .owl-stage-outer {
   width: 100% !important;
 }
-.carousel-control-prev {
-    left: 0px !important;
-} 
-.carousel-control-next {
-    right: 0px !important;
-}
+
 .owl-carousel {
     display: none;
     width: 100%;
@@ -92,19 +89,31 @@
 
 /* Medium devices (landscape tablets, 768px and up) */
 @media only screen and (min-width: 768px) {
-  .container-custom {
-  max-width: 740px !important;
-}
+.modal-content {
+    height: 90vh;
+  }
 }
 
 /* Large devices (laptops/desktops, 992px and up) */
-@media only screen and (min-width: 992px) {}
+@media only screen and (min-width: 992px) {
+  
+.modal-content {
+    width: 54vh !important;
+    margin-left: -100px;
+}
+}
 
 /* Extra large devices (large laptops and desktops, 1200px and up) */
 @media only screen and (min-width: 1200px) {
   .modal-content {
     width: 900px !important;
-    height: 90vh;
-    margin: 0 -100px !important;
+    height: 90vh !important;
+    margin: 0 -140px !important;
+  }
+  .carousel-control-prev{
+    height: 130px;
+  }
+    .carousel-control-next{
+    height: 130px;
   }
 }

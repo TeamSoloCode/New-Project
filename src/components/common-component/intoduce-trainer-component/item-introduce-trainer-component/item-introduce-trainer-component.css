@@ -60,10 +60,18 @@ box-shadow: 0px 0px 22px -8px rgba(0,0,0,0.75);
 }
 
 /* Medium devices (landscape tablets, 768px and up) */
-@media only screen and (min-width: 768px) {}
+@media only screen and (min-width: 768px) {
+  .social-group{
+  margin: 0 10px;
+}
+}
 
 /* Large devices (laptops/desktops, 992px and up) */
-@media only screen and (min-width: 992px) {}
+@media only screen and (min-width: 992px) {
+    .social-group{
+  margin: 0 15px;
+}
+}
 
 /* Extra large devices (large laptops and desktops, 1200px and up) */
 @media only screen and (min-width: 1200px) {}

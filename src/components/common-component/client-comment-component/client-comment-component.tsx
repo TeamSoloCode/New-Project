@@ -89,23 +89,27 @@ export const ClientCommentComponent = withRouter(
 		comment.map((valEv, ind) => {
 			if (valEv.show == 1) {
 				arrTmp.push(valEv);
-				console.log(valEv.show);
-				if (arrTmp.length === 2) {
-					arrEvent.push(arrTmp);
-					arrTmp = [];
-				}
-				if (ind === comment.length - 1) {
-					if (valEv.show == 1) {
-						arrEvent.push(arrTmp);
-						arrTmp = [];
-					}
-				}
-			}
-		});
+				
+      }
+      
+    });
+    let arr: any[] = [];
+    arrTmp.map((vl, inde) => {
+      arr.push(vl);
+      if (arr.length === 2) {
+        arrEvent.push(arr);
+        arr = [];
+      }
+      if (inde === arrTmp.length - 1) {
+         arrEvent.push(arr);
+					arr = [];
+      }
+
+    })
 
 		return (
 			<>
-				{console.log('comment:', comment)}
+				{console.log('comment:', arrEvent)}
 				<div className="pb-4 pt-4 bg-white">
 					<div className="container">
 						<div className="row justify-content-center">
@@ -124,7 +128,7 @@ export const ClientCommentComponent = withRouter(
 									<Carousel>
 										{arrEvent.map((valueEvent, indexEvent) => (
 											<Carousel.Item key={indexEvent}>
-												<div className="container">
+												<div className="container ">
 													<div className="row">
 														{valueEvent.map((vl: AnonymousComment, ind: number) => (
 															<ItemClientCommentComponent

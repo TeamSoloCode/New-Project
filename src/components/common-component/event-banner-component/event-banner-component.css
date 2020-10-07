@@ -12,9 +12,7 @@
 
 /* Extra small devices (phones, 600px and down) */
 @media only screen and (max-width: 600px) {
-.carousel-control-next {
-  right: 12px !important;
-}
+
 }
 
 /* Small devices (portrait tablets and large phones, 600px and up) */
@@ -25,9 +23,7 @@
 /* Medium devices (landscape tablets, 768px and up) */
 @media only screen and (min-width: 768px) {
 
-.carousel-control-next {
-    right: -20px !important;
-}
+
 }
 
 /* Large devices (laptops/desktops, 992px and up) */
