@@ -8,7 +8,7 @@ import Button from "react-bootstrap/Button";
 import { ADD_WINFUN_EVENT_API } from "../api/APIs";
 import "react-datepicker/dist/react-datepicker.css";
 import { withRouter } from "react-router-dom";
-import { Toast } from "react-bootstrap";
+import Toast from "react-bootstrap/Toast";
 // import { Form } from "react-bootstrap";
 
 interface State {
@@ -41,11 +41,11 @@ function reducer(state: State = initialState, action: Action): State {
     case ActionEnum.CREATE_EVENT_FAILED:
       return { ...state, message: action.message, error: true };
     default:
-      throw new Error();
+      return state;
   }
 }
 
-export const InsertEventForm = withRouter(
+export default withRouter(
   React.memo((props: any) => {
     const [state, dispatch] = React.useReducer(reducer, initialState);
     const [startDate, setStartDate] = React.useState(new Date());

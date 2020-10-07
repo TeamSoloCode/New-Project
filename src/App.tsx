@@ -1,11 +1,18 @@
 import * as React from "react";
 import { Switch, Route, Link } from "react-router-dom";
 import "./App.css";
-import { InsertEventForm } from "./components/InsertEventForm";
-import { UpdateEventForm } from "./components/UpdateEventForm";
-import { Events } from "./components/Events";
-import { Button, Form, FormControl, Nav, Navbar, NavDropdown } from "react-bootstrap";
-import { AnonymousComments } from "./components/AnoComments";
+import Button from "react-bootstrap/Button";
+import Form from "react-bootstrap/Form";
+import FormControl from "react-bootstrap/FormControl";
+import Nav from "react-bootstrap/Nav";
+import Navbar from "react-bootstrap/Navbar";
+import NavDropdown from "react-bootstrap/NavDropdown";
+
+const AnonymousComments = React.lazy(() => import("./components/AnoComments"));
+const RegisterNows = React.lazy(() => import("./components/RegisterNows"));
+const UpdateEventForm = React.lazy(() => import("./components/UpdateEventForm"));
+const InsertEventForm = React.lazy(() => import("./components/InsertEventForm"));
+const Events = React.lazy(() => import("./components/Events"));
 
 class App extends React.Component<any> {
   constructor(props: any) {
@@ -34,7 +41,7 @@ class App extends React.Component<any> {
               </NavDropdown>
               <NavDropdown title="Register Now" id="basic-nav-dropdown">
                 <NavDropdown.Item>
-                  <Link to="/events">Registers</Link>
+                  <Link to="/registers">Registers</Link>
                 </NavDropdown.Item>
               </NavDropdown>
               <NavDropdown title="Comment" id="basic-nav-dropdown">
@@ -51,19 +58,34 @@ class App extends React.Component<any> {
         </Navbar>
         <Switch>
           <Route exact path="/">
-            <Events />
+            <React.Suspense fallback={<div>Loading</div>}>
+              <Events />
+            </React.Suspense>
           </Route>
           <Route path="/insert_event">
-            <InsertEventForm />
+            <React.Suspense fallback={<div>Loading</div>}>
+              <InsertEventForm />
+            </React.Suspense>
           </Route>
           <Route path="/update_event/:eventId">
-            <UpdateEventForm />
+            <React.Suspense fallback={<div>Loading</div>}>
+              <UpdateEventForm />
+            </React.Suspense>
           </Route>
           <Route path="/events">
-            <Events />
+            <React.Suspense fallback={<div>Loading</div>}>
+              <Events />
+            </React.Suspense>
           </Route>
           <Route path="/ano_comments">
-            <AnonymousComments />
+            <React.Suspense fallback={<div>Loading</div>}>
+              <AnonymousComments />
+            </React.Suspense>
+          </Route>
+          <Route path="/registers">
+            <React.Suspense fallback={<div>Loading</div>}>
+              <RegisterNows />
+            </React.Suspense>
           </Route>
         </Switch>
       </>

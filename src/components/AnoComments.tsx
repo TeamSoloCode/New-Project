@@ -3,8 +3,13 @@ import { AnonymousComment } from "src/ModelDeclare";
 import { withRouter } from "react-router-dom";
 import * as moment from "moment";
 import MaterialTable from "material-table";
-import { FETCH_ALL_ANO_COMMENTS, UPDATE_ANONYMOUS_COMMENT_SEQUENCE, UPDATE_ANONYMOUS_COMMENT_SHOW_STATUS } from "../api/APIs";
-import { Button, Toast } from "react-bootstrap";
+import {
+  FETCH_ALL_ANO_COMMENTS,
+  UPDATE_ANONYMOUS_COMMENT_SEQUENCE,
+  UPDATE_ANONYMOUS_COMMENT_SHOW_STATUS,
+} from "../api/APIs";
+import Button from "react-bootstrap/Button";
+import Toast from "react-bootstrap/Toast";
 
 interface State {
   comments: AnonymousComment[];
@@ -23,7 +28,7 @@ enum ActionEnum {
   UPDATE_COMMENT_SHOW_STATUS_FAILED,
   UPDATE_COMMENT_SEQUENCE,
   UPDATE_COMMENT_SEQUENCE_SUCCESSFULL,
-  UPDATE_COMMENT_SEQUENCE_FAILED
+  UPDATE_COMMENT_SEQUENCE_FAILED,
 }
 
 type Action =
@@ -47,18 +52,24 @@ function reducer(state: State = initialState, action: Action): State {
       return { ...state, comments: action.events, fetching: false, message: action.message, error: false };
     case ActionEnum.FETCH_ALL_ANO_COMMENTS_FAILED:
       return { ...state, message: action.message, error: true };
-    case ActionEnum.UPDATE_COMMENT_SHOW_STATUS, ActionEnum.UPDATE_COMMENT_SEQUENCE:
+    case ActionEnum.UPDATE_COMMENT_SHOW_STATUS:
       return { ...state, updating: true };
-    case ActionEnum.UPDATE_COMMENT_SHOW_STATUS_SUCCESSFUL, ActionEnum.UPDATE_COMMENT_SEQUENCE_SUCCESSFULL:
+    case ActionEnum.UPDATE_COMMENT_SHOW_STATUS_SUCCESSFUL:
       return { ...state, updating: false, message: action.message, error: false };
-    case ActionEnum.UPDATE_COMMENT_SHOW_STATUS_FAILED, ActionEnum.UPDATE_COMMENT_SEQUENCE_FAILED:
+    case ActionEnum.UPDATE_COMMENT_SEQUENCE_FAILED:
+      return { ...state, message: action.message, error: true };
+    case ActionEnum.UPDATE_COMMENT_SEQUENCE:
+      return { ...state, updating: true };
+    case ActionEnum.UPDATE_COMMENT_SEQUENCE_SUCCESSFULL:
+      return { ...state, updating: false, message: action.message, error: false };
+    case ActionEnum.UPDATE_COMMENT_SEQUENCE_FAILED:
       return { ...state, message: action.message, error: true };
     default:
-      throw new Error();
+      return state;
   }
 }
 
-export const AnonymousComments = withRouter(
+export default withRouter(
   React.memo((props: any) => {
     const [state, dispatch] = React.useReducer(reducer, initialState);
     const [comments, setComments] = React.useState(state.comments);
@@ -126,7 +137,7 @@ export const AnonymousComments = withRouter(
         }
       } catch (err) {
       } finally {
-        setShowAlert(true)
+        setShowAlert(true);
       }
     }, []);
 
@@ -163,7 +174,7 @@ export const AnonymousComments = withRouter(
         }
       } catch (err) {
       } finally {
-        setShowAlert(true)
+        setShowAlert(true);
       }
     }, []);
 
@@ -188,17 +199,17 @@ export const AnonymousComments = withRouter(
           </Toast.Header>
           <Toast.Body>{state.message}</Toast.Body>
         </Toast>
-        
+
         <MaterialTable
           title="Anonymous Commnets"
           columns={[
-            { title: "Name", field: "name", cellStyle: { fontSize: 14 }, editable: 'never'  },
-            { title: "Email", field: "email", cellStyle: { fontSize: 14 }, editable: 'never'  },
-            { title: "Phone", field: "phoneNumber", cellStyle: { fontSize: 14 }, editable: 'never' },
+            { title: "Name", field: "name", cellStyle: { fontSize: 14 }, editable: "never" },
+            { title: "Email", field: "email", cellStyle: { fontSize: 14 }, editable: "never" },
+            { title: "Phone", field: "phoneNumber", cellStyle: { fontSize: 14 }, editable: "never" },
             {
               title: "Contents",
               field: "contents",
-              editable: 'never',
+              editable: "never",
               render: (rowData) => (
                 <p style={{ maxHeight: 50, overflow: "auto", wordBreak: "break-word" }}>{rowData.contents}</p>
               ),
@@ -217,19 +228,19 @@ export const AnonymousComments = withRouter(
                 </Button>
               ),
               align: "center",
-              editable: 'never' 
+              editable: "never",
             },
-            { title: "Sequence", field: "sequence", type: "numeric", editable: 'onUpdate' },
-            { title: "Created Date", field: "createdDate", type: "datetime", editable: 'never' },
+            { title: "Sequence", field: "sequence", type: "numeric", editable: "onUpdate" },
+            { title: "Created Date", field: "createdDate", type: "datetime", editable: "never" },
           ]}
           editable={{
             onRowUpdate: (newData, oldData) => {
-              return new Promise( async (resolve, reject) => {
-                if(!newData.id) return resolve()
-                await updateCommentSequence(newData.id, newData.sequence)
-                resolve()
-              })
-            }
+              return new Promise(async (resolve, reject) => {
+                if (!newData.id) return resolve();
+                await updateCommentSequence(newData.id, newData.sequence);
+                resolve();
+              });
+            },
           }}
           data={comments}
         />

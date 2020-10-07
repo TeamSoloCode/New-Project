@@ -33,7 +33,7 @@
 		"eject": "react-scripts-ts eject",
 		"start-dev": "webpack-dev-server --mode development",
 		"start-prod": "webpack-dev-server --env.APIURL=https://us-central1-nowhomes-test.cloudfunctions.net/app/api/",
-		"build-prod": "rm -r -f build && webpack --config webpack.config.js",
+		"build-prod": "webpack --config webpack.config.js",
 		"deploy": "npm run build-prod && firebase deploy --only hosting"
 	},
 	"devDependencies": {

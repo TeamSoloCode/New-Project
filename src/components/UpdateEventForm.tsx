@@ -7,7 +7,7 @@ import Button from "react-bootstrap/Button";
 import { UPDATE_WINFUN_EVENT_API, FETCH_EVENT_BY_ID_API, UPLOAD_IMAGE, IMAGE_STORAGE_API } from "../api/APIs";
 import "react-datepicker/dist/react-datepicker.css";
 import { withRouter } from "react-router-dom";
-import { Toast } from "react-bootstrap";
+import Toast from "react-bootstrap/Toast";
 
 interface State {
   event: WinfunEvent | null;
@@ -52,11 +52,11 @@ function reducer(state: State = initialState, action: Action): State {
     case ActionEnum.UPDATE_EVENT_FAILED:
       return { ...state, message: action.message, error: true };
     default:
-      throw new Error();
+      return state;
   }
 }
 
-export const UpdateEventForm = withRouter(
+export default withRouter(
   React.memo((props: any) => {
     const [state, dispatch] = React.useReducer(reducer, initialState);
     const [oldEvent, setOldEvent] = React.useState<WinfunEvent | null>(null);

@@ -12,7 +12,7 @@ module.exports = (configEnv = {}, { mode = 'production', $0 = '' }) => {
 			index: ['./src/index.tsx']
 		},
 		output: {
-			filename: '[name].js',
+			filename: '[hash].js',
 			publicPath: '/',
 			path: path.join(__dirname, 'build')
 		},
@@ -55,7 +55,8 @@ module.exports = (configEnv = {}, { mode = 'production', $0 = '' }) => {
 			]
 		},
 		optimization: {
-			minimizer: [new TerserJSPlugin()]
+			minimizer: [new TerserJSPlugin()],
+			minimize: mode == 'production'
 		},
 		plugins: [
 			new ExtractCssChunks({

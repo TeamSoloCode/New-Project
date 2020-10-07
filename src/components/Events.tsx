@@ -34,11 +34,11 @@ function reducer(state: State = initialState, action: Action): State {
     case ActionEnum.FETCH_ALL_EVENTS_FAILED:
       return { ...state, message: action.message, error: true };
     default:
-      throw new Error();
+      return state;
   }
 }
 
-export const Events = withRouter(
+export default withRouter(
   React.memo((props: any) => {
     const [state, dispatch] = React.useReducer(reducer, initialState);
     const [events, setEvents] = React.useState(state.events);
@@ -93,18 +93,16 @@ export const Events = withRouter(
             props.history.push("/update_event/" + rowData.id);
           }}
           columns={[
-            { title: "Name", field: "eventName", cellStyle: {fontSize: 14} },
-            { title: "Location", field: "location", cellStyle: {fontSize: 14} },
-            { title: "Begin date", field: "beginDatetime", cellStyle: {fontSize: 14} },
-            { title: "End date", field: "endDatetime", cellStyle: {fontSize: 14} },
-            { title: "Detail link", field: "detailLink", cellStyle: {fontSize: 14} },
+            { title: "Name", field: "eventName", cellStyle: { fontSize: 14 } },
+            { title: "Location", field: "location", cellStyle: { fontSize: 14 } },
+            { title: "Begin date", field: "beginDatetime", cellStyle: { fontSize: 14 } },
+            { title: "End date", field: "endDatetime", cellStyle: { fontSize: 14 } },
+            { title: "Detail link", field: "detailLink", cellStyle: { fontSize: 14 } },
             {
               title: "Descriptions",
-              field: 'descriptions',
+              field: "descriptions",
               render: (rowData) => (
-                <p style={{  maxHeight: 50, overflow: 'auto', wordBreak: 'break-word' }}>
-                  {rowData.descriptions}
-                </p>
+                <p style={{ maxHeight: 50, overflow: "auto", wordBreak: "break-word" }}>{rowData.descriptions}</p>
               ),
             },
             {
@@ -128,7 +126,7 @@ export const Events = withRouter(
 );
 
 const prepareImageSrc = (uri: string | undefined) => {
-  if(!uri) return undefined
+  if (!uri) return undefined;
   if (uri.includes("https") || uri.includes("http")) {
     return uri;
   }
