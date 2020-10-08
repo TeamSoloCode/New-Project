@@ -4,7 +4,7 @@ import { withRouter } from "react-router-dom";
 import * as moment from "moment";
 import MaterialTable from "material-table";
 import { FETCH_ALL_EVENT_API } from "../api/APIs";
-import { preparedImageSrc } from "../utils"
+import { preparedImageSrc } from "../utils";
 
 interface State {
   events: WinfunEvent[];
@@ -94,11 +94,18 @@ export default withRouter(
             props.history.push("/update_event/" + rowData.id);
           }}
           columns={[
-            { title: "Name", field: "eventName", cellStyle: { fontSize: 14 } },
+            { title: "Name", field: "eventName", cellStyle: { fontSize: 14 }  },
             { title: "Location", field: "location", cellStyle: { fontSize: 14 } },
             { title: "Begin date", field: "beginDatetime", cellStyle: { fontSize: 14 } },
             { title: "End date", field: "endDatetime", cellStyle: { fontSize: 14 } },
-            { title: "Detail link", field: "detailLink", cellStyle: { fontSize: 14 } },
+            {
+              title: "Detail link",
+              field: "detailLink",
+              cellStyle: { fontSize: 14 },
+              render: (rowData) => (
+                <p style={{ maxHeight: 50, overflow: "auto", wordBreak: "break-word" }}>{rowData.detailLink}</p>
+              ),
+            },
             {
               title: "Descriptions",
               field: "descriptions",
@@ -121,6 +128,14 @@ export default withRouter(
             { title: "Created Date", field: "createdDate", type: "datetime" },
           ]}
           data={events}
+          actions={[
+            {
+              icon: "delete",
+              iconProps: { color: "error" },
+              tooltip: "Delete User",
+              onClick: (event, rowData) => {},
+            },
+          ]}
         />
       </>
     );

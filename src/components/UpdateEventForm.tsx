@@ -364,6 +364,7 @@ export default withRouter(
               </InputGroup.Text>
             </InputGroup.Prepend>
             <FormControl
+              as="textarea"
               value={detailLink}
               onChange={onChangeDetailLink}
               style={{ width: "90%" }}

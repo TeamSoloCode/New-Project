@@ -165,6 +165,7 @@ export default withRouter(
                 </p>
               ),
             },
+
             {
               title: "Show on client",
               render: (rowData) => (
@@ -187,6 +188,22 @@ export default withRouter(
               cellStyle: { fontSize: 14 },
             },
             {
+              title: "Image URL",
+              field: "image",
+              cellStyle: { fontSize: 14 },
+              align: 'center',
+              editComponent: (colProps) => (
+                <FormControl
+                  as="textarea"
+                  value={colProps.rowData.descriptions}
+                  onChange={(e: any) => colProps.onChange(e.currentTarget.value)}
+                />
+              ),
+              render: (rowData) => (
+                <p style={{ maxHeight: 50, overflow: "auto", wordBreak: "break-word" }}>{rowData.image}</p>
+              ),
+            },
+            {
               title: "Image",
               align: "center",
               render: (rowData) => <img src={preparedImageSrc(rowData.image)} width={64} height={64} />,
@@ -196,6 +213,7 @@ export default withRouter(
               field: "createdDate",
               type: "datetime",
               editable: "never",
+              align: 'left',
               cellStyle: { fontSize: 14 },
             },
           ]}
