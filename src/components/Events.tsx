@@ -3,7 +3,8 @@ import { WinfunEvent } from "src/ModelDeclare";
 import { withRouter } from "react-router-dom";
 import * as moment from "moment";
 import MaterialTable from "material-table";
-import { FETCH_ALL_EVENT_API, IMAGE_STORAGE_API } from "../api/APIs";
+import { FETCH_ALL_EVENT_API } from "../api/APIs";
+import { preparedImageSrc } from "../utils"
 
 interface State {
   events: WinfunEvent[];
@@ -114,7 +115,8 @@ export default withRouter(
             { title: "Sequence", field: "sequence", type: "numeric" },
             {
               title: "Image",
-              render: (rowData) => <img src={prepareImageSrc(rowData.imageURI)} width={64} height={64} />,
+              align: "center",
+              render: (rowData) => <img src={preparedImageSrc(rowData.imageURI)} width={64} height={64} />,
             },
             { title: "Created Date", field: "createdDate", type: "datetime" },
           ]}
@@ -124,11 +126,3 @@ export default withRouter(
     );
   })
 );
-
-const prepareImageSrc = (uri: string | undefined) => {
-  if (!uri) return undefined;
-  if (uri.includes("https") || uri.includes("http")) {
-    return uri;
-  }
-  return IMAGE_STORAGE_API + uri;
-};

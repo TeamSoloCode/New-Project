@@ -13,6 +13,7 @@ const RegisterNows = React.lazy(() => import("./components/RegisterNows"));
 const UpdateEventForm = React.lazy(() => import("./components/UpdateEventForm"));
 const InsertEventForm = React.lazy(() => import("./components/InsertEventForm"));
 const Events = React.lazy(() => import("./components/Events"));
+const Features = React.lazy(() => import("./components/Features"));
 
 class App extends React.Component<any> {
   constructor(props: any) {
@@ -47,6 +48,11 @@ class App extends React.Component<any> {
               <NavDropdown title="Comment" id="basic-nav-dropdown">
                 <NavDropdown.Item>
                   <Link to="/ano_comments">Comments</Link>
+                </NavDropdown.Item>
+              </NavDropdown>
+              <NavDropdown title="Feature" id="basic-nav-dropdown">
+                <NavDropdown.Item>
+                  <Link to="/features">Feature</Link>
                 </NavDropdown.Item>
               </NavDropdown>
             </Nav>
@@ -87,6 +93,12 @@ class App extends React.Component<any> {
               <RegisterNows />
             </React.Suspense>
           </Route>
+          <Route path="/features">
+            <React.Suspense fallback={<div>Loading</div>}>
+              <Features />
+            </React.Suspense>
+          </Route>
+          
         </Switch>
       </>
     );
