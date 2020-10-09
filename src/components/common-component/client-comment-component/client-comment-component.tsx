@@ -101,6 +101,7 @@ export const ClientCommentComponent = withRouter(
         arr = [];
       }
       if (inde === arrTmp.length - 1) {
+        arr.push(arrTmp[0]);
          arrEvent.push(arr);
 					arr = [];
       }
@@ -149,7 +150,7 @@ export const ClientCommentComponent = withRouter(
 					<div className="container w-100 text-center">
 						<button className="btn primary-btn2" data-toggle="modal" data-target="#myModal">
 							{' '}
-							Hiện thị tất cả bình luận
+							Hiển thị tất cả bình luận
 						</button>
 					</div>
 				</div>
