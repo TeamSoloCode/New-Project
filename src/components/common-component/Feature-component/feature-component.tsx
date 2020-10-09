@@ -19,12 +19,12 @@ export default class FeatureComponent extends React.Component<IFeatureComponentP
 					</div>
 					<div className="row">
 						<ItemFeatureComponent
-							title={'Các công cụ giao dịch chuyên nghiệp '}
+							title={'CÁC CÔNG CỤ GIAO DỊCH CHUYÊN NGHIỆP '}
 							description={
 								'Nhanh chóng có được cái nhìn sâu sắc về biến động thị trường . Ra quyết định chính xác và kiếm lời trong phút chốc'
 							}></ItemFeatureComponent>
 						<ItemFeatureComponent
-							title={'Demo không giới hạn '}
+							title={'DEMO KHÔNG GIỚI HẠN'}
 							description={
 								'Bạn luôn có thể cải thiện kỹ năng giao dịch của mình trên tài khoản demo và kiếm tiền sau khi hoàn thiện chiến lược của mình.'
 							}></ItemFeatureComponent>

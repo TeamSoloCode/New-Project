@@ -2,7 +2,7 @@
 .banner {
   background: url('../assets/images/banner/banner.jpg');
   background-repeat: no-repeat;
-  /* height: 100vh; */
+  height: 93vh;
   /* background-size: cover;  */
     background-position: center;
 }
@@ -104,8 +104,8 @@
     transition: all 0.3s ease 0s;
 }
 .inner-banner {
-  height: 100vh;
-  margin-bottom: -70px;
+  height: 93vh;
+  /* margin-bottom: -70px; */
 }
 .ellipse-custom {
 	overflow: hidden;
