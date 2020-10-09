@@ -24,14 +24,19 @@ export default class IntroduceTrainerComponent extends React.Component<IIntroduc
 					<div className="row justify-content-center">
 						<div className="col-lg-5">
 							<div className="main_title">
-								<h2 className="mb-3">Our Expert Trainers</h2>
-								<span>Replenish man have thing gathering lights yielding shall you</span>
+								<h2 className="mb-3">TỨ TRỤ MVAGROUP</h2>
+								<span>Gía trị mang lại cho bạn trên toàn bộ phương diện</span>
 							</div>
 						</div>
 					</div>
 					<div className="row">
 						{dataTrainer.map((valueTrainer, indexTrainer) => (
-							<ItemIntroduceTrainerComponent key={indexTrainer} name={valueTrainer.name} position={valueTrainer.position} overview={valueTrainer.overview} imageSrc={valueTrainer.imageSrc}></ItemIntroduceTrainerComponent>
+							<ItemIntroduceTrainerComponent
+								key={indexTrainer}
+								name={valueTrainer.name}
+								position={valueTrainer.position}
+								overview={valueTrainer.overview}
+								imageSrc={valueTrainer.imageSrc}></ItemIntroduceTrainerComponent>
 						))}
 					</div>
 				</div>

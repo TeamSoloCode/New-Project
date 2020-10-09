@@ -72,25 +72,25 @@ export default class RegisterFormComponent extends React.Component<
 			<div className="register_form">
 				<div className="mb-5">
 					<span>
-						<h3>Register</h3>
-						<p>It is high time for learning</p>
+						<h3>Đăng ký</h3>
+						<p>Nhanh tay đăng ký thời gian có hạn</p>
 					</span>
 				</div>
 				<Form>
 					<Form.Group>
-						<Form.Control type="email" value={this.state.email} placeholder="Your Name" onChange={this.handleChangeEmailInput} />
+						<Form.Control type="email" value={this.state.email} placeholder="Họ tên" onChange={this.handleChangeEmailInput} />
 					</Form.Group>
 
 					<Form.Group>
-						<Form.Control type="text" value={this.state.username} placeholder="Your Phone Number" onChange={this.handleChangeUserNameInput} />
+						<Form.Control type="text" value={this.state.username} placeholder="Số điện thoại" onChange={this.handleChangeUserNameInput} />
 					</Form.Group>
 
 					<Form.Group>
-						<Form.Control type="text" value={this.state.phoneNumber} placeholder="Your Email Address" onChange={this.handleChangePhoneNumberInput} />
+						<Form.Control type="text" value={this.state.phoneNumber} placeholder="Địa chỉ Email" onChange={this.handleChangePhoneNumberInput} />
 					</Form.Group>
 
 					<Button variant="primary" onClick={this.handleSubmit} className="btn primary-btn">
-						Register
+						Đăng ký
 					</Button>
 				</Form>
 			</div>

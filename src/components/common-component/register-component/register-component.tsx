@@ -37,11 +37,12 @@ export default React.memo((props: IRegisterComponentProps) => {
 					<div className="row">
 						<div className="col-lg-8">
 							<div>
-								<h2 className="text-white">Register</h2>
-								
+								<h2 className="text-white">ĐĂNG KÝ NGAY BÂY GIỜ</h2>
+
 								<span className="text-white">
-									There is a moment in the life of any aspiring astronomer that it is time to buy that first telescope.
-									It’s exciting to think about setting up your own viewing station.
+									Đừng ngần ngại, bạn hãy đăng ký ngay bây giờ. Chúng tôi sẽ giúp bạn mở tài khoản và lên chương trình
+									đào tạo cho bạn tức thì. Tham gia cùng hệ thống của TỨ TRỤ MVAGROUP ngay thời điểm này để nhận được
+									50$ vào tài khoản.
 								</span>
 							</div>
 							<br />

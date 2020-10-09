@@ -115,8 +115,8 @@ export const ClientCommentComponent = withRouter(
 						<div className="row justify-content-center">
 							<div className="col-lg-5">
 								<div className="main_title">
-									<h2 className="mb-3">Client say about me</h2>
-									<p>Replenish man have thing gathering lights yielding shall you</p>
+									<h3 className="mb-3">CÁC DOANH NHÂN ĐANG NÓI GÌ VỀ MVAGROUP</h3>
+									<p>Bạn sẽ trở thành thành viên MVAGroup từng bước trở thành doanh nhân Tài Chính</p>
 								</div>
 							</div>
 						</div>
@@ -149,7 +149,7 @@ export const ClientCommentComponent = withRouter(
 					<div className="container w-100 text-center">
 						<button className="btn primary-btn2" data-toggle="modal" data-target="#myModal">
 							{' '}
-							Show comment
+							Hiện thị tất cả bình luận
 						</button>
 					</div>
 				</div>

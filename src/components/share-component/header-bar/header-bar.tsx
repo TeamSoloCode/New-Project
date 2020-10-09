@@ -37,30 +37,26 @@ export default class HeaderBar extends React.Component<IHeaderBarProps, IHeaderB
 			<Navbar collapseOnSelect expand="lg" variant="dark" sticky="top" className={headerStyle}>
 				<Container>
 					<Navbar.Brand href="/" className="title">
-						WINFUN
+						WEFINEX
 					</Navbar.Brand>
 					<Navbar.Toggle aria-controls="responsive-navbar-nav" />
 					<Navbar.Collapse id="responsive-navbar-nav">
 						<Nav className="mr-auto"></Nav>
 						<Nav>
 							<Nav.Link>
-								<div className="item-nav">Home</div>
+								<div className="item-nav"> Trang chủ </div>
 							</Nav.Link>
 
 							<Nav.Link href="#features">
-								<div className="item-nav">About</div>
+								<div className="item-nav">Chuyên gia</div>
 							</Nav.Link>
 
 							<Nav.Link href="#pricing">
-								<div className="item-nav">Page</div>
+								<div className="item-nav">Đăng ký</div>
 							</Nav.Link>
 
 							<Nav.Link href="#pricing">
-								<div className="item-nav">Blog</div>
-							</Nav.Link>
-
-							<Nav.Link href="#pricing">
-								<div className="item-nav">Contact</div>
+								<div className="item-nav">Liên hệ</div>
 							</Nav.Link>
 						</Nav>
 					</Navbar.Collapse>

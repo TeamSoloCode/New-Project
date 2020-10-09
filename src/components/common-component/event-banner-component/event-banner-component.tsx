@@ -97,51 +97,53 @@ export const EventBannerComponent = withRouter(
         arrEvent.push(arrTmp);
         arrTmp = [];
       }
-      if (ind === events.length - 1) {
+      if (ind === events.length - 1 && arrTmp.length !== 0) {
         arrEvent.push(arrTmp);
         arrTmp = [];
       }
     });
 
     return (
-      <>
-        <div className="jumbotron events_area">
-          <div className="container">
-            <div className="row justify-content-center">
-              <div className="col-lg-5">
-                <div className="main_title text-white">
-                  <h2 className="mb-3 ">Upcoming Events</h2>
-                  <p>Replenish man have thing gathering lights yielding shall you</p>
-                </div>
-              </div>
-            </div>
-            <div className="row justify-content-center">
-              <Carousel>
-                {arrEvent.map((valueEvent, indexEvent) => (
-                  <Carousel.Item key={indexEvent}>
-                    <div className="container">
-                      <div className="row">
-                        {valueEvent.map((vl: WinfunEvent, ind: number) => (
-                          <ITemEventComponent
-                            key={ind}
-                            location={vl.location}
-                            beginDateTime={vl.beginDatetime}
-                            endDateTime={vl.endDatetime}
-                            description={vl.descriptions}
-                            detailLink={vl.detailLink}
-                            evenName={vl.eventName}
-                            imageUri={vl.imageURI}
-                          ></ITemEventComponent>
-                        ))}
-                      </div>
-                    </div>
-                  </Carousel.Item>
-                ))}
-              </Carousel>
-            </div>
-          </div>
-        </div>
-      </>
-    );
+			<>
+				{console.log('event:', arrEvent)}
+				<div className="jumbotron events_area">
+					<div className="container">
+						<div className="row justify-content-center">
+							<div className="col-lg-5">
+								<div className="main_title text-white">
+									<h2 className="mb-3 ">SỰ KIỆN QUAN TRỌNG</h2>
+									<p>
+										Hãy tham gia cùng đội ngũ MVAGroup cùng trãi nghiệm những điều tuyệt vời đang chờ đón bạn phía trước
+									</p>
+								</div>
+							</div>
+						</div>
+						<div className="row justify-content-center">
+							<Carousel>
+								{arrEvent.map((valueEvent, indexEvent) => (
+									<Carousel.Item key={indexEvent}>
+										<div className="container">
+											<div className="row">
+												{valueEvent.map((vl: WinfunEvent, ind: number) => (
+													<ITemEventComponent
+														key={ind}
+														location={vl.location}
+														beginDateTime={vl.beginDatetime}
+														endDateTime={vl.endDatetime}
+														description={vl.descriptions}
+														detailLink={vl.detailLink}
+														evenName={vl.eventName}
+														imageUri={vl.imageURI}></ITemEventComponent>
+												))}
+											</div>
+										</div>
+									</Carousel.Item>
+								))}
+							</Carousel>
+						</div>
+					</div>
+				</div>
+			</>
+		);
   })
 );
