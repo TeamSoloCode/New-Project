@@ -7,6 +7,8 @@ export interface IRegisterFormComponentState {
   email: string;
   username: string;
   phoneNumber: string;
+
+
 }
 
 export default class RegisterFormComponent extends React.Component<
@@ -44,28 +46,33 @@ export default class RegisterFormComponent extends React.Component<
 
   handleSubmit = async (e: React.FormEvent<HTMLInputElement>) => {
     e.preventDefault();
-    try {
-      const { email, username, phoneNumber } = this.state;
-      const response = await fetch(REGISTER_NOW_API, {
-        method: "POST", // or 'PUT'
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ email, name: username, phoneNumber }),
-      });
+    if (this.state.username !== "" && this.state.phoneNumber.length === 9 && this.state.email !== "") {
+        try {
+					const { email, username, phoneNumber } = this.state;
+					const response = await fetch(REGISTER_NOW_API, {
+						method: 'POST', // or 'PUT'
+						headers: {
+							'Content-Type': 'application/json',
+						},
+						body: JSON.stringify({ email, name: username, phoneNumber }),
+					});
 
-      if (!response) throw "Can't connect to database";
-      const data = await response.json();
-      if (data.code != 0){
-        alert("Email, name, or phone number is existed !!")
-      }
+					if (!response) throw "Can't connect to database";
+					const data = await response.json();
+					if (data.code != 0) {
+						alert('Email, name, or phone number is existed !!');
+					}
 
-      this.resetState()
-      // handle submit success
-      alert("Register successful!")
-    } catch (err) {
-      console.log(err)
+					this.resetState();
+					// handle submit success
+					alert('Register successful!');
+				} catch (err) {
+					console.log(err);
+				}
+    } else {
+      alert("Please , Enter your information correctly!");
     }
+  
   };
   public render() {
     return (
@@ -78,21 +85,38 @@ export default class RegisterFormComponent extends React.Component<
 				</div>
 				<Form>
 					<Form.Group>
-						<Form.Control type="email" value={this.state.email} placeholder="Họ tên" onChange={this.handleChangeEmailInput} />
+						<Form.Control
+							type="email"
+							value={this.state.email}
+							placeholder="Họ tên"
+							onChange={this.handleChangeEmailInput}
+						/>
 					</Form.Group>
 
 					<Form.Group>
-						<Form.Control type="text" value={this.state.username} placeholder="Số điện thoại" onChange={this.handleChangeUserNameInput} />
+						<Form.Control
+							type="text"
+							value={this.state.username}
+							placeholder="Số điện thoại"
+							onChange={this.handleChangeUserNameInput}
+						/>
 					</Form.Group>
 
 					<Form.Group>
-						<Form.Control type="text" value={this.state.phoneNumber} placeholder="Địa chỉ Email" onChange={this.handleChangePhoneNumberInput} />
+						<Form.Control
+							type="text"
+							value={this.state.phoneNumber}
+							placeholder="Địa chỉ Email"
+							onChange={this.handleChangePhoneNumberInput}
+						/>
 					</Form.Group>
 
 					<Button variant="primary" onClick={this.handleSubmit} className="btn primary-btn">
 						Đăng ký
 					</Button>
-				</Form>
+        </Form>
+        
+
 			</div>
 		);
   }
