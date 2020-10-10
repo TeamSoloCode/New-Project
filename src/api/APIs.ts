@@ -15,4 +15,5 @@ export const FETCH_EMAIL_CONFIG_API = rootAPI + "fetch_email_config"
 export const UPDATE_EMAIL_CONFIG_API = rootAPI + "update_email_config"
 export const FETCH_ALL_FEATURES_API = rootAPI + "all_features"
 export const UPDATE_FEATURE_API = rootAPI + "update_feature"
-
+export const DELETE_EVENT_API = rootAPI + "delete_event"
+export const FETCH_ALL_EXISTS_EVENT_API = rootAPI + "fetch_all_exists_event"
