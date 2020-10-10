@@ -11,6 +11,7 @@ import linkedinBlueIcon from '../../../../assets/images/icons/linkedin_blue.png'
 
 import pinterestIcon from '../../../../assets/images/icons/pinterest.png';
 import pinterestRedIcon from '../../../../assets/images/icons/pinterest_red.png';
+import { OverlayTrigger, Tooltip } from 'react-bootstrap';
 
 // with import
 export interface IItemIntroduceTrainerComponentProps {
@@ -98,7 +99,15 @@ export default class ItemIntroduceTrainerComponent extends React.Component<
 
 							<p className="text-underline-none">{position}</p>
 							<div className="mb-4">
-								<p className="text-underline-none">{overview}</p>
+								<OverlayTrigger
+									placement={'bottom'}
+									overlay={
+										<Tooltip>
+											{overview}
+										</Tooltip>
+									}>
+									<p className="text-underline-none ellipse-custom-trainer ">{overview}</p>
+								</OverlayTrigger>
 							</div>
 							<div className="social-group d-flex justify-content-center align-items-center">
 								<a href="https://www.facebook.com/" target="_blank">

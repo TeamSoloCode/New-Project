@@ -28,9 +28,17 @@ box-shadow: 0px 0px 22px -8px rgba(0,0,0,0.75);
     margin-bottom: 30px;
 }
 .single-trainer .meta-text {
-    min-height: 190px !important;
+    min-height: 260px !important;
     position: relative;
 
+}
+.ellipse-custom-trainer {
+	overflow: hidden;
+	text-overflow: ellipsis;
+  display: -webkit-box;
+	-webkit-line-clamp: 4;
+	-webkit-box-orient: vertical;
+	line-height: 1.2 !important;
 }
 .icon-social {
   width: 15px;

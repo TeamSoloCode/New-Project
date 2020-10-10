@@ -3,25 +3,27 @@ export const dataTrainer = [
 						imageSrc: 'https://robohash.org/earumquiafuga.png?size=210x178&set=set1',
 						name: 'Mr Poco Bùi',
 						position: 'Chuyên gia marketing',
-						overview: '',
+						overview:
+							'Marketing đúng sẽ mang đến độ phũ thương hiệu của bạn đến với khách hàng nhanh và hiệu quả nhất.',
 					},
 					{
 						imageSrc: 'https://robohash.org/idnamautem.png?size=210x178&set=set1',
 						name: 'Mr Santos Nguyễn  ',
 						position: 'Chuyên gia phát triển Hệ thống',
-						overview: '',
+						overview: 'Xây dựng hệ thống vững mạnh yếu tố đầu tiên bạn phải trở thành một lãnh đạo giỏi và có tầm.',
 					},
 					{
 						imageSrc: 'https://robohash.org/voluptatesapientenisi.png?size=210x178&set=set1',
 						name: 'Mr Henry Nguyễn',
 						position: 'Chuyên gia phân tích và đọc lệnh',
-						overview: '',
+						overview: 'Kỹ thuật phân tích và kinh nghiệm là yếu tố quyết định tỷ lệ đọc lệnh thành công cao nhất.',
 					},
 					{
 						imageSrc: 'https://robohash.org/reprehenderitfugiatfacere.png?size=210x178&set=set1',
 						name: 'Mr Cris Vũ',
 						position: 'Chuyên gia giao dịch mua bán tiền điện tử',
-						overview: '',
+						overview:
+							'Không phải bất cứ ai cũng trở thành chuyên gia giao dịch được mọi người tin tưởng, uy tín và tốc độ xử lý là điều kiện cần và đủ.',
 					},
 				];
 

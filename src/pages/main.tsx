@@ -10,29 +10,52 @@ import { EventBannerComponent } from '../components/common-component/event-banne
 import { ClientCommentComponent } from '../components/common-component/client-comment-component/client-comment-component';
 import { Route, Switch } from 'react-router-dom';
 import ProfileExpertIntroduceComponent from '../components/common-component/profile-expert-introduce-component/profile-expert-introduce-component';
-import OurAdvantageComponent from '../components/common-component/our-advantage-component/our-advantage-component';
 import { FeatureComponent } from '../components/common-component/Feature-component/feature-component';
+import { OurAdvantageComponent } from '../components/common-component/our-advantage-component/our-advantage-component';
 // import { Events } from '../components/common-component/event-banner-component/testEvents';
 export interface IMainProps {}
 
 export default class Main extends React.Component<IMainProps> {
-  constructor(props: IMainProps) {
-    super(props);
+	private featureSection: React.RefObject<HTMLDivElement>;
+	private benefitSection: React.RefObject<HTMLDivElement>;
+	private registerSection: React.RefObject<HTMLDivElement>;
+	private introduceTrainerSection: React.RefObject<HTMLDivElement>;
+	private eventSection: React.RefObject<HTMLDivElement>;
+	private clientSection: React.RefObject<HTMLDivElement>;
+
+	constructor(props: IMainProps) {
+		super(props);
+		this.featureSection = React.createRef();
+		this.benefitSection = React.createRef();
+		this.registerSection = React.createRef();
+		this.introduceTrainerSection = React.createRef();
+		this.eventSection = React.createRef();
+		this.clientSection = React.createRef();
+	}
+  componentDidUpdate() {
+    console.log("asdasda");
   }
-
-
-	public render() {
+  componentDidCatch() {
+    console.log("qwweqw");
+  }
+  public render() {
+    
 		return (
-			<div>
-				<HeaderBar />
+      <div>
+				<HeaderBar trainerSection={this.introduceTrainerSection} registerSection={this.registerSection} />
 				<Switch>
 					<Route exact path="/">
 						<div className="banner">
 							<div className="d-flex justify-content-center align-items-center inner-banner">
 								<span className="w-100 text-center ">
 									<span>
-										<span className="content-banner"><strong>KỸ THUẬT VÀ KINH NGHIỆM QUYẾT ĐỊNH NÊN THÀNH BẠI</strong></span> <br />
-										<h1 className="title-banner mt-4 mb-5"><strong>TỨ TRỤ MVAGROUP CÙNG BẠN TẠO NÊN THÀNH CÔNG</strong></h1>
+										<span className="content-banner">
+											<strong>KỸ THUẬT VÀ KINH NGHIỆM QUYẾT ĐỊNH NÊN THÀNH BẠI</strong>
+										</span>{' '}
+										<br />
+										<h1 className="title-banner mt-4 mb-5">
+											<strong>TỨ TRỤ MVAGROUP CÙNG BẠN TẠO NÊN THÀNH CÔNG</strong>
+										</h1>
 									</span>
 									<div className="mt-lg-5">
 										<a className=" primary-btn2 mr-2">Đăng ký ngay</a>
@@ -40,13 +63,25 @@ export default class Main extends React.Component<IMainProps> {
 									</div>
 								</span>
 							</div>
-            </div>
-            <FeatureComponent/>
-            <OurAdvantageComponent></OurAdvantageComponent>
-						<RegisterComponent></RegisterComponent>
-						<IntroduceTrainerComponent></IntroduceTrainerComponent>
-						<EventBannerComponent />
-						<ClientCommentComponent />
+						</div>
+						<div ref={this.featureSection}>
+							<FeatureComponent />
+						</div>
+						<div ref={this.benefitSection}>
+							<OurAdvantageComponent/>
+						</div>
+						<div ref={this.registerSection}>
+							<RegisterComponent></RegisterComponent>
+						</div>
+						<div ref={this.introduceTrainerSection}>
+							<IntroduceTrainerComponent></IntroduceTrainerComponent>
+						</div>
+						<div ref={this.eventSection}>
+							<EventBannerComponent />
+						</div>
+						<div ref={this.clientSection}>
+							<ClientCommentComponent />
+						</div>
 					</Route>
 					<Route path="/detail-user">
 						<ProfileExpertIntroduceComponent></ProfileExpertIntroduceComponent>

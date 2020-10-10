@@ -11,12 +11,12 @@ export default class ProfileExpertIntroduceComponent extends React.Component<IPr
 				<div className="container bg d-flex align-items-center">
 					<div className="row">
 						<div className="col">
-							<div>
+							<div className="thump-avata">
 								<img src={user1} className="image-avata" />
 							</div>
-							<p className="qodef-m-text" style={{ color: '#f15b43' }}>
+							{/* <p className="qodef-m-text" style={{ color: '#f15b43' }}>
 								Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
-							</p>
+							</p> */}
 						</div>
 						<div className="col">
 							<h5 className="qodef-m-subtitle">CEO of Hope </h5>
@@ -40,13 +40,19 @@ export default class ProfileExpertIntroduceComponent extends React.Component<IPr
 							</h3>
 							<div className="row">
 								<div className="col">
-									<p>Phone number: </p>
-									<p>Email: </p>
+									<p>
+										<strong>Phone number: </strong>
+									</p>
+									<p>
+										<strong>Email: </strong>
+									</p>
 									<br />
 									<br />
-									<p>Birthday:</p>
-									<p>Location:</p>
-									<p>Experience:</p>
+									<p>
+										<strong>Birthday:</strong>
+									</p>
+									<p><strong>Location:</strong></p>
+									<p><strong>Experience:</strong></p>
 								</div>
 								<div className="col">
 									<p>+ 0110 554 1234</p>
