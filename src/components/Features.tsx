@@ -195,7 +195,7 @@ export default withRouter(
               editComponent: (colProps) => (
                 <FormControl
                   as="textarea"
-                  value={colProps.rowData.descriptions}
+                  value={colProps.rowData.image}
                   onChange={(e: any) => colProps.onChange(e.currentTarget.value)}
                 />
               ),
