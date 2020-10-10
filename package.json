@@ -20,7 +20,7 @@
 		"react-dom": "^16.8.6",
 		"react-redux": "^7.1.0",
 		"react-router-dom": "^5.0.1",
-		"react-scripts-ts": "3.1.0",
+		"react-scripts-ts": "^4.0.8",
 		"react-table": "^7.5.1",
 		"redux": "^4.0.4",
 		"redux-saga": "^1.0.5",
@@ -46,10 +46,10 @@
 		"file-loader": "^4.2.0",
 		"html-webpack-plugin": "^3.2.0",
 		"image-webpack-loader": "^4.6.0",
-		"terser-webpack-plugin": "^2.2.1",
+		"terser-webpack-plugin": "^4.2.3",
 		"typescript": "^3.8.3",
 		"webpack": "^4.41.2",
 		"webpack-cli": "^3.3.9",
-		"webpack-dev-server": "^3.9.0"
+		"webpack-dev-server": "^3.11.0"
 	}
 }
