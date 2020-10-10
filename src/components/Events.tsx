@@ -197,10 +197,10 @@ export default withRouter(
             {
               icon: "delete",
               iconProps: { color: "error" },
-              tooltip: "Delete User",
+              tooltip: "Delete Event",
               onClick: async (event, rowData) => {
                 if (!Array.isArray(rowData) && rowData.id) {                      
-                  const res = await confirm(`Do you want delete ${rowData.eventName} event`)
+                  const res = await confirm(`Do you want delete ${rowData.eventName} event`);
                   if(!res)  return;     
                   deleteEvent(rowData.id);
                 }
