@@ -100,7 +100,7 @@ export default class ItemIntroduceTrainerComponent extends React.Component<
 							<div className="mb-4">
 								<p className="text-underline-none">{overview}</p>
 							</div>
-							<div className="social-group">
+							<div className="social-group d-flex justify-content-center align-items-center">
 								<a href="https://www.facebook.com/" target="_blank">
 									<img
 										src={!changeIconFb ? facebookIcon : facebookBlueIcon}

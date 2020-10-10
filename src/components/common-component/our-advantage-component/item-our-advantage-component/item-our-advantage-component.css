@@ -1,0 +1,59 @@
+.single_course:hover {
+    -webkit-transition: all 0.3s ease 0s;
+    -moz-transition: all 0.3s ease 0s;
+    -o-transition: all 0.3s ease 0s;
+    transition: all 0.3s ease 0s;
+}
+.single_course .course_head {
+    position: relative;
+    overflow: hidden;
+}
+.single_course .course_head img {
+    -webkit-transition: all 0.3s ease 0s;
+    -moz-transition: all 0.3s ease 0s;
+    -o-transition: all 0.3s ease 0s;
+    transition: all 0.3s ease 0s;
+}
+.owl-carousel .owl-item img {
+    display: block;
+    width: 100%;
+}
+.img-fluid {
+    max-width: 100%;
+    height: auto;
+}
+.h-card {
+  min-height: 400px !important;
+}
+.thump {
+  overflow: hidden;
+}
+
+.h-card:hover  {
+  
+    -webkit-box-shadow: 0px 0px 15px 0px rgba(0,0,0,0.75);
+-moz-box-shadow: 0px 0px 15px 0px rgba(0,0,0,0.75);
+box-shadow: 0px 0px 15px 0px rgba(0,0,0,0.75);
+  } 
+
+  .h-card:hover .img-our-advantage1 {
+      -webkit-transition: all .3s ease 0s;
+  -ms-transform: scale(1.5); /* IE 9 */
+  -webkit-transform: scale(1.5); /* Safari 3-8 */
+  transform: scale(1.2); 
+  }
+  .bg-body {
+    background-color: #f9f9ff;
+  }
+  .h-card:hover .bg-body {
+          -webkit-transition: all .3s ease 0s;
+
+        background-color: white;
+
+  }
+    .h-card:hover .title-body {
+      -webkit-transition: all .3s ease 0s;
+      color: orange;
+
+  }
+  

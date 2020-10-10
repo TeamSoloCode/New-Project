@@ -78,6 +78,7 @@ export default class ITemEventComponent extends React.Component<IITemEventCompon
 									<span className=" event-name mr-2 ">{'Event name: ' + evenName}</span>
 								</p>
 								<p>
+									<i className="fas fa-camera"></i>
 									<span className="ti-location-pin mr-2 ">{location}</span>
 								</p>
 							</div>
@@ -88,7 +89,7 @@ export default class ITemEventComponent extends React.Component<IITemEventCompon
 
 						<a
 							target="_blank"
-							style={{color: 'black'}}
+							style={{ color: 'black' }}
 							className="primary-btn rounded-0 mt-3"
 							onClick={() => this.redirectToDetailView(detailLink)}>
 							View Details

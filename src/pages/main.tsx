@@ -10,7 +10,8 @@ import { EventBannerComponent } from '../components/common-component/event-banne
 import { ClientCommentComponent } from '../components/common-component/client-comment-component/client-comment-component';
 import { Route, Switch } from 'react-router-dom';
 import ProfileExpertIntroduceComponent from '../components/common-component/profile-expert-introduce-component/profile-expert-introduce-component';
-import FeatureComponent from '../components/common-component/Feature-component/feature-component';
+import OurAdvantageComponent from '../components/common-component/our-advantage-component/our-advantage-component';
+import { FeatureComponent } from '../components/common-component/Feature-component/feature-component';
 // import { Events } from '../components/common-component/event-banner-component/testEvents';
 export interface IMainProps {}
 
@@ -31,7 +32,7 @@ export default class Main extends React.Component<IMainProps> {
 								<span className="w-100 text-center ">
 									<span>
 										<span className="content-banner"><strong>KỸ THUẬT VÀ KINH NGHIỆM QUYẾT ĐỊNH NÊN THÀNH BẠI</strong></span> <br />
-										<h1 className="title-banner mt-4 mb-5">TỨ TRỤ MVAGROUP CÙNG BẠN TẠO NÊN THÀNH CÔNG</h1>
+										<h1 className="title-banner mt-4 mb-5"><strong>TỨ TRỤ MVAGROUP CÙNG BẠN TẠO NÊN THÀNH CÔNG</strong></h1>
 									</span>
 									<div className="mt-lg-5">
 										<a className=" primary-btn2 mr-2">Đăng ký ngay</a>
@@ -40,7 +41,8 @@ export default class Main extends React.Component<IMainProps> {
 								</span>
 							</div>
             </div>
-            <FeatureComponent></FeatureComponent>
+            <FeatureComponent/>
+            <OurAdvantageComponent></OurAdvantageComponent>
 						<RegisterComponent></RegisterComponent>
 						<IntroduceTrainerComponent></IntroduceTrainerComponent>
 						<EventBannerComponent />

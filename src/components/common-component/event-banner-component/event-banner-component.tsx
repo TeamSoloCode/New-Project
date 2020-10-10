@@ -98,7 +98,9 @@ export const EventBannerComponent = withRouter(
         arrTmp = [];
       }
       if (ind === events.length - 1 && arrTmp.length !== 0) {
+        arrTmp.push(events[0]);
         arrEvent.push(arrTmp);
+      
         arrTmp = [];
       }
     });
@@ -111,8 +113,8 @@ export const EventBannerComponent = withRouter(
 						<div className="row justify-content-center">
 							<div className="col-lg-5">
 								<div className="main_title text-white">
-									<h2 className="mb-3 ">SỰ KIỆN QUAN TRỌNG</h2>
-									<p>
+									<h2 className="mb-3 text-white">SỰ KIỆN QUAN TRỌNG</h2>
+									<p className="text-lightgray">
 										Hãy tham gia cùng đội ngũ MVAGroup cùng trãi nghiệm những điều tuyệt vời đang chờ đón bạn phía trước
 									</p>
 								</div>

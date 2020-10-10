@@ -6,6 +6,8 @@
   /* background-size: cover;  */
     background-position: center;
 }
+
+
 .title-banner {
   font-size: 48px;
     font-weight: 500;
@@ -13,6 +15,7 @@
 
 }
 .content-banner {
+  font-family: "Rubik", sans-serif !important;
   font-size: 20px;
     color: #002347;
     font-weight: 500;
