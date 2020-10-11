@@ -12,6 +12,7 @@ import { Route, Switch } from 'react-router-dom';
 import ProfileExpertIntroduceComponent from '../components/common-component/profile-expert-introduce-component/profile-expert-introduce-component';
 import { FeatureComponent } from '../components/common-component/Feature-component/feature-component';
 import { OurAdvantageComponent } from '../components/common-component/our-advantage-component/our-advantage-component';
+import { ListAllEventComponent } from '../components/common-component/list-all-event-component/list-all-event-component';
 // import { Events } from '../components/common-component/event-banner-component/testEvents';
 export interface IMainProps {}
 
@@ -41,7 +42,7 @@ export default class Main extends React.Component<IMainProps> {
   public render() {
     
 		return (
-      <div>
+			<div>
 				<HeaderBar trainerSection={this.introduceTrainerSection} registerSection={this.registerSection} />
 				<Switch>
 					<Route exact path="/">
@@ -68,7 +69,7 @@ export default class Main extends React.Component<IMainProps> {
 							<FeatureComponent />
 						</div>
 						<div ref={this.benefitSection}>
-							<OurAdvantageComponent/>
+							<OurAdvantageComponent />
 						</div>
 						<div ref={this.registerSection}>
 							<RegisterComponent></RegisterComponent>
@@ -85,6 +86,9 @@ export default class Main extends React.Component<IMainProps> {
 					</Route>
 					<Route path="/detail-user">
 						<ProfileExpertIntroduceComponent></ProfileExpertIntroduceComponent>
+					</Route>
+          <Route path="/all-events">
+            <ListAllEventComponent/>
 					</Route>
 				</Switch>
 				<Footer></Footer>

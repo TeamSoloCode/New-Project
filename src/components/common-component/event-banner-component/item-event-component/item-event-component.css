@@ -74,6 +74,10 @@ height: 100% !important;
 .single_event {
     width: 333px;
 }
+.event_img {
+  height: 430px;
+  width: 500px;
+}
 }
 
 

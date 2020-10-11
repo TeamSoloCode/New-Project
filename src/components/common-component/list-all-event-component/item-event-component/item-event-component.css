@@ -1,0 +1,16 @@
+.item-all-event {
+  margin-bottom: 5px;
+  border: 1px solid lightgray
+
+}
+.img-event{
+  width: 400px;
+}
+.ellipse-custom-description {
+	overflow: hidden;
+	text-overflow: ellipsis;
+  display: -webkit-box;
+	-webkit-line-clamp: 3;
+	-webkit-box-orient: vertical;
+	line-height: 1.4 !important;
+}

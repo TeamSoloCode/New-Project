@@ -1,3 +1,4 @@
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import * as moment from 'moment';
 import * as React from 'react';
 import './item-event-component.css';
@@ -67,6 +68,8 @@ export default class ITemEventComponent extends React.Component<IITemEventCompon
 
 							<div className="time-location ml-2">
 								<p>
+									<FontAwesomeIcon icon="coffee" fixedWidth />
+
 									<span className="ti-time mr-2">
 										{beginDateTime ? 'To: ' + this.convertUTCDate(beginDateTime) : ''}
 									</span>

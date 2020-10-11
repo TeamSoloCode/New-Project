@@ -1,6 +1,5 @@
 import * as moment from 'moment';
 import * as React from 'react';
-import { Carousel } from 'react-bootstrap';
 import { withRouter } from 'react-router-dom';
 // import { CommonUtils } from '../../../Utils/CommonUtil';
 import { FETCH_ALL_EVENT_API } from '../../../api/API';
@@ -40,26 +39,6 @@ function reducer(state: State = initialState, action: Action): State {
 			throw new Error();
 	}
 }
-// function addEvent(events: WinfunEvent[], index: number): any {
-// 		let arrTmp: any[] = [];
-// 		let arrEvent: any[] = [];
-
-// 		events.map((valEv, ind) => {
-// 			if (index === ind) {
-// 				arrTmp.push(valEv);
-// 				if (arrTmp.length === 2) {
-// 					arrEvent.push(arrTmp);
-// 					arrTmp = [];
-// 				}
-// 				if (ind === events.length - 1 && arrTmp.length !== 0) {
-// 					arrTmp.push(events[0]);
-// 					arrEvent.push(arrTmp);
-// 					arrTmp = [];
-// 				}
-// 			}
-// 		});
-// 		return arrEvent;
-// 	}
 
 export const EventBannerComponent = withRouter(
 	React.memo((props: any) => {
@@ -110,24 +89,28 @@ export const EventBannerComponent = withRouter(
 			setEvents(events);
 		}, [state.events]);
 
-
 		let arrTmp: any[] = [];
-    let arrEvent: any[] = [];
-  //  CommonUtils.addEvent(events, 0, arrEvent);
-		events.map((valEv, ind) => {
-			arrTmp.push(valEv);
-			if (arrTmp.length === 2) {
-				arrEvent.push(arrTmp);
-				arrTmp = [];
-			}
-			if (ind === events.length - 1 && arrTmp.length !== 0) {
-				arrTmp.push(events[0]);
-				arrEvent.push(arrTmp);
-				arrTmp = [];
-			}
-    });
-    
-    // arrEvent = addEvent(events, 0);
+		let arrEvent: any[] = [];
+		//  CommonUtils.addEvent(events, 0, arrEvent);
+    events.map((valEv, ind) => {
+      if (valEv.sequence !== 0) {
+        if (arrEvent.length > 0) {
+          return;
+        }
+        arrTmp.push(valEv);
+        if (arrTmp.length === 2) {
+          arrEvent.push(arrTmp);
+          arrTmp = [];
+        }
+        // if (ind === events.length - 1 && arrTmp.length !== 0) {
+        //   arrTmp.push(events[0]);
+        //   arrEvent.push(arrTmp);
+        //   arrTmp = [];
+        // }
+        
+      }
+		});
+
 
 		return (
 			<>
@@ -137,7 +120,7 @@ export const EventBannerComponent = withRouter(
 						<div className="row justify-content-center">
 							<div className="col-lg-5">
 								<div className="main_title text-white">
-									<h2 className="mb-3 text-white">SỰ KIỆN QUAN TRỌNG</h2>
+									<h3 className="mb-3 text-white">SỰ KIỆN QUAN TRỌNG</h3>
 									<p className="text-lightgray">
 										Hãy tham gia cùng đội ngũ MVAGroup cùng trãi nghiệm những điều tuyệt vời đang chờ đón bạn phía trước
 									</p>
@@ -145,9 +128,7 @@ export const EventBannerComponent = withRouter(
 							</div>
 						</div>
 						<div className="row justify-content-center">
-							<Carousel>
 								{arrEvent.map((valueEvent, indexEvent) => (
-									<Carousel.Item key={indexEvent}>
 										<div className="container">
 											<div className="row">
 												{valueEvent.map((vl: WinfunEvent, ind: number) => (
@@ -163,9 +144,12 @@ export const EventBannerComponent = withRouter(
 												))}
 											</div>
 										</div>
-									</Carousel.Item>
 								))}
-							</Carousel>
+						</div>
+						<div className="d-flex justify-content-center align-items-center w-100">
+							<a className="text-white" href="/all-events">
+								---Hiển thị tất cả sự kiện---
+							</a>
 						</div>
 					</div>
 				</div>
