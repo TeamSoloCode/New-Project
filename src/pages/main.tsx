@@ -33,14 +33,35 @@ export default class Main extends React.Component<IMainProps> {
 		this.eventSection = React.createRef();
 		this.clientSection = React.createRef();
 	}
-  componentDidUpdate() {
-    console.log("asdasda");
-  }
-  componentDidCatch() {
-    console.log("qwweqw");
-  }
-  public render() {
-    
+	componentDidUpdate() {
+		console.log('asdasda');
+	}
+	componentDidCatch() {
+		console.log('qwweqw');
+	}
+	scrollTo(elementName: React.RefObject<HTMLHeadingElement>) {
+		if (window.location.pathname !== '/') {
+			window.location.href = '/';
+			setTimeout(() => {
+				if (elementName.current !== null) {
+					window.scrollTo({
+						behavior: 'smooth',
+						top: elementName.current.offsetTop - 90,
+					});
+					// elementName.current.scrollIntoView({behavior: 'smooth' });
+				}
+			}, 2000);
+		} else {
+			if (elementName.current !== null) {
+				window.scrollTo({
+					behavior: 'smooth',
+					top: elementName.current.offsetTop - 90,
+				});
+				// elementName.current.scrollIntoView({behavior: 'smooth' });
+			}
+		}
+	}
+	public render() {
 		return (
 			<div>
 				<HeaderBar trainerSection={this.introduceTrainerSection} registerSection={this.registerSection} />
@@ -59,7 +80,7 @@ export default class Main extends React.Component<IMainProps> {
 										</h1>
 									</span>
 									<div className="mt-lg-5">
-										<a className=" primary-btn2 mr-2">Đăng ký ngay</a>
+										<a className=" primary-btn2 mr-2" onClick={()=>this.scrollTo(this.registerSection)}>Đăng ký ngay</a>
 										{/* <a className=" primary-btn ">See course</a> */}
 									</div>
 								</span>
@@ -87,8 +108,8 @@ export default class Main extends React.Component<IMainProps> {
 					<Route path="/detail-user">
 						<ProfileExpertIntroduceComponent></ProfileExpertIntroduceComponent>
 					</Route>
-          <Route path="/all-events">
-            <ListAllEventComponent/>
+					<Route path="/all-events">
+						<ListAllEventComponent />
 					</Route>
 				</Switch>
 				<Footer></Footer>

@@ -74,7 +74,7 @@ export default class HeaderBar extends React.Component<IHeaderBarProps, IHeaderB
 					<Navbar.Collapse id="responsive-navbar-nav">
 						<Nav className="mr-auto"></Nav>
 						<Nav>
-							<Nav.Link>
+							<Nav.Link href="/">
 								<div className="item-nav"> Trang chủ </div>
 							</Nav.Link>
 
