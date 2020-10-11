@@ -115,7 +115,6 @@ export const ListAllEventComponent = withRouter(
 
 		return (
 			<>
-				{console.log('eventsasd: ', arrEvent)}
         <div className="container">
 					<div className="bg-section">
           <h2>Tất cả sự kiện</h2>
@@ -125,7 +124,8 @@ export const ListAllEventComponent = withRouter(
 								imageUri={val.imageURI}
 								eventName={val.eventName}
 								description={val.descriptions}
-								dateStart={val.beginDatetime}
+                dateStart={val.beginDatetime}
+                detailLink={val.detailLink}
 								dateEnd={val.endDatetime}></ItemEventComponent>
 						))}
 					</div>

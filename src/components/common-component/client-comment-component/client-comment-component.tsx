@@ -110,7 +110,6 @@ export const ClientCommentComponent = withRouter(
 
 		return (
 			<>
-				{console.log('comment:', arrEvent)}
 				<div className="pb-4 pt-4 bg-white">
 					<div className="container">
 						<div className="row justify-content-center">
@@ -159,7 +158,7 @@ export const ClientCommentComponent = withRouter(
 					<div className="modal-dialog">
 						<div className="modal-content">
 							<div className="modal-header">
-								<h4 className="modal-title">Comment</h4>
+								<h4 className="modal-title">Bình luận</h4>
 								<button type="button" className="close" data-dismiss="modal">
 									&times;
 								</button>
@@ -182,7 +181,7 @@ export const ClientCommentComponent = withRouter(
 
 							<div className="modal-footer">
 								<button type="button" className="btn btn-danger" data-dismiss="modal">
-									Close
+									Đóng
 								</button>
 							</div>
 						</div>

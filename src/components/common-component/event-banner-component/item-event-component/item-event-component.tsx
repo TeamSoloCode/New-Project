@@ -1,4 +1,6 @@
-import {FontAwesomeIcon} from '@fortawesome/react-fontawesome/index';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome/index';
+import { faClock } from '@fortawesome/free-solid-svg-icons';
+
 import * as moment from 'moment';
 import * as React from 'react';
 import './item-event-component.css';
@@ -59,7 +61,7 @@ export default class ITemEventComponent extends React.Component<IITemEventCompon
 									''
 								) : (
 									<>
-										<p className="text-center">|</p>
+										<div className="d-flex justify-content-center align-items-center ">|</div>
 										<span>{this.getDate(endDateTime)}</span>
 										{this.getMonth(endDateTime)}
 									</>
@@ -68,32 +70,38 @@ export default class ITemEventComponent extends React.Component<IITemEventCompon
 
 							<div className="time-location ml-2">
 								<p>
+									<FontAwesomeIcon className="mr-2" icon={faClock} />
+
 									<span className="ti-time mr-2">
-										{beginDateTime ? 'To: ' + this.convertUTCDate(beginDateTime) : ''}
+										{beginDateTime ? 'Từ: ' + this.convertUTCDate(beginDateTime) : ''}
 									</span>
 								</p>
 								<p>
-									<span className="ti-time mr-2">{endDateTime ? 'From: ' + this.convertUTCDate(endDateTime) : ''}</span>
+									<FontAwesomeIcon className="mr-2" icon={faClock} />
+									<span className="ti-time mr-2">{endDateTime ? 'Đến: ' + this.convertUTCDate(endDateTime) : ''}</span>
 								</p>
+
 								<p>
-									<span className=" event-name mr-2 ">{evenName}</span>
-								</p>
-								<p>
-									<FontAwesomeIcon className="mr-2" icon="map-marker-alt"/>
+									<FontAwesomeIcon className="mr-2" icon="map-marker-alt" />
 									<span className="ti-location-pin mr-2 ">{location}</span>
 								</p>
 							</div>
 						</div>
+						<p>
+							<strong>
+								<h4 className=" event-name mr-2 text-white">{evenName}</h4>
+							</strong>
+						</p>
 						<p className="ellipse-custom content-ev" data-toggle="tooltip" title={description}>
-							{'Content: ' + description}
+              <strong>Nội dung :</strong>{description}
 						</p>
 
 						<a
 							target="_blank"
 							style={{ color: 'black' }}
-							className="primary-btn rounded-0 mt-3"
+							className="primary-btn rounded-0 mt-3 btn-view-detail"
 							onClick={() => this.redirectToDetailView(detailLink)}>
-							View Details
+							Chi tiết
 						</a>
 					</div>
 				</div>

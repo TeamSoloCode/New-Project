@@ -8,7 +8,7 @@ body {
   font-family: 'Rubik';
   src: local('Rubik'), url(./assets/fonts/rubik/Rubik-VariableFont_wght.ttf) format('truetype');
 }
-h1, h2, h3, h4, h5, h6 {
+h2, h3, h4, h5, h6 {
     font-family: "Rubik", sans-serif !important;
     font-weight: bold !important;
     color: #002347 !important;

@@ -20,7 +20,6 @@ export default class ItemClientCommentFullComponent extends React.Component<IIte
 	}
 	public render() {
 		const { userImage, userName, content, createDate } = this.props;
-		console.log(createDate);
 		return (
 			<div className="col">
 				<div className="item">
@@ -33,7 +32,7 @@ export default class ItemClientCommentFullComponent extends React.Component<IIte
 							</div>
 							<div className="col">
 								<div className="testi_text mt-2 ml-2">
-									<h4>{userName}</h4>
+									<h5>{userName}</h5>
 									<div>
 										<span className="time-cmt">{this.formatDate(createDate)}</span>
 									</div>

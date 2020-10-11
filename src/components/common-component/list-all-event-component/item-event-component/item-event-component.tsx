@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { Button } from 'react-bootstrap';
 // import { Card } from 'react-bootstrap';
 import './item-event-component.css';
 export interface IItemEventComponentProps {
@@ -6,7 +7,8 @@ export interface IItemEventComponentProps {
 	eventName: string;
 	description: string | undefined;
 	dateStart: string;
-	dateEnd: string;
+  dateEnd: string;
+  detailLink: string;
 }
 
 export default class ItemEventComponent extends React.Component<IItemEventComponentProps> {
@@ -14,17 +16,17 @@ export default class ItemEventComponent extends React.Component<IItemEventCompon
 		super(props);
 	}
 	public render() {
-		const { imageUri, eventName, description, dateStart, dateEnd } = this.props;
+		const { imageUri, eventName, description, dateStart, dateEnd, detailLink } = this.props;
 		return (
 			<div className="item-all-event">
 				<div className="row">
 					<div className="col col-lg-4">
-						<div className="thump">
-							<img className="img-event" src={imageUri} />
+						<div className="thump h-100">
+							<img className="img-event h-100" src={imageUri} />
 						</div>
 					</div>
 					<div className="col col-lg-8 col-md-7">
-						<div className="pt-4 pb-4 pl-2 pr-2">
+						<div className="pt-4 pb-2 pl-2 pr-2">
 							<h4>Tên sự kiện: {eventName}</h4>
 							<p className="ellipse-custom-description mt-3">
 								<strong>Nội dung : </strong>
@@ -37,10 +39,20 @@ export default class ItemEventComponent extends React.Component<IItemEventCompon
 							<p>
 								<strong>Thời gian kết thúc:</strong> {dateEnd}
 							</p>
+							<div className="w-100 d-flex align-items-end justify-content-end position-relative bg-btn-detail">
+								{/* <button className="primary-btn2 " onClick={() => (window.location.href = detailLink)}>
+									Chi tiết
+								</button> */}
+								<Button
+									className="btn-detail"
+									onClick={() => (window.location.href = detailLink)}
+									variant="outline-info">
+									Chi tiết
+								</Button>
+							</div>
 						</div>
 					</div>
 				</div>
-			
 			</div>
 		);
 	}

@@ -34,24 +34,10 @@ export default class Main extends React.Component<IMainProps> {
 		this.clientSection = React.createRef();
 	}
 	componentDidUpdate() {
-		console.log('asdasda');
 	}
 	componentDidCatch() {
-		console.log('qwweqw');
 	}
 	scrollTo(elementName: React.RefObject<HTMLHeadingElement>) {
-		if (window.location.pathname !== '/') {
-			window.location.href = '/';
-			setTimeout(() => {
-				if (elementName.current !== null) {
-					window.scrollTo({
-						behavior: 'smooth',
-						top: elementName.current.offsetTop - 90,
-					});
-					// elementName.current.scrollIntoView({behavior: 'smooth' });
-				}
-			}, 2000);
-		} else {
 			if (elementName.current !== null) {
 				window.scrollTo({
 					behavior: 'smooth',
@@ -59,7 +45,6 @@ export default class Main extends React.Component<IMainProps> {
 				});
 				// elementName.current.scrollIntoView({behavior: 'smooth' });
 			}
-		}
 	}
 	public render() {
 		return (
@@ -80,7 +65,9 @@ export default class Main extends React.Component<IMainProps> {
 										</h1>
 									</span>
 									<div className="mt-lg-5">
-										<a className=" primary-btn2 mr-2" onClick={()=>this.scrollTo(this.registerSection)}>Đăng ký ngay</a>
+										<a className=" primary-btn2 mr-2" onClick={() => this.scrollTo(this.registerSection)}>
+											Đăng ký ngay
+										</a>
 										{/* <a className=" primary-btn ">See course</a> */}
 									</div>
 								</span>
@@ -107,9 +94,23 @@ export default class Main extends React.Component<IMainProps> {
 					</Route>
 					<Route path="/detail-user">
 						<ProfileExpertIntroduceComponent></ProfileExpertIntroduceComponent>
+						<div ref={this.registerSection}>
+							<RegisterComponent></RegisterComponent>
+						</div>
 					</Route>
 					<Route path="/all-events">
 						<ListAllEventComponent />
+						<div ref={this.registerSection}>
+							<RegisterComponent></RegisterComponent>
+						</div>
+					</Route>
+					<Route path="/expert">
+						<div ref={this.introduceTrainerSection}>
+							<IntroduceTrainerComponent></IntroduceTrainerComponent>
+						</div>
+						<div ref={this.registerSection}>
+							<RegisterComponent></RegisterComponent>
+						</div>
 					</Route>
 				</Switch>
 				<Footer></Footer>

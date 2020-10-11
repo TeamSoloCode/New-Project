@@ -83,8 +83,7 @@ export const FeatureComponent = withRouter(
 
     return (
       <>
-        {console.log("feature:",features)}
-			<div className="feature_area section_gap_top">
+			<div className="pb-4 pt-4">
 				<div className="container">
 					<div className="row justify-content-center">
 						<div className="col-lg-5">

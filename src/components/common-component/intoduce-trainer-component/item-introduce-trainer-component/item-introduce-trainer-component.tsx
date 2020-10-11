@@ -44,7 +44,6 @@ export default class ItemIntroduceTrainerComponent extends React.Component<
 		};
 	}
 	changeColorSocial(e: any) {
-		console.log(e.target.id);
 		switch (e.target.id) {
 			case 'fbSocial':
 				this.setState({ changeIconFb: true });

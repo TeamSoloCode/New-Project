@@ -35,37 +35,21 @@ export default class HeaderBar extends React.Component<IHeaderBarProps, IHeaderB
 		window.removeEventListener('scroll', this.handleScroll);
 	}
 
-  scrollTo(elementName: React.RefObject<HTMLHeadingElement>) {
-
-    if (window.location.pathname !== "/") {
-      window.location.href = "/";
-      setTimeout(() => {
-        if (elementName.current !== null) {
-          window.scrollTo({
-            behavior: 'smooth',
-            top: elementName.current.offsetTop - 90,
-          });
-          // elementName.current.scrollIntoView({behavior: 'smooth' });
-        }
-
-      }, 2000);
-
-    } else {
-      if (elementName.current !== null) {
-				window.scrollTo({
-					behavior: 'smooth',
-					top: elementName.current.offsetTop - 90,
-				});
-				// elementName.current.scrollIntoView({behavior: 'smooth' });
-			}
-    }
+	scrollTo(elementName: React.RefObject<HTMLHeadingElement>) {
+		if (elementName.current !== null) {
+			window.scrollTo({
+				behavior: 'smooth',
+				top: elementName.current.offsetTop - 90,
+			});
+			// elementName.current.scrollIntoView({behavior: 'smooth' });
+		}
 	}
 
 	public render() {
 		const { headerStyle } = this.state;
 		const { trainerSection, registerSection } = this.props;
 		return (
-			<Navbar collapseOnSelect expand="lg" variant="dark" sticky="top" className={headerStyle}>
+			<Navbar collapseOnSelect expand="lg" variant="dark" sticky="top" className={headerStyle + ' header_area'}>
 				<Container>
 					<Navbar.Brand href="/" className="title" data="asdasqweqwe">
 						WEFINEX
@@ -78,7 +62,7 @@ export default class HeaderBar extends React.Component<IHeaderBarProps, IHeaderB
 								<div className="item-nav"> Trang chủ </div>
 							</Nav.Link>
 
-							<Nav.Link onClick={() => this.scrollTo(trainerSection)}>
+							<Nav.Link href="/expert" onClick={() => this.scrollTo(trainerSection)}>
 								<div className="item-nav">Chuyên gia</div>
 							</Nav.Link>
 

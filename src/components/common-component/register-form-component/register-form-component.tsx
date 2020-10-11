@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Form, Button, Modal } from 'react-bootstrap';
+import { Form, Button, Alert } from 'react-bootstrap';
 import { REGISTER_NOW_API } from '../../../api/API';
 import './register-form-component.css';
 export interface IRegisterFormComponentProps {}
@@ -38,7 +38,8 @@ export default class RegisterFormComponent extends React.Component<
 		this.handleSubmit = this.handleSubmit.bind(this);
 		this.handleChangeEmailInput = this.handleChangeEmailInput.bind(this);
 		this.handleChangeUserNameInput = this.handleChangeUserNameInput.bind(this);
-		this.handleChangePhoneNumberInput = this.handleChangePhoneNumberInput.bind(this);
+    this.handleChangePhoneNumberInput = this.handleChangePhoneNumberInput.bind(this);
+    
 	}
 
 	handleClose() {
@@ -49,32 +50,17 @@ export default class RegisterFormComponent extends React.Component<
 	}
 	handleChangeEmailInput(e: React.FormEvent<HTMLInputElement>) {
 		this.setState({ email: e.currentTarget.value });
-		// if (!emailRegex.test(this.state.email)) {
-		// 	this.setState({ errorEmail: 'Email không đúng định dạng !' });
-		// } else {
-		// 	this.setState({ errorEmail: '' });
-		// }
+
 	}
 
 	handleChangePhoneNumberInput(e: React.FormEvent<HTMLInputElement>) {
 		this.setState({ phoneNumber: e.currentTarget.value });
-		// console.log(this.state.phoneNumber);
-		// if (!phoneRegex.test(this.state.phoneNumber)) {
-		// 	this.setState({ errorPhone: 'Số điện thoại chưa đúng định dạng !' });
-		// } else if (!phoneRegex.test(this.state.phoneNumber) && this.state.phoneNumber.length == 9) {
-		// 	this.setState({ errorPhone: '' });
-		// } else {
-		// 	this.setState({ errorPhone: '' });
-		// }
+
 	}
 
 	handleChangeUserNameInput(e: React.FormEvent<HTMLInputElement>) {
 		this.setState({ username: e.currentTarget.value });
-		// if (this.state.username === '') {
-		// 	this.setState({ errorUserName: 'Họ tên không được để trống' });
-		// } else {
-		// 	this.setState({ errorUserName: '' });
-		// }
+
 	}
 
 	resetState = () => {
@@ -93,7 +79,6 @@ export default class RegisterFormComponent extends React.Component<
 				this.setState({ errorPhone: 'Số điện thoại chưa đúng định dạng !' });
 			}
 			if (emailRegex.test(this.state.email) && phoneRegex.test(this.state.phoneNumber)) {
-				console.log('Asdasdasdasd');
 				try {
 					const { email, username, phoneNumber } = this.state;
 					const response = await fetch(REGISTER_NOW_API, {
@@ -113,13 +98,15 @@ export default class RegisterFormComponent extends React.Component<
 					this.resetState();
 					// handle submit success
 					this.setState({ errorEmail: '', errorPhone: '', username: '' });
-					this.handleShow();
+          this.handleShow();
+          setTimeout(() => {
+            this.handleClose();
+          }, 3000);
 				} catch (err) {
 					console.log(err);
 				}
 			}
 		} else {
-			console.log('error');
 			if (this.state.username === '') {
 				this.setState({ errorUserName: 'Họ tên không được để trống !' });
 			}
@@ -180,18 +167,13 @@ export default class RegisterFormComponent extends React.Component<
 						<Button variant="primary" onClick={this.handleSubmit} className="btn primary-btn">
 							Đăng ký
 						</Button>
-					</Form>
-					<Modal size="sm" show={showModal} onHide={this.handleClose} backdrop="static" keyboard={false}>
-						<Modal.Header closeButton>
-							<Modal.Title>Thông báo</Modal.Title>
-						</Modal.Header>
-						<Modal.Body>Bạn đã đăng ký thành công !</Modal.Body>
-						<Modal.Footer>
-							<Button variant="secondary" onClick={this.handleClose}>
-								Đóng
-							</Button>
-						</Modal.Footer>
-					</Modal>
+          </Form>
+          <div className={showModal ? "mt-2" : "d-none"}>
+					<Alert variant="success">
+						<p className="mb-0"> Đăng ký thành công ! </p>
+					</Alert>
+          </div>
+
 				</div>
 			</>
 		);

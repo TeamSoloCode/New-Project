@@ -7,6 +7,12 @@
 
   .avata-user1 {
     width: 100px;
+    border: 1px solid lightgray;
+  }
+  .item:hover {
+    -webkit-box-shadow: 0px 0px 17px -1px rgba(0,0,0,0.75);
+-moz-box-shadow: 0px 0px 17px -1px rgba(0,0,0,0.75);
+box-shadow: 0px 0px 17px -1px rgba(0,0,0,0.75);
   }
   .testi_item-1 {
       width: 100%;
@@ -26,7 +32,7 @@
   font-weight: bold;
 }
 .line-clamp-3 {
-      -webkit-line-clamp: 3 !important;
+      -webkit-line-clamp: 2 !important;
 }
   /* Extra small devices (phones, 600px and down) */
   @media only screen and (max-width: 600px) {

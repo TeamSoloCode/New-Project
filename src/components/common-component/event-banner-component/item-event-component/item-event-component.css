@@ -109,6 +109,10 @@ height: 100% !important;
   height: 400px;
   width: 640px;
 }
+.btn-view-detail {
+  position: absolute;
+  bottom: 15px;
+}
 .single_event .event_details {
 
     top: 0;
@@ -138,8 +142,8 @@ height: 100% !important;
 }
 .single_event .event_details {
 
-    width: 350px;
-    height: 350px;
+    width: 100%;
+    height: 100%;
 
 }
 }
