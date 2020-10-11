@@ -1,4 +1,4 @@
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import {FontAwesomeIcon} from '@fortawesome/react-fontawesome/index';
 import * as moment from 'moment';
 import * as React from 'react';
 import './item-event-component.css';
@@ -68,8 +68,6 @@ export default class ITemEventComponent extends React.Component<IITemEventCompon
 
 							<div className="time-location ml-2">
 								<p>
-									<FontAwesomeIcon icon="coffee" fixedWidth />
-
 									<span className="ti-time mr-2">
 										{beginDateTime ? 'To: ' + this.convertUTCDate(beginDateTime) : ''}
 									</span>
@@ -78,10 +76,10 @@ export default class ITemEventComponent extends React.Component<IITemEventCompon
 									<span className="ti-time mr-2">{endDateTime ? 'From: ' + this.convertUTCDate(endDateTime) : ''}</span>
 								</p>
 								<p>
-									<span className=" event-name mr-2 ">{'Event name: ' + evenName}</span>
+									<span className=" event-name mr-2 ">{evenName}</span>
 								</p>
 								<p>
-									<i className="fas fa-camera"></i>
+									<FontAwesomeIcon className="mr-2" icon="map-marker-alt"/>
 									<span className="ti-location-pin mr-2 ">{location}</span>
 								</p>
 							</div>
