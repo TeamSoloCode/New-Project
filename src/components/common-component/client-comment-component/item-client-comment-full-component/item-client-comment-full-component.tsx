@@ -22,7 +22,7 @@ export default class ItemClientCommentFullComponent extends React.Component<IIte
 		const { userImage, userName, content, createDate } = this.props;
 		return (
 			<div className="col">
-				<div className="item">
+				<div>
 					<div className="testi_item mr-2">
 						<div className="row">
 							<div className="col-9 col-md-2 col-lg-1 ">
