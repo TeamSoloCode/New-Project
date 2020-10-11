@@ -35,12 +35,14 @@ export default class HeaderBar extends React.Component<IHeaderBarProps, IHeaderB
 		window.removeEventListener('scroll', this.handleScroll);
 	}
 
-	scrollTo(elementName: React.RefObject<HTMLHeadingElement>) {
-		if (elementName.current !== null) {
-			window.scrollTo({
-				behavior: 'smooth',
-				top: elementName.current.offsetTop - 90,
-			});
+  scrollTo(elementName: React.RefObject<HTMLHeadingElement>, href: string) {
+      if (elementName.current !== null) {
+        window.scrollTo({
+          behavior: 'smooth',
+          top: elementName.current.offsetTop - 90,
+        });
+      } else {
+        window.location.href = href;
 			// elementName.current.scrollIntoView({behavior: 'smooth' });
 		}
 	}
@@ -62,11 +64,11 @@ export default class HeaderBar extends React.Component<IHeaderBarProps, IHeaderB
 								<div className="item-nav"> Trang chủ </div>
 							</Nav.Link>
 
-							<Nav.Link href="/expert" onClick={() => this.scrollTo(trainerSection)}>
+							<Nav.Link  onClick={() => this.scrollTo(trainerSection, '/expert')}>
 								<div className="item-nav">Chuyên gia</div>
 							</Nav.Link>
 
-							<Nav.Link onClick={() => this.scrollTo(registerSection)}>
+							<Nav.Link onClick={() => this.scrollTo(registerSection, '')}>
 								<div className="item-nav">Đăng ký</div>
 							</Nav.Link>
 
