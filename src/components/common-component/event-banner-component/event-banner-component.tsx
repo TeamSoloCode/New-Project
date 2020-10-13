@@ -118,7 +118,7 @@ export const EventBannerComponent = withRouter(
 					<div className="container">
 						<div className="row justify-content-center">
 							<div className="col-lg-5">
-								<div className="main_title text-white">
+								<div className="main_title text-white mb-4">
 									<h3 className="mb-3 text-white">SỰ KIỆN QUAN TRỌNG</h3>
 									<p className="text-lightgray">
 										Hãy tham gia cùng đội ngũ MVAGroup cùng trãi nghiệm những điều tuyệt vời đang chờ đón bạn phía trước

@@ -1,11 +1,13 @@
 import * as React from 'react';
-import { Jumbotron, Container } from 'react-bootstrap';
 import { LocalStorageKeys, COUNTDOWN_TIME_AS_HOURS } from '../../../constants';
 import { getDataFromLocalStorage } from '../../../utils';
 import RegisterFormComponent from '../register-form-component/register-form-component';
 import * as moment from 'moment';
 // import TimeCountDownComponent from '../time-count-down-component/time-count-down-component';
 import './register-component.css';
+import Container from 'react-bootstrap/esm/Container';
+import Jumbotron from 'react-bootstrap/esm/Jumbotron';
+
 export interface IRegisterComponentProps {}
 
 export default React.memo((props: IRegisterComponentProps) => {

@@ -1,5 +1,8 @@
 import * as React from 'react';
-import { Form, Button, Alert } from 'react-bootstrap';
+import Alert from 'react-bootstrap/esm/Alert';
+import Button from 'react-bootstrap/esm/Button';
+import Form from 'react-bootstrap/esm/Form';
+
 import { REGISTER_NOW_API } from '../../../api/API';
 import './register-form-component.css';
 export interface IRegisterFormComponentProps {}

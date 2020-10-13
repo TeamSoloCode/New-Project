@@ -4,6 +4,7 @@ import { faClock } from '@fortawesome/free-solid-svg-icons';
 import * as moment from 'moment';
 import * as React from 'react';
 import './item-event-component.css';
+import { preparedImageSrc } from '../../../../utils';
 export interface IITemEventComponentProps {
 	location: string;
 	beginDateTime: string;
@@ -44,12 +45,13 @@ export default class ITemEventComponent extends React.Component<IITemEventCompon
     window.open(url, '_blank');
   }
 	public render() {
-    const { location, beginDateTime, endDateTime, description,detailLink, evenName, imageUri } = this.props;
+    const { location, beginDateTime, endDateTime, description, detailLink, evenName, imageUri } = this.props;
+
 		return (
 			<div className="col col-lg-6 col-md">
 				<div className="single_event position-relative">
 					<div className="event_thumb">
-						<img src={imageUri} alt="" className="event_img"></img>
+						<img src={preparedImageSrc(imageUri)} alt="" className="event_img"></img>
 					</div>
 					<div className="event_details">
 						<div className="d-flex mb-4">

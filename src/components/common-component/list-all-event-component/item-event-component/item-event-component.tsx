@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { Button } from 'react-bootstrap';
+import { preparedImageSrc } from '../../../../utils';
 // import { Card } from 'react-bootstrap';
 import './item-event-component.css';
 export interface IItemEventComponentProps {
@@ -22,7 +23,7 @@ export default class ItemEventComponent extends React.Component<IItemEventCompon
 				<div className="row">
 					<div className="col col-lg-4">
 						<div className="thump h-100">
-							<img className="img-event h-100" src={imageUri} />
+							<img className="img-event h-100" src={preparedImageSrc(imageUri)} />
 						</div>
 					</div>
 					<div className="col col-lg-8 col-md-7">
