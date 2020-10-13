@@ -82,29 +82,32 @@ export default class ItemIntroduceTrainerComponent extends React.Component<
 
 				break;
 		}
-	}
+  }
+  onRedirectToDetailExpert() {
+    
+  }
 	public render() {
 		const { imageSrc,name,position,overview } = this.props;
-		const { changeIconFb, changeIconLinkedIn,changeIconTwitter,changeIconPinteres } = this.state;
+    const { changeIconFb, changeIconLinkedIn, changeIconTwitter, changeIconPinteres } = this.state;
+    const backgroundAvata = {
+			backgroundImage: 'url(' + imageSrc + ')',
+			backgroundPosition: 'center',
+			backgroundSize: 'cover',
+			backgroundRepeat: 'no-repeat',
+		};
 		return (
 			<div className="col-lg-3 col-md-6 col-sm-12 single-trainer">
 				<div className="item-single-trainer">
 					<a href="/detail-user" target="_blank" className="text-underline-none text-black">
-						<div className="thumb d-flex justify-content-sm-center">
-							<img src={imageSrc} className="img-fluid" />
+						<div className="thumb d-flex justify-content-sm-center" style={backgroundAvata}>
+							<img src={''} className="img-fluid" />
 						</div>
 						<div className="meta-text text-sm-center">
 							<h4 className="text-underline-none">{name}</h4>
 
 							<p className="text-underline-none">{position}</p>
 							<div className="mb-4">
-								<OverlayTrigger
-									placement={'bottom'}
-									overlay={
-										<Tooltip>
-											{overview}
-										</Tooltip>
-									}>
+								<OverlayTrigger placement={'bottom'} overlay={<Tooltip>{overview}</Tooltip>}>
 									<p className="text-underline-none ellipse-custom-trainer ">{overview}</p>
 								</OverlayTrigger>
 							</div>

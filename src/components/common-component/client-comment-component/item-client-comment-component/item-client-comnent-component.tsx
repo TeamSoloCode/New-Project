@@ -18,7 +18,9 @@ export default class ItemClientCommentComponent extends React.Component<IItemCli
 					<div className="testi_item-1 mr-2">
 						<div className="row">
 							<div className="col-3 col-lg-2 col-md-3 ">
-								<img src={userImage} alt="" className="avata-user1"></img>
+								<div className="thump circle-avata1">
+									<img src={userImage} alt="" className="avata-user1"></img>
+								</div>
 							</div>
 							<div className="col col-lg pl-4">
 								<div className="testi_text">

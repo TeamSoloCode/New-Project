@@ -26,7 +26,7 @@ export default class ItemClientCommentFullComponent extends React.Component<IIte
 					<div className="testi_item mr-2">
 						<div className="row">
 							<div className="col-9 col-md-2 col-lg-1 ">
-								<div className="circle-avata d-flex justify-content-center align-items-center">
+								<div className="circle-avata d-flex justify-content-center align-items-center thump">
 									<img src={userImage} alt="" className="avata-user"></img>
 								</div>
 							</div>

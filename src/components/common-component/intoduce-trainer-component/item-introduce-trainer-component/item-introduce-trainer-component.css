@@ -11,6 +11,7 @@
 .single-trainer .thumb {
     position: relative;
     background-color: white;
+  height: 180px;
 }
 .single-trainer {
     margin-bottom: 30px;
@@ -53,6 +54,11 @@ box-shadow: 0px 0px 22px -8px rgba(0,0,0,0.75);
 }
 .text-underline-none {
   text-decoration: none;
+}
+.img-fluid {
+  /* height: 180px;
+  width: 230px; */
+  border-color: transparent;
 }
 
 /* Extra small devices (phones, 600px and down) */

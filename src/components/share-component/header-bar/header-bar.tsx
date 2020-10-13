@@ -4,6 +4,7 @@ import './header-bar.css';
 export interface IHeaderBarProps {
 	trainerSection: React.RefObject<HTMLHeadingElement>;
 	registerSection: React.RefObject<HTMLHeadingElement>;
+	contactSection: React.RefObject<HTMLHeadingElement>;
 }
 export interface IHeaderBarState {
 	headerStyle: string;
@@ -36,6 +37,7 @@ export default class HeaderBar extends React.Component<IHeaderBarProps, IHeaderB
 	}
 
   scrollTo(elementName: React.RefObject<HTMLHeadingElement>, href: string) {
+    console.log(elementName)
       if (elementName.current !== null) {
         window.scrollTo({
           behavior: 'smooth',
@@ -49,7 +51,7 @@ export default class HeaderBar extends React.Component<IHeaderBarProps, IHeaderB
 
 	public render() {
 		const { headerStyle } = this.state;
-		const { trainerSection, registerSection } = this.props;
+		const { trainerSection, registerSection, contactSection } = this.props;
 		return (
 			<Navbar collapseOnSelect expand="lg" variant="dark" sticky="top" className={headerStyle + ' header_area'}>
 				<Container>
@@ -64,7 +66,7 @@ export default class HeaderBar extends React.Component<IHeaderBarProps, IHeaderB
 								<div className="item-nav"> Trang chủ </div>
 							</Nav.Link>
 
-							<Nav.Link  onClick={() => this.scrollTo(trainerSection, '/expert')}>
+							<Nav.Link onClick={() => this.scrollTo(trainerSection, '/expert')}>
 								<div className="item-nav">Chuyên gia</div>
 							</Nav.Link>
 
@@ -72,7 +74,7 @@ export default class HeaderBar extends React.Component<IHeaderBarProps, IHeaderB
 								<div className="item-nav">Đăng ký</div>
 							</Nav.Link>
 
-							<Nav.Link>
+							<Nav.Link onClick={() => this.scrollTo(contactSection, '')}>
 								<div className="item-nav">Liên hệ</div>
 							</Nav.Link>
 						</Nav>

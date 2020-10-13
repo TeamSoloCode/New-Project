@@ -46,12 +46,17 @@ export default class ITemEventComponent extends React.Component<IITemEventCompon
   }
 	public render() {
     const { location, beginDateTime, endDateTime, description, detailLink, evenName, imageUri } = this.props;
-
+  const backgroundEvent = {
+		backgroundImage: 'url(' + preparedImageSrc(imageUri) + ')',
+		backgroundPosition: 'center',
+		backgroundSize: 'cover',
+		backgroundRepeat: 'no-repeat',
+	};
 		return (
 			<div className="col col-lg-6 col-md">
 				<div className="single_event position-relative">
-					<div className="event_thumb">
-						<img src={preparedImageSrc(imageUri)} alt="" className="event_img"></img>
+					<div className="event_thumb" style={backgroundEvent}>
+						<div  className="event_img"></div>
 					</div>
 					<div className="event_details">
 						<div className="d-flex mb-4">
@@ -89,11 +94,8 @@ export default class ITemEventComponent extends React.Component<IITemEventCompon
 								</p>
 							</div>
 						</div>
-						<p>
-							<strong>
+							
 								<h4 className=" event-name mr-2 text-white">{evenName}</h4>
-							</strong>
-						</p>
 						<p className="ellipse-custom content-ev" data-toggle="tooltip" title={description}>
               <strong>Nội dung :</strong>{description}
 						</p>

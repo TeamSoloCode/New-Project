@@ -98,7 +98,7 @@ export const OurAdvantageComponent = withRouter(
 						</div>
 						<div className="row">
 							{benefits.map((valBenefit, indBenefit) => (
-								<ItemOurAdvantageComponent
+								<ItemOurAdvantageComponent key={indBenefit}
 									imageHead={valBenefit.image}
 									title={valBenefit.title}
 									description={valBenefit.descriptions}></ItemOurAdvantageComponent>

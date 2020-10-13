@@ -125,7 +125,7 @@ export const ClientCommentComponent = withRouter(
 						<div className="row">
 							<div className="testi_slider owl-carousel owl-loaded owl-drag">
 								<div className="owl-stage-outer">
-									<Carousel>
+									<Carousel controls={false}>
 										{arrEvent.map((valueEvent, indexEvent) => (
 											<Carousel.Item key={indexEvent}>
 												<div className="container ">

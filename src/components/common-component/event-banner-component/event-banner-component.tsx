@@ -128,7 +128,7 @@ export const EventBannerComponent = withRouter(
 						</div>
 						<div className="row justify-content-center">
 								{arrEvent.map((valueEvent, indexEvent) => (
-										<div className="container">
+										<div className="container" key={indexEvent}>
 											<div className="row">
 												{valueEvent.map((vl: WinfunEvent, ind: number) => (
 													<ITemEventComponent

@@ -22,7 +22,8 @@ export default class Main extends React.Component<IMainProps> {
 	private registerSection: React.RefObject<HTMLDivElement>;
 	private introduceTrainerSection: React.RefObject<HTMLDivElement>;
 	private eventSection: React.RefObject<HTMLDivElement>;
-	private clientSection: React.RefObject<HTMLDivElement>;
+  private clientSection: React.RefObject<HTMLDivElement>;
+  private contactSection: React.RefObject<HTMLDivElement>
 
 	constructor(props: IMainProps) {
 		super(props);
@@ -31,7 +32,8 @@ export default class Main extends React.Component<IMainProps> {
 		this.registerSection = React.createRef();
 		this.introduceTrainerSection = React.createRef();
 		this.eventSection = React.createRef();
-		this.clientSection = React.createRef();
+    this.clientSection = React.createRef();
+    this.contactSection = React.createRef();
 	}
 	componentDidUpdate() {
 	}
@@ -49,7 +51,11 @@ export default class Main extends React.Component<IMainProps> {
 	public render() {
 		return (
 			<div>
-				<HeaderBar trainerSection={this.introduceTrainerSection} registerSection={this.registerSection} />
+				<HeaderBar
+					trainerSection={this.introduceTrainerSection}
+					registerSection={this.registerSection}
+					contactSection={this.contactSection}
+				/>
 				<Switch>
 					<Route exact path="/">
 						<div className="banner">
@@ -113,7 +119,9 @@ export default class Main extends React.Component<IMainProps> {
 						</div>
 					</Route>
 				</Switch>
-				<Footer></Footer>
+				<div ref={this.contactSection}>
+					<Footer></Footer>
+				</div>
 			</div>
 		);
 	}
