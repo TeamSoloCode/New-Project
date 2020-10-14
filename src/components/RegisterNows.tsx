@@ -7,7 +7,7 @@ import Card from "react-bootstrap/Card";
 import * as moment from "moment";
 import MaterialTable from "material-table";
 import { FETCH_ALL_REGISTER_NOW, RESEND_REGISTER_INFO_TO_HOST_EMAIL } from "../api/APIs";
-import { EmailConfig } from './EmailConfig';
+import { EmailConfig } from "./EmailConfig";
 
 interface State {
   registers: RegisterNow[];
@@ -131,7 +131,9 @@ export default React.memo(() => {
     } catch (err) {
     } finally {
       setShowAlert(true);
-      setTimeout(() =>{loadData();}, 1000)
+      setTimeout(() => {
+        loadData();
+      }, 1000);
     }
   }, []);
 
