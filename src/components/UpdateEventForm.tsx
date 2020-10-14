@@ -8,6 +8,7 @@ import { UPDATE_WINFUN_EVENT_API, FETCH_EVENT_BY_ID_API, UPLOAD_IMAGE, IMAGE_STO
 import "react-datepicker/dist/react-datepicker.css";
 import { withRouter } from "react-router-dom";
 import Toast from "react-bootstrap/Toast";
+import { ButtonGroup } from '@material-ui/core';
 
 interface State {
   event: WinfunEvent | null;
@@ -119,6 +120,14 @@ export default withRouter(
     }, []);
 
     const onChangeShowStatus = React.useCallback((e) => {
+      setShow(e.currentTarget.value);
+    }, []);
+
+    const onClickShowButtion = React.useCallback((e) => {
+      setShow(1);
+    }, []);
+
+    const onClickHideButton = React.useCallback((e) => {
       setShow(e.currentTarget.value);
     }, []);
 
@@ -429,19 +438,16 @@ export default withRouter(
               aria-label="eventDescription"
             />
           </InputGroup>
-          <InputGroup className="mb-3">
+
+          <ButtonGroup>
             <InputGroup.Prepend style={{ width: "10%" }}>
               <InputGroup.Text className="w-100" id="basic-addon1">
                 Show on client
               </InputGroup.Text>
             </InputGroup.Prepend>
-            <FormControl
-              value={show}
-              onChange={onChangeShowStatus}
-              style={{ width: "90%" }}
-              aria-describedby="basic-addon1"
-            />
-          </InputGroup>
+            <Button variant={show!=0 ? "success" : "secondary"} onClick={onClickShowButtion}>Show</Button>
+            <Button variant={show==0 ? "success" : "secondary"} onClick={onClickHideButton}>Hide</Button>
+          </ButtonGroup>
 
           <InputGroup className="mb-3">
             <InputGroup.Prepend style={{ width: "10%" }}>
