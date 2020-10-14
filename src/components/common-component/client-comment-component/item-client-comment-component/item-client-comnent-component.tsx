@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { preparedImageSrc } from '../../../../utils';
 import './item-client-comment-component.css';
 export interface IItemClientCommentComponentProps {
   userImage: string;
@@ -19,7 +20,7 @@ export default class ItemClientCommentComponent extends React.Component<IItemCli
 						<div className="row">
 							<div className="col-3 col-lg-2 col-md-3 ">
 								<div className="thump circle-avata1">
-									<img src={userImage} alt="" className="avata-user1"></img>
+									<img src={preparedImageSrc(userImage)} alt="" className="avata-user1"></img>
 								</div>
 							</div>
 							<div className="col col-lg pl-4">

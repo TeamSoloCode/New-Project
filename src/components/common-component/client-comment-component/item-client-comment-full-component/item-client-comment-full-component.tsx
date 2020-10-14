@@ -1,5 +1,6 @@
 import * as moment from 'moment';
 import * as React from 'react';
+import { preparedImageSrc } from '../../../../utils';
 import './item-client-comment-full-component.css';
 export interface IItemClientCommentFullComponentProps {
 	userImage: string;
@@ -27,7 +28,7 @@ export default class ItemClientCommentFullComponent extends React.Component<IIte
 						<div className="row">
 							<div className="col-9 col-md-2 col-lg-1 ">
 								<div className="circle-avata d-flex justify-content-center align-items-center thump">
-									<img src={userImage} alt="" className="avata-user"></img>
+									<img src={preparedImageSrc(userImage)} alt="" className="avata-user"></img>
 								</div>
 							</div>
 							<div className="col">

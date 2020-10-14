@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { Nav, Navbar, Container } from 'react-bootstrap';
+import { preparedImageSrc } from '../../../utils';
 import './header-bar.css';
 export interface IHeaderBarProps {
 	trainerSection: React.RefObject<HTMLHeadingElement>;
@@ -56,7 +57,7 @@ export default class HeaderBar extends React.Component<IHeaderBarProps, IHeaderB
 			<Navbar collapseOnSelect expand="lg" variant="dark" sticky="top" className={headerStyle + ' header_area'}>
 				<Container>
 					<Navbar.Brand href="/" className="title" data="asdasqweqwe">
-						WEFINEX
+						<img src={preparedImageSrc('big_logo.png')} style={{height: '68px'}} />
 					</Navbar.Brand>
 					<Navbar.Toggle aria-controls="responsive-navbar-nav" />
 					<Navbar.Collapse id="responsive-navbar-nav">

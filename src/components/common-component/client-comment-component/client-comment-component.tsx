@@ -40,6 +40,10 @@ function reducer(state: State = initialState, action: Action): State {
 	}
 }
 
+// function sortCommentBySequence(a: AnonymousComment ,b: AnonymousComment) {
+//   return a.sequence < b.sequence;
+// }
+
 export const ClientCommentComponent = withRouter(
 	React.memo((props: any) => {
 		const [state, dispatch] = React.useReducer(reducer, initialState);
@@ -85,24 +89,23 @@ export const ClientCommentComponent = withRouter(
 		}, [state.comment]);
 
 		let arrTmp: any[] = [];
-		let arrEvent: any[] = [];
-		comment.map((valEv, ind) => {
-			if (valEv.show == 1) {
-				arrTmp.push(valEv);
-				
-      }
-      
+		let arrComment: any[] = [];
+		comment.map((valComment, ind) => {
+			if (valComment.show !== 0 && ind < 5 && valComment.sequence !== 0) {
+				arrTmp.push(valComment);
+			}
     });
+    console.log(arrTmp);
     let arr: any[] = [];
     arrTmp.map((vl, inde) => {
       arr.push(vl);
       if (arr.length === 2) {
-        arrEvent.push(arr);
+        arrComment.push(arr);
         arr = [];
       }
       if (inde === arrTmp.length - 1) {
         arr.push(arrTmp[0]);
-         arrEvent.push(arr);
+         arrComment.push(arr);
 					arr = [];
       }
 
@@ -126,7 +129,7 @@ export const ClientCommentComponent = withRouter(
 							<div className="testi_slider owl-carousel owl-loaded owl-drag">
 								<div className="owl-stage-outer">
 									<Carousel controls={false}>
-										{arrEvent.map((valueEvent, indexEvent) => (
+										{arrComment.map((valueEvent, indexEvent) => (
 											<Carousel.Item key={indexEvent}>
 												<div className="container ">
 													<div className="row">

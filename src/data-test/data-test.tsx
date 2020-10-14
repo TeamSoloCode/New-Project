@@ -1,28 +1,25 @@
 export const dataTrainer = [
 					{
-						imageSrc: 'https://www.diethelmtravel.com/wp-content/uploads/2016/04/bill-gates-wealthiest-person.jpg',
+						imageSrc: '1.jpg',
 						name: 'Mr Poco Bùi',
 						position: 'Chuyên gia marketing',
 						overview:
 							'Marketing đúng sẽ mang đến độ phũ thương hiệu của bạn đến với khách hàng nhanh và hiệu quả nhất.',
 					},
 					{
-						imageSrc:
-							'https://www.todayonline.com/sites/default/files/styles/new_app_article_detail/public/photos/43_images/190403_nas_fb_43.jpg?itok=fDFvGxHW',
+						imageSrc: '2.jpg',
 						name: 'Mr Santos Nguyễn  ',
 						position: 'Chuyên gia phát triển Hệ thống',
 						overview: 'Xây dựng hệ thống vững mạnh yếu tố đầu tiên bạn phải trở thành một lãnh đạo giỏi và có tầm.',
 					},
 					{
-						imageSrc:
-							'https://thumbor.forbes.com/thumbor/711x505/https://specials-images.forbesimg.com/imageserve/5f469ea85cc82fc8d6083f05/960x0.jpg?fit=scale',
+						imageSrc: '3.jpg',
 						name: 'Mr Henry Nguyễn',
 						position: 'Chuyên gia phân tích và đọc lệnh',
 						overview: 'Kỹ thuật phân tích và kinh nghiệm là yếu tố quyết định tỷ lệ đọc lệnh thành công cao nhất.',
 					},
 					{
-						imageSrc:
-							'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQNX1d57p2cq21uxzvOTYBiAjWV14gqN6KUHw&usqp=CAU',
+						imageSrc: '4.jpg',
 						name: 'Mr Cris Vũ',
 						position: 'Chuyên gia giao dịch mua bán tiền điện tử',
 						overview:

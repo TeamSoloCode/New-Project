@@ -13,6 +13,7 @@ import ProfileExpertIntroduceComponent from '../components/common-component/prof
 import { FeatureComponent } from '../components/common-component/Feature-component/feature-component';
 import { OurAdvantageComponent } from '../components/common-component/our-advantage-component/our-advantage-component';
 import { ListAllEventComponent } from '../components/common-component/list-all-event-component/list-all-event-component';
+import { preparedImageSrc } from '../utils';
 // import { Events } from '../components/common-component/event-banner-component/testEvents';
 export interface IMainProps {}
 
@@ -48,7 +49,15 @@ export default class Main extends React.Component<IMainProps> {
 				// elementName.current.scrollIntoView({behavior: 'smooth' });
 			}
 	}
-	public render() {
+  public render() {
+      const backgroundBanner = {
+				backgroundImage: 'url(' + preparedImageSrc('banner_custom1.jpg') + ')',
+				backgroundPosition: 'center',
+				height: '77vh',
+				width: '100%',
+				backgroundSize: 'cover',
+				backgroundRepeat: 'no-repeat',
+			};
 		return (
 			<div>
 				<HeaderBar
@@ -58,7 +67,7 @@ export default class Main extends React.Component<IMainProps> {
 				/>
 				<Switch>
 					<Route exact path="/">
-						<div className="banner">
+						<div style={backgroundBanner}>
 							<div className="d-flex justify-content-center align-items-center inner-banner">
 								<span className="w-100 text-center ">
 									<span>

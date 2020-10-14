@@ -12,6 +12,7 @@ import linkedinBlueIcon from '../../../../assets/images/icons/linkedin_blue.png'
 import pinterestIcon from '../../../../assets/images/icons/pinterest.png';
 import pinterestRedIcon from '../../../../assets/images/icons/pinterest_red.png';
 import { OverlayTrigger, Tooltip } from 'react-bootstrap';
+import { preparedImageSrc } from '../../../../utils';
 
 // with import
 export interface IItemIntroduceTrainerComponentProps {
@@ -90,7 +91,7 @@ export default class ItemIntroduceTrainerComponent extends React.Component<
 		const { imageSrc,name,position,overview } = this.props;
     const { changeIconFb, changeIconLinkedIn, changeIconTwitter, changeIconPinteres } = this.state;
     const backgroundAvata = {
-			backgroundImage: 'url(' + imageSrc + ')',
+			backgroundImage: 'url(' + preparedImageSrc(imageSrc) + ')',
 			backgroundPosition: 'center',
 			backgroundSize: 'cover',
 			backgroundRepeat: 'no-repeat',

@@ -78,8 +78,14 @@ export const OurAdvantageComponent = withRouter(
 		}, []);
 
 		React.useEffect(() => {
-			const benefits = state.benefits;
-			setBenefit(benefits);
+      // const benefits = state.benefits;
+       let benefitArray: Benefit[] = [];
+				state.benefits.map((benefitVal: Benefit) => {
+					if (benefitVal.show !== 0) {
+						benefitArray.push(benefitVal);
+					}
+				});
+			setBenefit(benefitArray);
 		}, [state.benefits]);
 
 		return (

@@ -77,9 +77,20 @@ export const FeatureComponent = withRouter(
 		}, []);
 
     React.useEffect(() => {
-      const feature = state.features;
-			setFeature(feature);
+      // const feature = state.features;
+      let featureArray: Feature[] = [];
+			state.features.map((featureVal: Feature) => {
+				if (featureVal.show !== 0) {
+					featureArray.push(featureVal);
+				}
+      });
+      
+			setFeature(featureArray);
 		}, [state.features]);
+    
+    
+
+
 
     return (
       <>
