@@ -65,7 +65,7 @@ module.exports = (configEnv = {}, { mode = 'production', $0 = '' }) => {
 				cssModules: true
 			}),
 			new HtmlWebpackPlugin({
-				template: 'public/index.html'
+        template: 'public/index.html',
 			}),
 			new Dotenv()
 		]
