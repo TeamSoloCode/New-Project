@@ -8,6 +8,7 @@ import { UPDATE_WINFUN_EVENT_API, FETCH_EVENT_BY_ID_API, UPLOAD_IMAGE, IMAGE_STO
 import "react-datepicker/dist/react-datepicker.css";
 import { withRouter } from "react-router-dom";
 import Toast from "react-bootstrap/Toast";
+import { ButtonGroup } from "@material-ui/core";
 
 interface State {
   event: WinfunEvent | null;
@@ -118,9 +119,16 @@ export default withRouter(
       setDetailLink(e.currentTarget.value);
     }, []);
 
-    const onChangeShowStatus = React.useCallback((e) => {
-      setShow(e.currentTarget.value);
-    }, []);
+    const toggleShowStatus = React.useCallback(
+      (e) => {
+        if (show == 1) {
+          setShow(0);
+          return;
+        }
+        setShow(1);
+      },
+      [show]
+    );
 
     const onChangeSequence = React.useCallback((e) => {
       setSequence(e.currentTarget.value);
@@ -144,7 +152,7 @@ export default withRouter(
         if (descriptions) newEvent.descriptions = descriptions;
         if (detailLink) newEvent.detailLink = detailLink;
         if (sequence) newEvent.sequence = sequence;
-        if (show) newEvent.show = show;
+        if (show != undefined) newEvent.show = show;
         if (imageURI) newEvent.imageURI = imageURI;
 
         const response = await fetch(UPDATE_WINFUN_EVENT_API, {
@@ -259,7 +267,7 @@ export default withRouter(
         if (detailLink) setDetailLink(detailLink);
         if (sequence) setSequence(sequence);
         if (location) setLocation(location);
-        if (show) setShow(show);
+        if (show != undefined) setShow(show);
       }
     }, [state.event]);
 
@@ -301,6 +309,14 @@ export default withRouter(
           <Toast.Body>{state.message}</Toast.Body>
         </Toast>
         <div className="m-4">
+          <InputGroup className="mb-3">
+            <InputGroup.Prepend style={{ width: "10%" }}>
+            </InputGroup.Prepend>
+            <ButtonGroup style={{width: "90%"}}>
+              <Button variant={show != 0 ? "success" : "secondary"} onClick={toggleShowStatus}>Show on client</Button>
+              <Button variant={show == 0 ? "success" : "secondary"} onClick={toggleShowStatus}>Hidden on client</Button>
+            </ButtonGroup>
+          </InputGroup>
           <InputGroup className="mb-3">
             <InputGroup.Prepend style={{ width: "10%" }}>
               <InputGroup.Text className="w-100" id="basic-addon1">
@@ -429,20 +445,6 @@ export default withRouter(
               aria-label="eventDescription"
             />
           </InputGroup>
-          <InputGroup className="mb-3">
-            <InputGroup.Prepend style={{ width: "10%" }}>
-              <InputGroup.Text className="w-100" id="basic-addon1">
-                Show on client
-              </InputGroup.Text>
-            </InputGroup.Prepend>
-            <FormControl
-              value={show}
-              onChange={onChangeShowStatus}
-              style={{ width: "90%" }}
-              aria-describedby="basic-addon1"
-            />
-          </InputGroup>
-
           <InputGroup className="mb-3">
             <InputGroup.Prepend style={{ width: "10%" }}>
               <InputGroup.Text className="w-100" id="basic-addon1">
