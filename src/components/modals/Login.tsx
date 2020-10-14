@@ -5,6 +5,7 @@ import Modal from "react-bootstrap/Modal";
 import Button from "react-bootstrap/Button";
 import { ActionEnum } from "../../App";
 import { LOGIN_API } from "../../api/APIs";
+import { setDataToLocalStorage, getDataFromLocalStorage } from "../../utils"
 
 interface Props {
   showLoginModal?: boolean;
@@ -39,13 +40,18 @@ export default React.memo((props: Props) => {
         if (results.code != 0) {
           throw Error(results.message);
         }
+        setDataToLocalStorage("token", results.data)
+        props.dispatch({ type: ActionEnum.LOGIN_SUCCESSFUL });
       }
-
-      props.dispatch({ type: ActionEnum.LOGIN_SUCCESSFUL });
     } catch (err) {
       alert(err.message);
     }
   }, [props.dispatch, username, password]);
+
+  React.useEffect(() => {
+    const token = getDataFromLocalStorage("token")
+    if(token) props.dispatch({ type: ActionEnum.LOGIN_SUCCESSFUL });
+  }, [])
 
   return (
     <Modal show={true}>
