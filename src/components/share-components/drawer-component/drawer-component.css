@@ -1,0 +1,20 @@
+.makeStyles-drawerPaper-12 {
+    background-color: #3c4b64   !important;
+    color: white !important;
+}
+.makeStyles-appBar-10 {
+     background-color: white   !important;
+    color: lightgray !important;
+}
+.makeStyles-nested-8 {
+    background-color: #485b79   !important;
+    color: white !important;
+}
+.makeStyles-nested-8 > a {
+    color: white !important;
+}
+@media (min-width: 600px) {
+  .makeStyles-toolbar-13 {
+      min-height: 5px !important;
+  }
+}

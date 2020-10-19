@@ -1,21 +1,52 @@
 import * as React from "react";
-import { Switch, Route, Link } from "react-router-dom";
+import {
+  Switch, Route,
+  // Link
+} from "react-router-dom";
 import "./App.css";
-import Button from "react-bootstrap/Button";
-import Form from "react-bootstrap/Form";
-import FormControl from "react-bootstrap/FormControl";
-import Nav from "react-bootstrap/Nav";
-import Navbar from "react-bootstrap/Navbar";
-import NavDropdown from "react-bootstrap/NavDropdown";
+
 import Login from "./components/modals/Login";
 
-const AnonymousComments = React.lazy(() => import("./components/AnoComments"));
+import PermanentDrawerLeft from './components/share-components/drawer-component/drawer-component';
+
+const AnonymousComments = React.lazy(() => import('./components/AnoComments'));
+import { createStyles, Theme, makeStyles } from '@material-ui/core/styles';
+
 const RegisterNows = React.lazy(() => import("./components/RegisterNows"));
 const UpdateEventForm = React.lazy(() => import("./components/UpdateEventForm"));
 const InsertEventForm = React.lazy(() => import("./components/InsertEventForm"));
 const Events = React.lazy(() => import("./components/Events"));
 const Features = React.lazy(() => import("./components/Features"));
-
+const drawerWidth = 240;
+const useStyles = makeStyles((theme: Theme) =>
+	createStyles({
+		nested: {
+			paddingLeft: theme.spacing(4),
+		},
+    root: {
+      width: '100%',
+			display: 'flex',
+		},
+		appBar: {
+			width: `calc(100% - ${drawerWidth}px)`,
+			marginLeft: drawerWidth,
+		},
+		drawer: {
+			width: drawerWidth,
+			flexShrink: 0,
+		},
+		drawerPaper: {
+			width: drawerWidth,
+		},
+		// necessary for content to be below app bar
+		toolbar: theme.mixins.toolbar,
+		content: {
+			flexGrow: 1,
+			backgroundColor: theme.palette.background.default,
+			padding: theme.spacing(3),
+		},
+	})
+);
 interface State {
   login: boolean;
 }
@@ -41,89 +72,62 @@ function reducer(state: State = initialState, action: Actions): State {
 
 const App = () => {
   const [state, dispatch] = React.useReducer(reducer, initialState);
+  const classes = useStyles();
 
   return (
-    <div key={JSON.stringify(state)}>
-       {!state.login ? <Login dispatch={dispatch} /> : null}
-      {state.login ? (
-        <>
-          <Navbar bg="light" expand="lg">
-            <Navbar.Brand href="#home">MVAGroup Administrators Page</Navbar.Brand>
-            <Navbar.Toggle aria-controls="basic-navbar-nav" />
-            <Navbar.Collapse id="basic-navbar-nav">
-              <Nav className="mr-auto">
-                <NavDropdown title="Event" id="basic-nav-dropdown">
-                  <NavDropdown.Item>
-                    <Link to="/events">Events</Link>
-                  </NavDropdown.Item>
-                  <NavDropdown.Divider />
-                  <NavDropdown.Item>
-                    <Link to="/insert_event">Add Event</Link>
-                  </NavDropdown.Item>
-                </NavDropdown>
-                <NavDropdown title="Register Now" id="basic-nav-dropdown">
-                  <NavDropdown.Item>
-                    <Link to="/registers">Registers</Link>
-                  </NavDropdown.Item>
-                </NavDropdown>
-                <NavDropdown title="Comment" id="basic-nav-dropdown">
-                  <NavDropdown.Item>
-                    <Link to="/ano_comments">Comments</Link>
-                  </NavDropdown.Item>
-                </NavDropdown>
-                <NavDropdown title="Feature" id="basic-nav-dropdown">
-                  <NavDropdown.Item>
-                    <Link to="/features">Feature</Link>
-                  </NavDropdown.Item>
-                </NavDropdown>
-              </Nav>
-              <Form inline>
-                <FormControl type="text" placeholder="Search" className="mr-sm-2" />
-                <Button variant="outline-success">Search</Button>
-              </Form>
-            </Navbar.Collapse>
-          </Navbar>
-          <Switch>
-            <Route exact path="/">
-              <React.Suspense fallback={<div>Loading</div>}>
-                <Events />
-              </React.Suspense>
-            </Route>
-            <Route path="/insert_event">
-              <React.Suspense fallback={<div>Loading</div>}>
-                <InsertEventForm />
-              </React.Suspense>
-            </Route>
-            <Route path="/update_event/:eventId">
-              <React.Suspense fallback={<div>Loading</div>}>
-                <UpdateEventForm />
-              </React.Suspense>
-            </Route>
-            <Route path="/events">
-              <React.Suspense fallback={<div>Loading</div>}>
-                <Events />
-              </React.Suspense>
-            </Route>
-            <Route path="/ano_comments">
-              <React.Suspense fallback={<div>Loading</div>}>
-                <AnonymousComments />
-              </React.Suspense>
-            </Route>
-            <Route path="/registers">
-              <React.Suspense fallback={<div>Loading</div>}>
-                <RegisterNows />
-              </React.Suspense>
-            </Route>
-            <Route path="/features">
-              <React.Suspense fallback={<div>Loading</div>}>
-                <Features />
-              </React.Suspense>
-            </Route>
-          </Switch>
-        </>
-      ) : null}
-    </div>
-  );
+		<div className={classes.root}>
+			<div style={{width: '100%'}} key={JSON.stringify(state)}>
+				{!state.login ? <Login dispatch={dispatch} /> : null}
+				{state.login ? (
+					<>
+						<PermanentDrawerLeft />
+						<main className={classes.content}>
+							<div className={classes.toolbar} />
+							<div className="content-body">
+								<Switch>
+									<Route exact path="/">
+										<React.Suspense fallback={<div>Loading</div>}>
+											<Events />
+										</React.Suspense>
+									</Route>
+									<Route path="/insert_event">
+										<React.Suspense fallback={<div>Loading</div>}>
+											<InsertEventForm />
+										</React.Suspense>
+									</Route>
+									<Route path="/update_event/:eventId">
+										<React.Suspense fallback={<div>Loading</div>}>
+											<UpdateEventForm />
+										</React.Suspense>
+									</Route>
+									<Route path="/events">
+										<React.Suspense fallback={<div>Loading</div>}>
+											<Events />
+										</React.Suspense>
+									</Route>
+									<Route path="/ano_comments">
+										<React.Suspense fallback={<div>Loading</div>}>
+											<AnonymousComments />
+										</React.Suspense>
+									</Route>
+									<Route path="/registers">
+										<React.Suspense fallback={<div>Loading</div>}>
+											<RegisterNows />
+										</React.Suspense>
+									</Route>
+									<Route path="/features">
+										<React.Suspense fallback={<div>Loading</div>}>
+											<Features />
+										</React.Suspense>
+									</Route>
+								</Switch>
+							</div>
+						</main>
+					</>
+				) : null}
+			</div>
+		</div>
+	);
 };
 
 export default App;
