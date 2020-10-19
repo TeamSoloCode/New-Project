@@ -7,7 +7,7 @@ import Card from "react-bootstrap/Card";
 import * as moment from "moment";
 import MaterialTable from "material-table";
 import { FETCH_ALL_REGISTER_NOW, RESEND_REGISTER_INFO_TO_HOST_EMAIL } from "../api/APIs";
-import { EmailConfig } from "./EmailConfig";
+import { EmailConfigComponent } from "./EmailConfig";
 
 interface State {
   registers: RegisterNow[];
@@ -199,13 +199,13 @@ export default React.memo(() => {
       <Accordion defaultActiveKey="1">
         <Card>
           <Card.Header>
-            <Accordion.Toggle as={Button} eventKey="0">
+            <Accordion.Toggle className="mr-2" as={Button} eventKey="0">
               Update receiving email
             </Accordion.Toggle>
           </Card.Header>
           <Accordion.Collapse eventKey="0">
             <Card.Body>
-              <EmailConfig />
+              <EmailConfigComponent />
             </Card.Body>
           </Accordion.Collapse>
         </Card>

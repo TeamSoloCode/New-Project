@@ -24,6 +24,7 @@ export declare interface WinfunEvent {
 export declare interface AnonymousComment {
   id?: number;
   email: string;
+  job?: string
   phoneNumber: string;
   name: string;
   contents: string;
@@ -41,4 +42,22 @@ export declare interface Feature {
   createdDate?: string;
   show?: number;
   sequence?: number;
+}
+
+export declare interface Benifit {
+  id ?: number
+  title: string
+  image?: string
+  descriptions: string
+  createdDate?: string
+  show?: number
+  sequence?: number
+}
+
+export declare interface EmailConfig {
+  id?: number
+  sendingEmail: string
+  sendingEmailPassword: string
+  receivingEmails: string
+  emailSubject: string
 }
