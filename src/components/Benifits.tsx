@@ -1,5 +1,5 @@
 import * as React from "react";
-import { Benifit } from "src/ModelDeclare";
+import { Benifit, Feature } from "src/ModelDeclare";
 import { withRouter } from "react-router-dom";
 import * as moment from "moment";
 import MaterialTable from "material-table";
@@ -159,45 +159,45 @@ export default withRouter(
     };
 
     const updateFeature = React.useCallback(async (featureId: number | undefined, feature: Feature) => {
-      try {
-        if (!featureId) return;
-        dispatch({
-          type: ActionEnum.UPDATE_BENIFITS,
-        });
+			try {
+				if (!featureId) return;
+				dispatch({
+					type: ActionEnum.UPDATE_BENIFITS,
+				});
 
-        const { title, descriptions, image, sequence, show } = feature;
-        const response = await fetch(UPDATE_BENIFIT_API, {
-          method: "PUT",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({ featureId, title, descriptions, image, sequence, show }),
-        });
+				const { title, descriptions, image, sequence, show } = feature;
+				const response = await fetch(UPDATE_BENIFIT_API, {
+					method: 'PUT',
+					headers: {
+						'Content-Type': 'application/json',
+					},
+					body: JSON.stringify({ featureId, title, descriptions, image, sequence, show }),
+				});
 
-        if (response) {
-          const results = await response.json();
-          if (results.code != 0) {
-            dispatch({
-              type: ActionEnum.UPDATE_BENIFIT_FAIL,
-              message: results.message.sqlMessage,
-            });
+				if (response) {
+					const results = await response.json();
+					if (results.code != 0) {
+						dispatch({
+							type: ActionEnum.UPDATE_BENIFIT_FAIL,
+							message: results.message.sqlMessage,
+						});
 
-            throw Error(results.message.sqlMessage);
-          }
+						throw Error(results.message.sqlMessage);
+					}
 
-          dispatch({
-            type: ActionEnum.UPDATE_BENIFITS_SUCCESSFUL,
-            message: "Update benifit sequence successful !!",
-          });
+					dispatch({
+						type: ActionEnum.UPDATE_BENIFITS_SUCCESSFUL,
+						message: 'Update benifit sequence successful !!',
+					});
 
-          loadData();
-        }
-      } catch (err) {
-        console.log(err);
-      } finally {
-        // setShowAlert(true);
-      }
-    }, []);
+					loadData();
+				}
+			} catch (err) {
+				console.log(err);
+			} finally {
+				// setShowAlert(true);
+			}
+		}, []);
 
     const onUpdateReviewImage = React.useCallback(
       (id: number | undefined, imageURL: string) => {
